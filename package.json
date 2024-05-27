@@ -20,5 +20,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "pnpm": "^9.1.3"
+  }
 }
