@@ -12,12 +12,12 @@ export const SupportUs: React.FC = () => {
         <Container maxWidth={false} 
             sx={{
                 backgroundImage: "url('../../public/image3.jpeg')",
+                backgroundColor: "black",
                 height: "100vh"
             }}
         >
                 <Stack>
-                        <ListItem> <Navbar/> </ListItem> 
-                        <ListItem> Updates 1 </ListItem>
+                        <Navbar/>  
                 </Stack>
         </Container>
     )

@@ -12,13 +12,13 @@ export const Blog: React.FC = () => {
 
        <Container maxWidth={false} 
             sx={{
-                backgroundImage: "url('../../public/image6.jpeg')",
+                // backgroundImage: "url('../../public/image6.jpeg')",
+                backgroundColor: "black",
                 height: "100vh"
             }}
         >
                 <Stack>
-                        <ListItem> <Navbar/> </ListItem> 
-                        <ListItem> Updates 1 </ListItem>
+                         <Navbar/>  
                 </Stack>
         </Container>
 

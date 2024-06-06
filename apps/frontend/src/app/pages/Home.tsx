@@ -13,14 +13,15 @@ export const HomePage: React.FC = () => {
 
        <Container maxWidth={false} 
             sx={{
-                backgroundImage: "url('../../public/falconLiftoff.jpeg')",
-                backgroundSize: "1920px",
-                height: "100vh"
+                // backgroundImage: "url('../../public/falconLiftoff.jpeg')",
+                backgroundColor: "black",
+                backgroundSize: "1890px",
+                height: "100vh",
+                width: '100%'
             }}
         >
                 <Stack>
-                        <ListItem> <Navbar/> </ListItem> 
-                        <ListItem> Updates 1 </ListItem>
+                        <Navbar/> 
                 </Stack>
         </Container>
 
