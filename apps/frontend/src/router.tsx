@@ -8,9 +8,14 @@ import { SupportUs } from "./app/pages/SupportUs"
 import { Blog } from "./app/pages/Blog"
 import { Navbar } from "./app/components/Navbar"
 import { ListItem, ListItemSecondaryAction, Stack } from "@mui/material"
-
+import {Helmet } from 'react-helmet'
 export const Router: React.FC = () => {
     return (
+        <>
+        <Helmet>
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+            <meta name="theme-color" content="black" />
+        </Helmet>
         <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<HomePage />} />
@@ -20,5 +25,6 @@ export const Router: React.FC = () => {
             <Route path="/support" element={<SupportUs />} />
             <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        </>
     )
 }                        

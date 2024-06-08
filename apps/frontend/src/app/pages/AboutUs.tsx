@@ -10,11 +10,13 @@ export const AboutUs: React.FC = () => {
     
     return (
 
-       <Container maxWidth={false} 
+        <Container maxWidth={false} 
             sx={{
-                backgroundImage: "url('../../public/image2.jpeg')",
-                backgroundColor: "gray",
-                height: "100vh"
+                // backgroundImage: "url('../../public/falconLiftoff.jpeg')",
+                backgroundColor: "black",
+                height: "100%",
+                width: "100%"
+                
             }}
         >
                 <Stack>

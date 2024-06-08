@@ -13,11 +13,12 @@ export const HomePage: React.FC = () => {
 
        <Container maxWidth={false} 
             sx={{
-                // backgroundImage: "url('../../public/falconLiftoff.jpeg')",
-                backgroundColor: "black",
-                backgroundSize: "1890px",
+                backgroundImage: "url('../../public/image8.jpeg')",
+                backgroundColor: "gray",
+                backgroundSize: "2048px",
                 height: "100vh",
-                width: '100%'
+                width: '100%',
+                color: "black"
             }}
         >
                 <Stack>

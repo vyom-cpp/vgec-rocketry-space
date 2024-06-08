@@ -14,7 +14,8 @@ export const Blog: React.FC = () => {
             sx={{
                 // backgroundImage: "url('../../public/image6.jpeg')",
                 backgroundColor: "black",
-                height: "100vh"
+                height: "100vh",
+                width: "100%"
             }}
         >
                 <Stack>
