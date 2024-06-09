@@ -703,6 +703,11 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.2.tgz#d8bae93ac8b815b2bd7a98078cf91e2724ef11e5"
   integrity sha512-J4yDIIthosAsRZ5CPYP/jQvUAQtlZTTD/4suA08/FEnlxqW3sKS9iAhgsa9VYLZ6vDHn/ixJgIqRQPotoBjxIw==
 
+"@fontsource/barlow-condensed@^5.0.13":
+  version "5.0.13"
+  resolved "https://registry.yarnpkg.com/@fontsource/barlow-condensed/-/barlow-condensed-5.0.13.tgz#e00945024d651a79e742b23096fd18ed4bf0b23f"
+  integrity sha512-1s15nOJGzzS1wfL9OsDTH+x0yATxwkpeV3Gm7J2v3HQmbyA2+bU6vobPinQQkVFw44Qu0Z/3k5U1eObaTkTwOA==
+
 "@fontsource/open-sans@^5.0.28":
   version "5.0.28"
   resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-5.0.28.tgz#ae371d53744ef2e5346c1576fba582f55ce3e90c"
@@ -6047,6 +6052,11 @@ react-helmet@^6.1.0:
     prop-types "^15.7.2"
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
+
+react-intersection-observer@^9.10.3:
+  version "9.10.3"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-9.10.3.tgz#70d21ad3c3719ea4fb4eb5a543b9755d31de3b8d"
+  integrity sha512-9NYfKwPZRovB6QJee7fDg0zz/SyYrqXtn5xTZU0vwLtLVBtfu9aZt1pVmr825REE49VPDZ7Lm5SNHjJBOTZHpA==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
