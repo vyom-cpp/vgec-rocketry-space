@@ -4,10 +4,7 @@ import { Box, Button, Color, Container, Drawer, Grid, Icon, IconButton, List, Li
 import { theme } from '../theme';
 import {Link} from '@mui/joy';
 import {motion} from "framer-motion"
-import XIcon from '@mui/icons-material/X';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import logo from '/logo.png'
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 import CloseIcon from '@mui/icons-material/Close';
 import { useCustomNavigate } from '../utils/useCustomNavigate';
@@ -54,7 +51,6 @@ export const Navbar: React.FC = () => {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     width: '100%',
-                    // maxHeight: '100px'
                     marginTop: -0.4
                 }}            
                 >
@@ -67,30 +63,6 @@ export const Navbar: React.FC = () => {
     );
 }
 
-// interface SocialLinkProps{
-//     color: String | undefined;
-// }
-// const SocialLinks: React.FC<SocialLinkProps> = (SocialLinkProps: SocialLinkProps) => {
-//     const handleNavigate = useCustomNavigate(); 
-//     return(
-//         <div>
-//         <IconButton onClick={()=>handleNavigate('https://x.com/vgecrocketry')}>
-//             <XIcon style={{ color: `${SocialLinkProps.color}` }}/>
-//         </IconButton>
-//         <IconButton onClick={()=>handleNavigate('https://www.youtube.com/@vgecrocketryteam3924')}>
-//             <YouTubeIcon style={{ color: `${SocialLinkProps.color}` }}/>
-//         </IconButton>
-//         <IconButton onClick={()=>handleNavigate('https://www.linkedin.com/company/vgec-rocketry-team/')}>
-//             <LinkedInIcon style={{ color: `${SocialLinkProps.color}`}}/>
-//         </IconButton>
-//         <IconButton onClick={()=>handleNavigate('https://www.instagram.com/vgecrocketry/')}>
-//             <InstagramIcon style={{ color: `${SocialLinkProps.color}`}}/>
-//         </IconButton>
-//     </div>
-// )
-// }
-
-let underline = "none"
 const handleUnderline = (page: String) =>{
     if(document.location.pathname.toString().includes(page.toString().toLocaleLowerCase().slice(0,4)) )
         return 'underline'
@@ -160,7 +132,7 @@ return (
                 mr={20}
                 alignContent='center'
                 >
-                <img src='../../../public/logo.png' style={{ maxWidth: '100%', maxHeight: '100%' }} onClick={()=>handleNavigate('/home')}/>
+                <img src={logo} style={{ maxWidth: '100%', maxHeight: '100%' }} onClick={()=>handleNavigate('/home')}/>
             </Box>
             <Box
                 sx={{

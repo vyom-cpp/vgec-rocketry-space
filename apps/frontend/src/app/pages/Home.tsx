@@ -10,7 +10,8 @@ import { useInView } from "react-intersection-observer"
 import AnantaArrow from "/AnantaArrow.mp4"
 import AnantaArrow2 from "/AnataArrow2.mp4"
 import IsroVisit from '/IsroMeet.jpeg'
-import SpaceAndApplicationsCenter from '../../../public/SpaceAndApplicationsCenter.jpeg'
+import SpaceAndApplicationsCenter from '/SpaceAndApplicationsCenter.jpeg'
+import Aflatoon from '/Aflatoon.jpeg'
 import { HomePageUpdates } from "../components/HomePageUpdates"
 import { ContactUs } from "../components/ContactUs"
 import { Footer } from "../components/Footer"
@@ -58,7 +59,7 @@ export const HomePage: React.FC = () => {
             <Container maxWidth={false}
                     sx={{
                         backgroundImage:{ 
-                            xs: "url('../../public/Aflatoon.jpeg')",
+                            xs: `url('${Aflatoon}')`,
                             md: 'none'
                         },
                         backgroundSize: 'cover',

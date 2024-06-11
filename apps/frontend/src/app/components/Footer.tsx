@@ -6,6 +6,7 @@ import { SocialLinks } from "./SocialLinks";
 import CopyrightIcon from '@mui/icons-material/Copyright';
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import logo from '/logo.png'
 interface Footer {
     isSmallScreen: boolean
 }
@@ -82,7 +83,7 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
                 alignContent='center'
                 marginTop={2}
             >
-                <img src='../../../public/logo.png' style={{ maxWidth: '100%', maxHeight: '100%' }} onClick={()=>handleNavigate('/home')}/>
+                <img src={logo} style={{ maxWidth: '100%', maxHeight: '100%' }} onClick={()=>handleNavigate('/home')}/>
             </Box>
                 <Box
                     display='flex'
@@ -164,7 +165,6 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
                         }}
                     />
                     <Typography
-                        // fontFamily={theme.typography.fontFamily}
                         fontFamily='Arial'
                         color='white'
                         fontSize='12px'
