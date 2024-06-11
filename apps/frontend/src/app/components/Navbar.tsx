@@ -11,6 +11,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 import CloseIcon from '@mui/icons-material/Close';
 import { useCustomNavigate } from '../utils/useCustomNavigate';
+import { SocialLinks } from './SocialLinks';
 
 const pages = [
     {
@@ -66,28 +67,28 @@ export const Navbar: React.FC = () => {
     );
 }
 
-interface SocialLinkProps{
-    color: String | undefined;
-}
-const SocialLinks: React.FC<SocialLinkProps> = (SocialLinkProps: SocialLinkProps) => {
-    const handleNavigate = useCustomNavigate(); 
-    return(
-        <div>
-        <IconButton onClick={()=>handleNavigate('https://x.com/vgecrocketry')}>
-            <XIcon style={{ color: `${SocialLinkProps.color}` }}/>
-        </IconButton>
-        <IconButton onClick={()=>handleNavigate('https://www.youtube.com/@vgecrocketryteam3924')}>
-            <YouTubeIcon style={{ color: `${SocialLinkProps.color}` }}/>
-        </IconButton>
-        <IconButton onClick={()=>handleNavigate('https://www.linkedin.com/company/vgec-rocketry-team/')}>
-            <LinkedInIcon style={{ color: `${SocialLinkProps.color}`}}/>
-        </IconButton>
-        <IconButton onClick={()=>handleNavigate('https://www.instagram.com/vgecrocketry/')}>
-            <InstagramIcon style={{ color: `${SocialLinkProps.color}`}}/>
-        </IconButton>
-    </div>
-)
-}
+// interface SocialLinkProps{
+//     color: String | undefined;
+// }
+// const SocialLinks: React.FC<SocialLinkProps> = (SocialLinkProps: SocialLinkProps) => {
+//     const handleNavigate = useCustomNavigate(); 
+//     return(
+//         <div>
+//         <IconButton onClick={()=>handleNavigate('https://x.com/vgecrocketry')}>
+//             <XIcon style={{ color: `${SocialLinkProps.color}` }}/>
+//         </IconButton>
+//         <IconButton onClick={()=>handleNavigate('https://www.youtube.com/@vgecrocketryteam3924')}>
+//             <YouTubeIcon style={{ color: `${SocialLinkProps.color}` }}/>
+//         </IconButton>
+//         <IconButton onClick={()=>handleNavigate('https://www.linkedin.com/company/vgec-rocketry-team/')}>
+//             <LinkedInIcon style={{ color: `${SocialLinkProps.color}`}}/>
+//         </IconButton>
+//         <IconButton onClick={()=>handleNavigate('https://www.instagram.com/vgecrocketry/')}>
+//             <InstagramIcon style={{ color: `${SocialLinkProps.color}`}}/>
+//         </IconButton>
+//     </div>
+// )
+// }
 
 let underline = "none"
 const handleUnderline = (page: String) =>{
@@ -168,7 +169,7 @@ return (
                     direction: "row",
                 }}
                 >
-                <SocialLinks color='white'/>
+                <SocialLinks color='white' fontSize='none'/>
             </Box>           
     </>
     );
@@ -320,7 +321,7 @@ const NavbarSm: React.FC = () => {
                         style={{ position: 'relative' }} // Ensure proper positioning
 
                     >
-                        <SocialLinks color="Black"/>
+                        <SocialLinks color="Black" fontSize='none'/>
                     </Box>
                 </Stack>
             </Container>

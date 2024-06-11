@@ -12,6 +12,8 @@ import AnantaArrow2 from "/AnataArrow2.mp4"
 import IsroVisit from '/IsroMeet.jpeg'
 import SpaceAndApplicationsCenter from '../../../public/SpaceAndApplicationsCenter.jpeg'
 import { HomePageUpdates } from "../components/HomePageUpdates"
+import { ContactUs } from "../components/ContactUs"
+import { Footer } from "../components/Footer"
 export const HomePage: React.FC = () => {
 
     useEffect(()=>{
@@ -40,6 +42,10 @@ export const HomePage: React.FC = () => {
         triggerOnce: true,
         threshold: isSmallScreen ? 0.001 : 0.1,
     });  
+    const { ref: ourVisionImageRef, inView: ourVisionImageView } = useInView({
+        triggerOnce: true,
+        threshold: isSmallScreen ? 0.001 : 0.1,
+    });  
 
     const fadeInVariants = {
         hidden: { opacity: 0, y: 30 },
@@ -49,7 +55,7 @@ export const HomePage: React.FC = () => {
     const handleNavigate = useCustomNavigate();
     return (
         <>
-            <Container maxWidth={false} 
+            <Container maxWidth={false}
                     sx={{
                         backgroundImage:{ 
                             xs: "url('../../public/Aflatoon.jpeg')",
@@ -175,8 +181,13 @@ export const HomePage: React.FC = () => {
                             <Grid
                                 item
                                 maxWidth={isSmallScreen ? '100%' :  '50%' }
-                                marginTop={isSmallScreen ? 5 : 0}
+                                marginTop={isSmallScreen ? 5 : -0.6}
                                 width={isSmallScreen ? '100%' : '50%'}
+                                component={motion.div}
+                                ref={ourVisionImageRef}
+                                initial="hidden"
+                                animate={ourVisionImageView ? "visible" : "hidden"}
+                                variants={fadeInVariants}
                             >
                                     <img src={BurningLeftFuel}
                                         
@@ -241,6 +252,26 @@ export const HomePage: React.FC = () => {
                                     <HomePageUpdates isSmallScreen={isSmallScreen} smallScreenBG={''} largeScreenBG={''} navigateTo={'/placeToVisit'} description={"This is a Placeholder Updates Soon"}/>
                                     <HomePageUpdates isSmallScreen={isSmallScreen} smallScreenBG={''} largeScreenBG={''} navigateTo={'/placeToVisit'} description={"This is a Placeholder Updates Soon"}/>
                                 </Grid>
+                            </Grid>
+                            <Grid
+                                item
+                                maxWidth='100%'
+                                width='100%'
+                            >
+                                <ContactUs isSmallScreen={isSmallScreen}/>
+                            </Grid>
+                            <Grid
+                                item
+                                maxWidth='100%'
+                                width='100%'
+                                height={isSmallScreen ? '70vh': '80vh'}
+                                maxHeight={isSmallScreen ? '70vh' : '80vh'}
+                                // height='100%'
+                                sx={{
+                                    backgroundColor: theme.palette.primary.dark
+                                }}
+                            >
+                                <Footer isSmallScreen={isSmallScreen}/>
                             </Grid>
                         </Grid>
                     </Container>
