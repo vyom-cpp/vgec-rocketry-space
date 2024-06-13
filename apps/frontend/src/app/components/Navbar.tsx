@@ -2,17 +2,13 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Box, Button, Color, Container, Drawer, Grid, Icon, IconButton, List, ListItem, ListItemText, Stack, SvgIcon, Typography, useMediaQuery } from '@mui/material';
 import { theme } from '../theme';
-import { To, useNavigate } from 'react-router-dom';
 import {Link} from '@mui/joy';
 import {motion} from "framer-motion"
-import XIcon from '@mui/icons-material/X';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import { useTheme } from '@emotion/react';
+import logo from '/logo.png'
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 import CloseIcon from '@mui/icons-material/Close';
 import { useCustomNavigate } from '../utils/useCustomNavigate';
+import { SocialLinks } from './SocialLinks';
 
 const pages = [
     {
@@ -43,9 +39,9 @@ export const Navbar: React.FC = () => {
     
     return (
         <motion.nav
-        initial={{ y: '25%', opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+            initial={{ y: '25%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
         >
             <Container 
                 maxWidth={false}
@@ -55,7 +51,6 @@ export const Navbar: React.FC = () => {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     width: '100%',
-                    // maxHeight: '100px'
                     marginTop: -0.4
                 }}            
                 >
@@ -68,38 +63,14 @@ export const Navbar: React.FC = () => {
     );
 }
 
-interface SocialLinkProps{
-    color: String | undefined;
+const handleUnderline = (page: String) =>{
+    if(document.location.pathname.toString().includes(page.toString().toLocaleLowerCase().slice(0,4)) )
+        return 'underline'
+    else 
+        return 'none'
 }
-const SocialLinks: React.FC<SocialLinkProps> = (SocialLinkProps: SocialLinkProps) => {
-    const handleNavigate = useCustomNavigate(); 
-    return(
-        <div>
-        <IconButton onClick={()=>handleNavigate('https://x.com/vgecrocketry')}>
-            <XIcon style={{ color: `${SocialLinkProps.color}` }}/>
-        </IconButton>
-        <IconButton onClick={()=>handleNavigate('https://www.youtube.com/@vgecrocketryteam3924')}>
-            <YouTubeIcon style={{ color: `${SocialLinkProps.color}` }}/>
-        </IconButton>
-        <IconButton onClick={()=>handleNavigate('https://www.linkedin.com/company/vgec-rocketry-team/')}>
-            <LinkedInIcon style={{ color: `${SocialLinkProps.color}`}}/>
-        </IconButton>
-        <IconButton onClick={()=>handleNavigate('https://www.instagram.com/vgecrocketry/')}>
-            <InstagramIcon style={{ color: `${SocialLinkProps.color}`}}/>
-        </IconButton>
-    </div>
-)
-}
-
 const NavbarXl = () => {
     
-    let underline = "none"
-    const handleUnderline = (page: String) =>{
-        if(document.location.pathname.toString().includes(page.toString().toLocaleLowerCase().slice(0,4)) )
-            return 'underline'
-        else 
-            return 'none'
-    }
 
     const handleNavigate = useCustomNavigate();
 
@@ -119,7 +90,7 @@ return (
         xs='auto'
         sx={{
             mb: 3.6,
-            ml: -4.3,
+            ml: -1,
         }} 
         >
             {pages.map((page, key)=> (
@@ -133,7 +104,7 @@ return (
                         onClick={() => handleNavigate(page.route)}
                     >
                         <Link
-                            fontSize={18}
+                            fontSize={23}
                             fontFamily={theme.typography.fontFamily}
                             fontWeight={500}
                             underline="hover" 
@@ -161,7 +132,7 @@ return (
                 mr={20}
                 alignContent='center'
                 >
-                <img src='../../../public/logo.png' style={{ maxWidth: '100%', maxHeight: '100%' }} onClick={()=>handleNavigate('/home')}/>
+                <img src={logo} style={{ maxWidth: '100%', maxHeight: '100%' }} onClick={()=>handleNavigate('/home')}/>
             </Box>
             <Box
                 sx={{
@@ -170,7 +141,7 @@ return (
                     direction: "row",
                 }}
                 >
-                <SocialLinks color='white'/>
+                <SocialLinks color='white' fontSize='none'/>
             </Box>           
     </>
     );
@@ -223,7 +194,7 @@ const NavbarSm: React.FC = () => {
                         justifyContent: 'flex-start', // Align items to the left
                         width: '100%', // Ensure the box takes full width
                         // p: 2,  
-                        marginTop: 2.3
+                        marginTop: 2.3,
                     }}
                 >
 
@@ -233,7 +204,7 @@ const NavbarSm: React.FC = () => {
                         onClick={toggleDrawer(!drawerOpen)}
                         sx={{ height: 40, width: 40, mt: 2}}
                     >
-                        <DragHandleIcon style={{fontSize: '45', color: theme.palette.primary.contrastText}}/>
+                        <DragHandleIcon style={{fontSize: '45', color: theme.palette.primary.dark}}/>
                     </IconButton>
                 </Box>
             </Grid>
@@ -297,8 +268,14 @@ const NavbarSm: React.FC = () => {
                                 >
 
                                     <Typography  
-                                        variant='h4'
-                                        
+                                        variant='h4'   
+                                        sx={{
+                                            // color: "white",
+                                            textDecoration: handleUnderline(page.name),
+                                            textDecorationThickness: "2px",
+                                            textDecorationStyle: "solid",
+                                            textUnderlineOffset: "5px"
+                                        }}
                                         >
                                         {page.name}
                                     </Typography>
@@ -316,7 +293,7 @@ const NavbarSm: React.FC = () => {
                         style={{ position: 'relative' }} // Ensure proper positioning
 
                     >
-                        <SocialLinks color="Black"/>
+                        <SocialLinks color="Black" fontSize='none'/>
                     </Box>
                 </Stack>
             </Container>
