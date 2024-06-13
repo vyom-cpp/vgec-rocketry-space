@@ -184,7 +184,7 @@ const NavbarSm: React.FC = () => {
                     ml={2}
                     alignContent='center'
                 >
-                    <img src='../../../public/logo.png' style={{ maxWidth: '100%', maxHeight: '100%' }} onClick={()=>handleNavigate('/home')}/>
+                    <img src={logo} style={{ maxWidth: '100%', maxHeight: '100%' }} onClick={()=>handleNavigate('/home')}/>
                 </Box>
             </Grid>
             <Grid item>
@@ -224,7 +224,6 @@ const NavbarSm: React.FC = () => {
                     display: 'flex',
                     justifyContent: 'flex-end', // Align items to the left
                     width: '100%', // Ensure the box takes full width
-                    // p: 2,  
                     marginTop: 2.8,
                     marginLeft: -2.8
                 }}
@@ -246,7 +245,6 @@ const NavbarSm: React.FC = () => {
                     direction: 'column',
                     justifyContent: 'space-around',
                     alignItems: 'center' 
-                    // overflowY: 'hidden'
                 }}
                 
             >
@@ -258,7 +256,6 @@ const NavbarSm: React.FC = () => {
                         alignItems='center'
                         style={{ height: '75%'}}
                         spacing={2}
-                        // style= {{width: '100%'}}
                         marginTop={15}
                     >
                         {pages.map((page, key) => (
@@ -288,7 +285,6 @@ const NavbarSm: React.FC = () => {
                         alignItems='center'
                         justifyContent="center"
                         width='100%'
-                        // height='100%'
                         marginTop={20}
                         style={{ position: 'relative' }} // Ensure proper positioning
 
