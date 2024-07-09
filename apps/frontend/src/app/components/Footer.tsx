@@ -65,7 +65,7 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
         />
         <Box
             width="100%"
-            height='90%'
+            height='auto'
             marginTop={isSmallScreen ? 3 : 3}
             display='flex'
             flexDirection='column'
@@ -76,6 +76,11 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
             initial="hidden"
             animate={footerView ? 'visible' : 'hidden'}
             variants={fadeInVariants}
+            sx={{
+            backgroundColor: "#26282b",
+            paddingBottom: isSmallScreen ? 2 : 3,
+            opacity: 1,
+            }}                
         >
             <Box
                 height={isSmallScreen ? 150 :270}
@@ -154,6 +159,11 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
                     display='flex'
                     flexDirection='row'
                     marginTop={isSmallScreen ?2: 3}
+                    sx={{
+                    backgroundColor: "#26282b",
+                    paddingBottom: isSmallScreen ? 2 : 3,
+                    opacity: 1,
+                    }}
                 >
                     <CopyrightIcon
                         style={{
