@@ -5,6 +5,7 @@ import {
   Typography,
   useMediaQuery,
   Button,
+  Box,
 } from "@mui/material";
 import React, { useEffect } from "react";
 import { Navbar } from "../components/Navbar";
@@ -13,6 +14,8 @@ import DhairyaWorkingVideo from "/DhairyaWorking2.mp4";
 import IsroVisit from "/IsroMeet.jpeg";
 import { useInView } from "react-intersection-observer";
 import { theme } from "../theme";
+
+// Team Members
 
 const teamMembers = [
   { name: "Member 1", role: "Role 1", img: "path/to/img1.jpg" },
@@ -32,6 +35,8 @@ const teamMembers = [
   { name: "Member 15", role: "Role 15", img: "path/to/img15.jpg" },
   { name: "Member 16", role: "Role 16", img: "path/to/img16.jpg" },
 ];
+
+// fade part
 
 export const AboutUs: React.FC = () => {
   useEffect(() => {
@@ -58,6 +63,11 @@ export const AboutUs: React.FC = () => {
     threshold: 0.1,
   });
 
+  const { ref: teamRef, inView: teamInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const fadeInVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
@@ -66,6 +76,7 @@ export const AboutUs: React.FC = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
+    // Video
     <Container
       maxWidth={false}
       sx={{
@@ -99,6 +110,9 @@ export const AboutUs: React.FC = () => {
             src={DhairyaWorkingVideo}
           />
         </Stack>
+
+        {/* About us */}
+
         <Stack
           sx={{
             backgroundColor: "white",
@@ -120,7 +134,7 @@ export const AboutUs: React.FC = () => {
               color: "black",
               marginTop: 4,
               position: "relative",
-              top: "10px"
+              top: "10px",
             }}
           >
             We Are VRT
@@ -143,6 +157,7 @@ export const AboutUs: React.FC = () => {
                 initial="hidden"
                 animate={visionInView ? "visible" : "hidden"}
                 variants={fadeInVariants}
+                fontFamily={theme.typography.fontFamily}
               >
                 Our Vision
               </Typography>
@@ -152,6 +167,7 @@ export const AboutUs: React.FC = () => {
                 initial="hidden"
                 animate={visionInView ? "visible" : "hidden"}
                 variants={fadeInVariants}
+                fontFamily={theme.typography.fontFamily}
               >
                 Our vision is to revolutionize rocketry through innovation and
                 teamwork. We aim to break barriers and reach new heights,
@@ -167,6 +183,7 @@ export const AboutUs: React.FC = () => {
                 initial="hidden"
                 animate={missionInView ? "visible" : "hidden"}
                 variants={fadeInVariants}
+                fontFamily={theme.typography.fontFamily}
               >
                 Our Mission
               </Typography>
@@ -176,6 +193,7 @@ export const AboutUs: React.FC = () => {
                 initial="hidden"
                 animate={missionInView ? "visible" : "hidden"}
                 variants={fadeInVariants}
+                fontFamily={theme.typography.fontFamily}
               >
                 Our mission is to design, build, and launch cutting-edge rockets
                 while fostering a collaborative and educational environment. We
@@ -208,28 +226,72 @@ export const AboutUs: React.FC = () => {
               }}
             />
           </Stack>
+
+          {/* Placeholder Section */}
+          <Box
+            sx={{
+              width: "100%",
+              height: "400px",
+              backgroundImage: `url(/path/to/your/image.png)`, // Update with your actual image path
+              backgroundColor: "black",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: 4,
+              padding: 0,
+              boxSizing: "border-box",
+            }}
+          >
+            <Typography
+              variant="h3"
+              sx={{
+                color: "white",
+                fontWeight: "bold",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                padding: "10px 20px",
+                borderRadius: "8px",
+              }}
+            >
+              OUR STORY
+            </Typography>
+          </Box>
+
+
+          {/* Team Members */}
           <Typography
             variant="h2"
             gutterBottom
+            component={motion.div}
+            ref={teamRef}
+            initial="hidden"
+            animate={teamInView ? "visible" : "hidden"}
+            variants={fadeInVariants}
             sx={{
               textAlign: "center",
               fontWeight: "bold",
-              marginTop: 4,
+              marginTop: 8,
               marginBottom: 4,
             }}
           >
-            Meet Us
+            Leadership
           </Typography>
           <Grid container spacing={4} sx={{ padding: 4 }}>
             {teamMembers.map((member, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
                 <Stack
+                  component={motion.div}
+                  ref={teamRef}
+                  initial="hidden"
+                  animate={teamInView ? "visible" : "hidden"}
+                  variants={fadeInVariants}
                   sx={{
                     alignItems: "center",
                     backgroundColor: "white",
                     padding: 2,
                     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-                    borderRadius: "8px",
+                    borderRadius: "5px",
                   }}
                 >
                   <img
@@ -242,14 +304,20 @@ export const AboutUs: React.FC = () => {
                       marginBottom: 2,
                     }}
                   />
-                  <Typography variant="h6">{member.name}</Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    {member.role}
-                  </Typography>
-                  <Button variant="outlined" sx={{ marginTop: 2 }}>
-                    Read Bio
-                  </Button>
                 </Stack>
+                <Typography variant="h6">{member.name}</Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {member.role}
+                </Typography>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    marginTop: 2,
+                    backgroundColor: theme.palette.primary.contrastText,
+                  }}
+                >
+                  Read Bio
+                </Button>
               </Grid>
             ))}
           </Grid>
