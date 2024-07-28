@@ -26,14 +26,14 @@ const teamMembers = [
   { name: "Member 6", role: "Role 6", img: "path/to/img6.jpg" },
   { name: "Member 7", role: "Role 7", img: "path/to/img7.jpg" },
   { name: "Member 8", role: "Role 8", img: "path/to/img8.jpg" },
-  { name: "Member 9", role: "Role 9", img: "path/to/img9.jpg" },
-  { name: "Member 10", role: "Role 10", img: "path/to/img10.jpg" },
-  { name: "Member 11", role: "Role 11", img: "path/to/img11.jpg" },
-  { name: "Member 12", role: "Role 12", img: "path/to/img12.jpg" },
-  { name: "Member 13", role: "Role 13", img: "path/to/img13.jpg" },
-  { name: "Member 14", role: "Role 14", img: "path/to/img14.jpg" },
-  { name: "Member 15", role: "Role 15", img: "path/to/img15.jpg" },
-  { name: "Member 16", role: "Role 16", img: "path/to/img16.jpg" },
+  // { name: "Member 9", role: "Role 9", img: "path/to/img9.jpg" },
+  // { name: "Member 10", role: "Role 10", img: "path/to/img10.jpg" },
+  // { name: "Member 11", role: "Role 11", img: "path/to/img11.jpg" },
+  // { name: "Member 12", role: "Role 12", img: "path/to/img12.jpg" },
+  // { name: "Member 13", role: "Role 13", img: "path/to/img13.jpg" },
+  // { name: "Member 14", role: "Role 14", img: "path/to/img14.jpg" },
+  // { name: "Member 15", role: "Role 15", img: "path/to/img15.jpg" },
+  // { name: "Member 16", role: "Role 16", img: "path/to/img16.jpg" },
 ];
 
 // fade part
@@ -63,6 +63,11 @@ export const AboutUs: React.FC = () => {
     threshold: 0.1,
   });
 
+  const { ref: storyRef, inView: storyInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const { ref: teamRef, inView: teamInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -77,42 +82,47 @@ export const AboutUs: React.FC = () => {
 
   return (
     // Video
-    <Container
-      maxWidth={false}
-      sx={{
-        backgroundColor: "black",
-        height: "100%",
-        width: "100%",
-        color: "white",
-        padding: 0,
-        margin: 0,
-        overflowX: "hidden",
-      }}
-    >
-      <Stack>
+    <>
+      <Container maxWidth={false}
+        sx={{
+          height: "100vh",
+          width: '100%',
+        }}
+      >
+        <video
+          autoPlay={!isSmallScreen}
+          loop
+          muted
+          playsInline={isSmallScreen}
+          style={{
+            position: 'absolute',
+            display: isSmallScreen ? 'none' : 'block',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: -1,
+          }}
+          src={DhairyaWorkingVideo}
+        />
         <Navbar />
-        <Stack sx={{ width: "100%", height: "100vh" }}>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              position: "absolute",
-              display: isSmallScreen ? "none" : "block",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              zIndex: -1,
-            }}
-            src={DhairyaWorkingVideo}
-          />
-        </Stack>
+      </Container>
 
-        {/* About us */}
 
+      {/* About us */}
+      <Container
+        maxWidth={false}
+        sx={{
+          backgroundColor: "black",
+          height: "100%",
+          width: "100%",
+          color: "white",
+          padding: 0,
+          margin: 0,
+          overflowX: "hidden",
+        }}
+      >
         <Stack
           sx={{
             backgroundColor: "white",
@@ -134,7 +144,7 @@ export const AboutUs: React.FC = () => {
               color: "black",
               marginTop: 4,
               position: "relative",
-              top: "10px",
+              top: "25px",
             }}
           >
             We Are VRT
@@ -227,12 +237,18 @@ export const AboutUs: React.FC = () => {
             />
           </Stack>
 
+
           {/* Placeholder Section */}
           <Box
+            component={motion.div}
+            ref={storyRef}
+            initial="hidden"
+            animate={storyInView ? "visible" : "hidden"}
+            variants={fadeInVariants}
             sx={{
               width: "100%",
               height: "400px",
-              backgroundImage: `url(/path/to/your/image.png)`, // Update with your actual image path
+              backgroundImage: `url(/path/to/your/image.png)`, // Change with the story image
               backgroundColor: "black",
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -240,7 +256,7 @@ export const AboutUs: React.FC = () => {
               alignItems: "center",
               justifyContent: "center",
               marginTop: 4,
-              padding: 0,
+              // padding: 0,
               boxSizing: "border-box",
             }}
           >
@@ -252,6 +268,7 @@ export const AboutUs: React.FC = () => {
                 backgroundColor: "rgba(0, 0, 0, 0.5)",
                 padding: "10px 20px",
                 borderRadius: "8px",
+                fontFamily: theme.typography.fontFamily,
               }}
             >
               OUR STORY
@@ -271,13 +288,14 @@ export const AboutUs: React.FC = () => {
             sx={{
               textAlign: "center",
               fontWeight: "bold",
-              marginTop: 8,
-              marginBottom: 4,
+              fontFamily: theme.typography.fontFamily,
+              marginTop: 30,
+              marginBottom: -14,
             }}
           >
             Leadership
           </Typography>
-          <Grid container spacing={4} sx={{ padding: 4 }}>
+          <Grid container spacing={4} sx={{ padding: 35 }}>
             {teamMembers.map((member, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
                 <Stack
@@ -289,8 +307,8 @@ export const AboutUs: React.FC = () => {
                   sx={{
                     alignItems: "center",
                     backgroundColor: "white",
-                    padding: 2,
-                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                    padding: 5,
+                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.8)",
                     borderRadius: "5px",
                   }}
                 >
@@ -302,18 +320,51 @@ export const AboutUs: React.FC = () => {
                       height: "auto",
                       borderRadius: "8px",
                       marginBottom: 2,
+                      fontFamily: theme.typography.fontFamily,
                     }}
                   />
                 </Stack>
-                <Typography variant="h6">{member.name}</Typography>
-                <Typography variant="body2" color="textSecondary">
+                <Typography
+                  variant="h6"
+                  component={motion.div}
+                  ref={teamRef}
+                  initial="hidden"
+                  animate={teamInView ? "visible" : "hidden"}
+                  variants={fadeInVariants}
+                  style={{
+                    fontFamily: theme.typography.fontFamily,
+                  }}
+                >
+                  {member.name}
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component={motion.div}
+                  ref={teamRef}
+                  initial="hidden"
+                  animate={teamInView ? "visible" : "hidden"}
+                  variants={fadeInVariants}
+                  style={{
+                    fontFamily: theme.typography.fontFamily,
+                  }}
+                >
                   {member.role}
                 </Typography>
                 <Button
                   variant="outlined"
+                  component={motion.div}
+                  ref={teamRef}
+                  initial="hidden"
+                  animate={teamInView ? "visible" : "hidden"}
+                  variants={fadeInVariants}
                   sx={{
                     marginTop: 2,
                     backgroundColor: theme.palette.primary.contrastText,
+                  }}
+                  style={{
+                    fontFamily: theme.typography.fontFamily,
                   }}
                 >
                   Read Bio
@@ -322,7 +373,8 @@ export const AboutUs: React.FC = () => {
             ))}
           </Grid>
         </Stack>
-      </Stack>
-    </Container>
+
+      </Container>
+    </>
   );
 };
