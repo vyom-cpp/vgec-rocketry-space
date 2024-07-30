@@ -12,8 +12,11 @@ import { Navbar } from "../components/Navbar";
 import { motion } from "framer-motion";
 import DhairyaWorkingVideo from "/DhairyaWorking2.mp4";
 import IsroVisit from "/IsroMeet.jpeg";
+import Map from "/map.jpg";
 import { useInView } from "react-intersection-observer";
+import { Footer } from "../components/Footer"
 import { theme } from "../theme";
+import Galleries from "../pages/gallery";
 
 
 // Team Members
@@ -74,6 +77,16 @@ export const AboutUs: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1
   });
+
+  const { ref: galleryRef, inView: galleryInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  })
+
+  const { ref: mapRef, inView: mapInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  })
 
   const fadeInVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -244,104 +257,218 @@ export const AboutUs: React.FC = () => {
           boxSizing: "border-box"
         }}
       >
-        <Typography
-          variant="h3"
+        <Stack
+          spacing={2}
           sx={{
-            color: "white",
-            fontWeight: "bold",
+            alignItems: "center",
+            justifyContent: "center",
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             padding: "10px 20px",
             borderRadius: "8px",
-            fontFamily: theme.typography.fontFamily
           }}
         >
-          OUR STORY
-        </Typography>
+          <Typography
+            variant="h3"
+            sx={{
+              color: "white",
+              fontWeight: "bold",
+              fontFamily: theme.typography.fontFamily
+            }}
+          >
+            OUR STORY
+          </Typography>
+          <Button
+            variant="outlined"
+            sx={{
+              color: "yellow",
+              borderColor: "yellow",
+              ":hover": {
+                backgroundColor: "yellow",
+                color: "black",
+              },
+              fontFamily: theme.typography.fontFamily
+            }}
+          >
+            VRT Timeline
+          </Button>
+        </Stack>
       </Box>
 
 
       {/* Team Members */}
-      <Stack
+      <Typography
+        variant="h2"
+        gutterBottom
         component={motion.div}
         ref={teamRef}
         initial="hidden"
         animate={teamInView ? "visible" : "hidden"}
         variants={fadeInVariants}
-        sx={{ alignItems: 'center', justifyContent: 'center' }}
+        sx={{
+          textAlign: "center",
+          fontSize: 70,
+          fontFamily: theme.typography.fontFamily,
+          marginTop: 30,
+          marginBottom: -20,
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        Leadership
+      </Typography>
+      <Grid
+        container
+        spacing={4}
+        component={motion.div}
+        ref={teamRef}
+        initial="hidden"
+        animate={teamInView ? "visible" : "hidden"}
+        variants={fadeInVariants}
+        sx={{ padding: 35 }}
+      >
+        {teamMembers.map((member, index) => (
+          <Grid item xs={12} sm={6} md={3} key={index}>
+            <Stack
+              sx={{
+                alignItems: "center",
+                backgroundColor: "white",
+                padding: 5,
+                borderRadius: "5px"
+              }}
+            >
+              <img
+                src={member.img}
+                alt={member.name}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  marginBottom: 2,
+                  fontFamily: theme.typography.fontFamily
+                }}
+              />
+            </Stack>
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: theme.typography.fontFamily,
+                textAlign: 'center'
+              }}
+            >
+              {member.name}
+            </Typography>
+
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              style={{
+                fontFamily: theme.typography.fontFamily,
+                textAlign: 'center'
+              }}
+            >
+              {member.role}
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={{
+                marginTop: 2,
+                backgroundColor: "white",
+                display: 'flex',
+                margin: '0 auto',
+                borderColor:
+                  "black",
+                ":hover": {
+                  backgroundColor: "#90B8F8",
+                  color: "white",
+                },
+              }}
+              style={{
+                fontFamily: theme.typography.fontFamily
+              }}
+            >
+              Read Bio
+            </Button>
+          </Grid>
+        ))}
+      </Grid>
+
+
+      {/* Gallery section */}
+      <Grid
+        component={motion.div}
+        ref={galleryRef}
+        initial="hidden"
+        animate={galleryInView ? "visible" : "hidden"}
+        variants={fadeInVariants}
+      >
+        <Stack
+          sx={{
+            width: "100%",
+            height: "300px",
+            backgroundColor: "black",
+            alignItem: "center",
+            justifyContent: "center"
+          }}
+        >
+          <Typography
+            variant="h2"
+            sx={{
+              display:"flex",
+              color: "white",
+              fontFamily: theme.typography.fontFamily,
+              alignItem: "center",
+              justifyContent: "center",
+              padding: "10px 20px"
+            }}
+          >
+            We prioritize hardware over people
+          </Typography>
+        </Stack>
+        <Galleries />
+      </Grid>
+
+
+      {/* Map Section */}
+      <Container
+        component={motion.div}
+        ref={mapRef}
+        initial="hidden"
+        animate={mapInView ? "visible" : "hidden"}
+        variants={fadeInVariants}
+        sx={{
+          fontFamily: theme.typography.fontFamily
+        }}
       >
         <Typography
           variant="h2"
-          gutterBottom
           sx={{
             textAlign: "center",
-            fontWeight: "bold",
-            fontFamily: theme.typography.fontFamily,
-            marginTop: 30,
-            marginBottom: -14
+            // color: "black",
+            marginTop: 15,
+            position: "relative",
+            top: "25px"
           }}
         >
-          Leadership
+          VRT on the Map
         </Typography>
-        <Grid container spacing={4} sx={{ padding: 35 }}>
-          {teamMembers.map((member, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  backgroundColor: "white",
-                  padding: 5,
-                  borderRadius: "5px"
-                }}
-              >
-                <img
-                  src={member.img}
-                  alt={member.name}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    marginBottom: 2,
-                    fontFamily: theme.typography.fontFamily
-                  }}
-                />
-              </Stack>
-              <Typography
-                variant="h6"
-                style={{
-                  fontFamily: theme.typography.fontFamily,
-                  textAlign: 'center'
-                }}
-              >
-                {member.name}
-              </Typography>
-
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                style={{
-                  fontFamily: theme.typography.fontFamily,
-                  textAlign: 'center'
-                }}
-              >
-                {member.role}
-              </Typography>
-              <Button
-                variant="outlined"
-                sx={{
-                  marginTop: 2,
-                  backgroundColor: theme.palette.primary.contrastText,
-                  display: 'flex',
-                  margin: '0 auto'
-                }}
-                style={{
-                  fontFamily: theme.typography.fontFamily
-                }}
-              >
-                Read Bio
-              </Button>
-            </Grid>
-          ))}
-        </Grid>
-      </Stack>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <img
+            src={Map}
+            alt="VRT Location"
+            style={{
+              maxWidth: "100%",
+              width: "100%",
+              height: "100%"
+            }}
+          />
+        </Box>
+      </Container>
+      <Footer isSmallScreen={isSmallScreen}/>
     </>
   );
 };
