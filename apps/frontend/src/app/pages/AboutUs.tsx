@@ -7,12 +7,15 @@ import {
   Button,
   Box
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react"
 import { Navbar } from "../components/Navbar";
 import { motion } from "framer-motion";
 import DhairyaWorkingVideo from "/DhairyaWorking2.mp4";
 import IsroVisit from "/IsroMeet.jpeg";
-import Map from "/map.jpg";
+import AnantaArrow from "/AnantaArrow.mp4"
+import AnantaArrow2 from "/AnataArrow2.mp4"
+import Aflatoon from '/Aflatoon.jpeg'
+// import Map from "/map.jpg";
 import { useInView } from "react-intersection-observer";
 import { Footer } from "../components/Footer"
 import { theme } from "../theme";
@@ -45,8 +48,21 @@ const teamMembers = [
 
 export const AboutUs: React.FC = () => {
   useEffect(() => {
-    document.title = "ABOUT | VRT";
-  }, []);
+    document.title = "ABOUT | VRT"
+    setTimeout(() => {
+      setShowComponent(false);
+    }, 1500);
+
+    setTimeout(() => {
+      setSmallScreenBackgroundVideo(AnantaArrow2)
+    }, 20 * 1000)
+  }, [])
+
+  const [showComponent, setShowComponent] = useState(true);
+
+  const [smallScreenBackgroundVideo, setSmallScreenBackgroundVideo] = useState<string | undefined>(AnantaArrow);
+
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const { ref: textRef, inView: textInView } = useInView({
     triggerOnce: true,
@@ -83,25 +99,31 @@ export const AboutUs: React.FC = () => {
     threshold: 0.1
   })
 
-  const { ref: mapRef, inView: mapInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  })
+  // const { ref: mapRef, inView: mapInView } = useInView({
+  //   triggerOnce: true,
+  //   threshold: 0.1
+  // })
 
   const fadeInVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
   };
 
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  // const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     // Video
-    <>
+    <div style={{ overflow: "hidden" }}>
       <Container maxWidth={false}
         sx={{
+          backgroundImage: {
+            xs: `url('${Aflatoon}')`,
+            md: 'none'
+          },
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
           height: "100vh",
-          width: '100%'
+          width: "100%"
         }}
       >
         <video
@@ -128,7 +150,7 @@ export const AboutUs: React.FC = () => {
       {/* About Us */}
       <Container>
         <Typography
-          variant="h1"
+          // variant="h1"
           gutterBottom
           component={motion.div}
           ref={textRef}
@@ -137,17 +159,19 @@ export const AboutUs: React.FC = () => {
           variants={fadeInVariants}
           sx={{
             fontFamily: theme.typography.fontFamily,
+            fontSize: isSmallScreen ? 70 : 95,
             color: "black",
             marginTop: 15,
             position: "relative",
-            top: "25px"
+            top: "25px",
+            left: "10px"
           }}
         >
           We Are VRT
         </Typography>
         <Grid
           container
-          spacing={15}
+          spacing={5}
           component={motion.div}
           initial="hidden"
           animate={visionInView ? "visible" : "hidden"}
@@ -258,12 +282,13 @@ export const AboutUs: React.FC = () => {
         }}
       >
         <Stack
-          spacing={2}
+          spacing={4}
           sx={{
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             padding: "10px 20px",
+            marginTop: 4,
             borderRadius: "8px",
           }}
         >
@@ -271,7 +296,6 @@ export const AboutUs: React.FC = () => {
             variant="h3"
             sx={{
               color: "white",
-              fontWeight: "bold",
               fontFamily: theme.typography.fontFamily
             }}
           >
@@ -306,10 +330,10 @@ export const AboutUs: React.FC = () => {
         variants={fadeInVariants}
         sx={{
           textAlign: "center",
-          fontSize: 70,
+          fontSize: { xs: 40, md: 70 },
           fontFamily: theme.typography.fontFamily,
-          marginTop: 30,
-          marginBottom: -20,
+          marginTop: isSmallScreen ? 17 : 22,
+          marginBottom: { xs: 10, md: -20 },
           alignItems: 'center',
           justifyContent: 'center'
         }}
@@ -324,7 +348,7 @@ export const AboutUs: React.FC = () => {
         initial="hidden"
         animate={teamInView ? "visible" : "hidden"}
         variants={fadeInVariants}
-        sx={{ padding: 35 }}
+        sx={{ padding: { xs: 2, md: 35 } }}
       >
         {teamMembers.map((member, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
@@ -332,8 +356,10 @@ export const AboutUs: React.FC = () => {
               sx={{
                 alignItems: "center",
                 backgroundColor: "white",
-                padding: 5,
-                borderRadius: "5px"
+                padding: 2,
+                borderRadius: "5px",
+                // boxShadow: 3,
+                marginBottom: 2
               }}
             >
               <img
@@ -343,7 +369,8 @@ export const AboutUs: React.FC = () => {
                   width: "100%",
                   height: "auto",
                   marginBottom: 2,
-                  fontFamily: theme.typography.fontFamily
+                  fontFamily: theme.typography.fontFamily,
+                  borderRadius: "5px"
                 }}
               />
             </Stack>
@@ -399,6 +426,9 @@ export const AboutUs: React.FC = () => {
         initial="hidden"
         animate={galleryInView ? "visible" : "hidden"}
         variants={fadeInVariants}
+        // style={{
+        //   margin: "-4px"
+        // }}
       >
         <Stack
           sx={{
@@ -410,12 +440,14 @@ export const AboutUs: React.FC = () => {
           }}
         >
           <Typography
-            variant="h2"
+            // variant="h2"
             sx={{
-              display:"flex",
+              display: "flex",
               color: "white",
               fontFamily: theme.typography.fontFamily,
+              fontSize: isSmallScreen ? 45 : 80,
               alignItem: "center",
+              textAlign: "center",
               justifyContent: "center",
               padding: "10px 20px"
             }}
@@ -428,7 +460,8 @@ export const AboutUs: React.FC = () => {
 
 
       {/* Map Section */}
-      <Container
+
+      {/* <Container
         component={motion.div}
         ref={mapRef}
         initial="hidden"
@@ -467,8 +500,11 @@ export const AboutUs: React.FC = () => {
             }}
           />
         </Box>
-      </Container>
-      <Footer isSmallScreen={isSmallScreen}/>
-    </>
+      </Container> */}
+      {/* <Box sx={{ margin: -4 }}> */}
+        <Footer isSmallScreen={isSmallScreen} />
+      {/* </Box> */}
+
+    </div>
   );
 };
