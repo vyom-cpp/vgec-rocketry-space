@@ -1,11 +1,22 @@
-import {createTheme, responsiveFontSizes } from "@mui/material";
-
+import { createTheme, responsiveFontSizes } from "@mui/material";
+import "@fontsource/open-sans"
+import "@fontsource/roboto"
+import "@fontsource/barlow-condensed"
 export const theme = responsiveFontSizes(
   createTheme({
-    
+
     spacing: 4,
+    breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
     typography: {
-      fontFamily: ['Roboto', 'Raleway', 'Open Sans'].join(','),
+      fontFamily: ['Barlow Condensed','Roboto', 'Open Sans'].join(','),
       h1: {
         fontSize: '5rem',
         fontFamily: 'Raleway',
@@ -42,11 +53,11 @@ export const theme = responsiveFontSizes(
         secondary: '#FFFFFF', // white
       },
       primary: {
-        main : "#222831", //black
-        dark: "#31363F",  //dark gray
-        light: "#76ABAE", //teal
-        contrastText: "#EEEEEE", // light gray
-      },
+        main: "#5F85DB", //blue
+        dark: "#26282B",  //dark black
+        light: "#90B8F8", // light blue
+        contrastText: "#353941", // gray black
     },
+  },
   })
 );
