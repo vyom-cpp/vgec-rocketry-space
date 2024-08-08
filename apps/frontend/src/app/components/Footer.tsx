@@ -4,7 +4,7 @@ import { useCustomNavigate } from "../utils/useCustomNavigate";
 import { theme } from "../theme";
 import { SocialLinks } from "./SocialLinks";
 import CopyrightIcon from '@mui/icons-material/Copyright';
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import logo from '/logo.png'
 import { Copyright } from "./Copyright";
@@ -31,7 +31,7 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
             route:'/support'
         },
     ]
-
+    
     const { ref: dividerRef, inView: dividerView } = useInView({
         triggerOnce: true,
         threshold: isSmallScreen ? 0.001 : 0.1,
@@ -46,7 +46,9 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
         visible: { opacity: 1, y: 0, transition: { duration: 0.8} },
     };
     return(
-        <>
+        <div style={{backgroundColor: "#26282b"}}>
+        <div style={{backgroundColor: "#26282b", height: "5px"}}>
+        </div>
         <Divider 
             variant="middle" 
             color="white"
@@ -57,7 +59,7 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
             variants={fadeInVariants}
             sx={{
                 backgroundColor:'white',
-                height: '2px',
+                height: '1px',
                 '&::before, &::after': {
                     borderColor: 'white',
                 },
@@ -78,9 +80,9 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
             animate={footerView ? 'visible' : 'hidden'}
             variants={fadeInVariants}
             sx={{
-            backgroundColor: "#26282b",
-            paddingBottom: isSmallScreen ? 2 : 3,
-            opacity: 1,
+                backgroundColor: "#26282b",
+                paddingBottom: isSmallScreen ? 2 : 3,
+                opacity: 1,
             }}                
         >
             <Box
@@ -186,6 +188,6 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
                     <Copyright sx={{ mt: 8, mb: 4, color: "white"}}/>
                 </Box>
         </Box>
-        </>
+        </div>
     )
 }
