@@ -9,8 +9,10 @@ import {
     // imageListClasses
 } from "@mui/material"
 import React, { useEffect, useState } from "react"
+import Carousel from "react-carousel-mui";
 import { useInView } from "react-intersection-observer";
 import DhairyaWorkingVideo from "/DhairyaWorking2.mp4";
+import Rocket from "/rocket-demo.jpeg";
 import { motion } from "framer-motion";
 import AnantaArrow from "/AnantaArrow.mp4"
 import AnantaArrow2 from "/AnataArrow2.mp4"
@@ -21,54 +23,54 @@ import { theme } from "../theme";
 
 const blogPosts = [
     {
-        title: "HERMEUS NAMES ZACH SHORE AS CHIEF REVENUE OFFICER",
+        title: "Title 1",
         date: "January 19, 2023",
-        image: "/path-to-image1.jpg",
+        image: Rocket,
         link: "#"
     },
     {
-        title: "QUARTERHORSE MK 0 BEGINS TESTING",
+        title: "Title 2",
         date: "October 12, 2023",
-        image: "/path-to-image2.jpg",
+        image: Rocket,
         link: "#"
     },
     {
-        title: "QUARTERHORSE WIND TUNNEL TESTING",
+        title: "Title 3",
         date: "February 27, 2023",
-        image: "/path-to-image3.jpg",
+        image: Rocket,
         link: "#"
     },
     {
-        title: "QUARTERHORSE WIND TUNNEL TESTING",
+        title: "Title 4",
         date: "February 27, 2023",
-        image: "/path-to-image3.jpg",
+        image: Rocket,
         link: "#"
     }
 ];
 
 const blogNews = [
     {
-        title: "Could this be the nest Air Force One",
+        title: "Title 1",
         date: "February 29, 2024",
-        image: "/path-to-image4.jpg",
+        image: Rocket,
         link: "#"
     },
     {
-        title: "Could this be the nest Air Force One",
+        title: "Title 2",
         date: "February 29, 2024",
-        image: "/path-to-image4.jpg",
+        image: Rocket,
         link: "#"
     },
     {
-        title: "Could this be the nest Air Force One",
+        title: "Title 3",
         date: "February 29, 2024",
-        image: "/path-to-image4.jpg",
+        image: Rocket,
         link: "#"
     },
     {
-        title: "Could this be the nest Air Force One",
+        title: "Title 4",
         date: "February 29, 2024",
-        image: "/path-to-image4.jpg",
+        image: Rocket,
         link: "#"
     },
 ];
@@ -77,7 +79,7 @@ const blogNews = [
 export const Blog: React.FC = () => {
 
     useEffect(() => {
-        document.title = "Blog | VRT"
+        document.title = "BLOG | VRT"
         setTimeout(() => {
             setShowComponent(false);
         }, 1500);
@@ -109,7 +111,7 @@ export const Blog: React.FC = () => {
     })
 
     const fadeInVariants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 10 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
     };
 
@@ -125,7 +127,8 @@ export const Blog: React.FC = () => {
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
                     height: "100vh",
-                    width: "100%"
+                    width: "100%",
+
                 }}
             >
                 <video
@@ -151,148 +154,201 @@ export const Blog: React.FC = () => {
 
             {/* Updates Section */}
             <Container
-                maxWidth="lg"
-                component={motion.div}
-                ref={updateRef}
-                initial="hidden"
-                animate={updateInView ? "visible" : "hidden"}
-                variants={fadeInVariants}
-                sx={{ paddingTop: 20, paddingBottom: 8 }}>
-                <Typography
-                    variant="h4"
-                    sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: 14 }}
-                >Updates
-                </Typography>
-                <Grid
-                    container
-                    spacing={6}>
-                    {blogPosts.map((post, index) => (
-                        <Grid item xs={12} md={3} key={index}>
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    textAlign: 'center',
-                                    height: '100%'
-                                }}
-                            >
-                                <Box
-                                    sx={{ width: '100%', height: '100px', overflow: 'hidden', marginBottom: 2 }}>
-                                    <img
-                                        src={post.image}
-                                        alt={post.title}
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                    />
-                                </Box>
+                maxWidth={false}
 
-                                <Typography
-                                    variant="h6"
-                                    sx={{ fontFamily: theme.typography.fontFamily, marginTop: 2 }}
-                                >{post.title}
-                                </Typography>
-
-                                <Typography
-                                    variant="body2"
-                                    color="textSecondary"
-                                    sx={{ fontFamily: theme.typography.fontFamily }}
-                                >{post.date}
-                                </Typography>
-
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    href={post.link}
-                                    sx={{ marginTop: 2, backgroundColor: theme.palette.primary.main, fontFamily: theme.typography.fontFamily }}
-                                >Learn More
-                                </Button>
-                            </Box>
-
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
-
-
-            {/* In the news */}
-            <Container
-                maxWidth="lg"
                 component={motion.div}
                 ref={newsRef}
                 initial="hidden"
                 animate={newsInView ? "visible" : "hidden"}
                 variants={fadeInVariants}
-                sx={{ paddingTop: 20, paddingBottom: 8 }}>
+                sx={{
+                    paddingTop: 15,
+                    paddingBottom: 8,
+                    width: isSmallScreen? "80%" : "70%"
+                }}>
                 <Typography
-                    variant="h4"
-                    sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: 14 }}
-                >In the news
+                    sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: 4 }}
+                >Updates
                 </Typography>
-                <Grid
-                    container
-                    spacing={6}>
-                    {blogNews.map((post, index) => (
-                        <Grid item xs={12} md={3} key={index}>
+                <Carousel
+                    items={blogPosts}
+                    defaultItemWidthMobile={300}
+                    itemsPerPage={{
+                        xs: 1,
+                        sm: 1,
+                        tablet: 2,
+                        md: 3,
+                        lg: 3,
+                        xl: 3
+                    }}
+                    itemRenderer={(post) => (
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                // alignItems: 'center',
+                                // textAlign: 'center',
+                                minHeight: "100%",
+                                width: "100%",
+                                // padding: 2
+                            }}
+                        >
                             <Box
+                                sx={{ width: '100%', height: '300px', marginBottom: 1 }}
+                            >
+                                <img
+                                    src={post.image}
+                                    alt={post.title}
+                                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                />
+                            </Box>
+                            <Typography
+                                variant="h5"
+                                sx={{ fontFamily: theme.typography.fontFamily, marginTop: 1 }}
+                            >
+                                {post.title}
+                            </Typography>
+                            <Typography
+                                variant="body2"
+                                color="textSecondary"
+                                sx={{ fontFamily: theme.typography.fontFamily }}
+                            >
+                                {post.date}
+                            </Typography>
+                            <Button
+                                variant="outlined"
+                                href={post.link}
                                 sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    textAlign: 'center',
-                                    height: '100%'
+                                    marginTop: 2,
+                                    fontFamily: theme.typography.fontFamily,
+                                    color: 'black',
+                                    fontSize: '20px',
+                                    backgroundColor: 'white',
+                                    borderColor: "black",
+                                    // color: theme.palette.primary.dark,
+                                    // fontSize: isSmallScreen ? '14px' : '18px', // Custom font size
+                                    '&:hover': {
+                                        variant: 'contained',
+                                        backgroundColor: 'black',
+                                        color: 'white',
+
+                                    }
                                 }}
                             >
-                                <Box
-                                    sx={{ width: '100%', height: '100px', overflow: 'hidden', marginBottom: 2 }}>
-                                    <img
-                                        src={post.image}
-                                        alt={post.title}
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                    />
-                                </Box>
+                                Read
+                            </Button>
+                        </Box>
+                    )}
+                    maxContainerWidth={theme.breakpoints.values["lg"]}
+                />
+            </Container>
 
-                                <Typography
-                                    variant="h6"
-                                    sx={{ fontFamily: theme.typography.fontFamily, marginTop: 2 }}
-                                >{post.title}
-                                </Typography>
 
-                                <Typography
-                                    variant="body2"
-                                    color="textSecondary"
-                                    sx={{ fontFamily: theme.typography.fontFamily }}
-                                >{post.date}
-                                </Typography>
 
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    href={post.link}
-                                    sx={{ marginTop: 2, backgroundColor: theme.palette.primary.main, fontFamily: theme.typography.fontFamily }}
-                                >Learn More
-                                </Button>
+            {/* Blogs section */}
+            <Container
+                maxWidth={false}
+                component={motion.div}
+                ref={newsRef}
+                initial="hidden"
+                animate={newsInView ? "visible" : "hidden"}
+                variants={fadeInVariants}
+                sx={{ paddingTop: 20, paddingBottom: 8, width: isSmallScreen? "80%" : "70%" }}>
+                <Typography
+                    sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: 4 }}
+                >Blogs
+                </Typography>
+                <Carousel
+                    items={blogNews}
+                    defaultItemWidthMobile={300}
+                    itemsPerPage={{
+                        xs: 1,
+                        sm: 1,
+                        tablet: 2,
+                        md: 3,
+                        lg: 3,
+                        xl: 3
+                    }}
+                    itemRenderer={(post) => (
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                // alignItems: 'center',
+                                // alignContent: 'left',
+                                // textAlign: 'center',
+                                // height: '20vh',
+                                minHeight: "100%",
+                                // width: "100%",
+                                minWidth: "100%"
+                                // padding: 2
+                            }}
+                        >
+                            <Box
+                                sx={{ width: '100%', height: '300px', overflow: 'hidden', marginBottom: 1 }}
+                            >
+                                <img
+                                    src={post.image}
+                                    alt={post.title}
+                                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                />
                             </Box>
+                            <Typography
+                                variant="h5"
+                                sx={{ fontFamily: theme.typography.fontFamily, marginTop: 1, textAlign: 'left' }}
+                            >
+                                {post.title}
+                            </Typography>
+                            <Typography
+                                variant="body2"
+                                color="textSecondary"
+                                sx={{ fontFamily: theme.typography.fontFamily, textAlign: 'left' }}
+                            >
+                                {post.date}
+                            </Typography>
+                            <Button
+                                variant="outlined"
+                                href={post.link}
+                                sx={{
+                                    marginTop: 2,
+                                    fontFamily: theme.typography.fontFamily,
+                                    color: 'black',
+                                    backgroundColor: 'white',
+                                    fontSize: '20px',
+                                    borderColor: "black",
+                                    // color: theme.palette.primary.dark,
+                                    // fontSize: isSmallScreen ? '14px' : '18px', // Custom font size
+                                    '&:hover': {
+                                        variant: 'contained',
+                                        backgroundColor: 'black',
+                                        color: 'white',
 
-                        </Grid>
-                    ))}
-                </Grid>
+                                    }
+                                }}
+                            >
+                                Read
+                            </Button>
+                        </Box>
+                    )}
+                    maxContainerWidth={theme.breakpoints.values["lg"]}
+                />
             </Container>
 
 
             {/* Get in touch */}
             <Container
-                maxWidth="lg"
+                maxWidth={false}
                 component={motion.div}
                 ref={touchRef}
                 initial="hidden"
                 animate={touchInView ? "visible" : "hidden"}
                 variants={fadeInVariants}
-                sx={{ paddingTop: 20, paddingBottom: 8 }}
+                sx={{ paddingTop: 20, paddingBottom: 8, width: '70%' }}
             >
-                <Grid container spacing={2} alignItems="center">
-                    <Grid item xs={12} md={6}>
+                <Grid container spacing={2} alignItems="center" alignContent="center" >
+                    <Grid item xs={12} md={6} sm={4} >
                         <Typography
-                            sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: 25 }}
+                            sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: isSmallScreen ? 6 : 25,  }}
                         >
                             STAY IN TOUCH
                         </Typography>
@@ -326,9 +382,23 @@ export const Blog: React.FC = () => {
                                 fullWidth
                             />
                             <Button
-                                variant="contained"
-                                color="primary"
-                                sx={{ backgroundColor: theme.palette.primary.main }}
+                                variant="outlined"
+                                sx={{
+                                    marginTop: 2,
+                                    fontFamily: theme.typography.fontFamily,
+                                    color: 'black',
+                                    backgroundColor: 'white',
+                                    borderColor: "black",
+                                    fontSize: '20px',
+                                    // color: theme.palette.primary.dark,
+                                    // fontSize: isSmallScreen ? '14px' : '18px', // Custom font size
+                                    '&:hover': {
+                                        variant: 'contained',
+                                        backgroundColor: 'black',
+                                        color: 'white',
+
+                                    }
+                                }}
                             >
                                 Sign Up
                             </Button>
