@@ -7,6 +7,7 @@ import CopyrightIcon from '@mui/icons-material/Copyright';
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import logo from '/logo.png'
+import { Copyright } from "./Copyright";
 interface Footer {
     isSmallScreen: boolean
 }
@@ -165,7 +166,7 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
                     opacity: 1,
                     }}
                 >
-                    <CopyrightIcon
+                    {/* <CopyrightIcon
                         style={{
                             color: 'white', 
                             fontSize: '11px', 
@@ -173,14 +174,16 @@ export const Footer: React.FC<Footer> = ({isSmallScreen}) => {
                             marginRight: 3.5,
                             marginLeft: 3,
                         }}
-                    />
+                    /> 
                     <Typography
                         fontFamily='Arial'
                         color='white'
                         fontSize='12px'
                     >
-                        2024 VGEC ROCKETRY TEAM. ALL RIGHTS RESERVED 
-                    </Typography>
+                        2024 VGEC ROCKETRY TEAM. ALL RIGHTS RESERVED  
+                    </Typography> */}
+
+                    <Copyright sx={{ mt: 8, mb: 4, color: "white"}}/>
                 </Box>
         </Box>
         </>
