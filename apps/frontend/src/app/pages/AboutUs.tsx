@@ -469,9 +469,9 @@ export const AboutUs: React.FC = () => {
         variants={fadeInVariants}
         sx={{
           fontFamily: theme.typography.fontFamily
-        }}
-      >
-        <Typography
+          }}
+          >
+          <Typography
           variant="h2"
           sx={{
             textAlign: "center",
@@ -482,27 +482,27 @@ export const AboutUs: React.FC = () => {
           }}
         >
           VRT on the Map
-        </Typography>
-        <Box
+          </Typography>
+          <Box
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
-          }}
-        >
-          <img
+            }}
+            >
+            <img
             src={Map}
             alt="VRT Location"
             style={{
               maxWidth: "100%",
               width: "100%",
               height: "100%"
-            }}
-          />
-        </Box>
+              }}
+              />
+              </Box>
       </Container> */}
       {/* <Box sx={{ margin: -4 }}> */}
-        <Footer isSmallScreen={isSmallScreen} />
+      <Footer isSmallScreen={isSmallScreen} />
       {/* </Box> */}
 
     </div>

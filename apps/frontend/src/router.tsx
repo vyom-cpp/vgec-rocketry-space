@@ -9,6 +9,7 @@ import { Blog } from "./app/pages/Blog"
 import { Navbar } from "./app/components/Navbar"
 import { ListItem, ListItemSecondaryAction, Stack } from "@mui/material"
 import {Helmet } from 'react-helmet'
+import { LoginPage } from "./app/pages/LoginPage"
 export const Router: React.FC = () => {
     return (
         <>
@@ -18,6 +19,7 @@ export const Router: React.FC = () => {
         </Helmet>
         <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/login" element={<LoginPage/>} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/missions" element={<Missions />} />
             <Route path="/about" element={<AboutUs />} />
