@@ -107,11 +107,11 @@ export const Blog: React.FC = () => {
 
     const { ref: touchRef, inView: touchInView } = useInView({
         triggerOnce: true,
-        threshold: 0.1
+        threshold:  0.1
     })
 
     const fadeInVariants = {
-        hidden: { opacity: 0, y: 10 },
+        hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
     };
 
@@ -155,11 +155,10 @@ export const Blog: React.FC = () => {
             {/* Updates Section */}
             <Container
                 maxWidth={false}
-
                 component={motion.div}
-                ref={newsRef}
+                ref={updateRef}
                 initial="hidden"
-                animate={newsInView ? "visible" : "hidden"}
+                animate={updateInView ? "visible" : "hidden"}
                 variants={fadeInVariants}
                 sx={{
                     paddingTop: 15,
