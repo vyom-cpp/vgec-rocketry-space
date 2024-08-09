@@ -10,6 +10,7 @@ import {
 import React, { useEffect, useState } from "react"
 import { Navbar } from "../components/Navbar";
 import { motion } from "framer-motion";
+import { useCustomNavigate } from "../utils/useCustomNavigate"
 import DhairyaWorkingVideo from "/DhairyaWorking2.mp4";
 import IsroVisit from "/IsroMeet.jpeg";
 import AnantaArrow from "/AnantaArrow.mp4"
@@ -108,6 +109,8 @@ export const AboutUs: React.FC = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
   };
+
+  const handleNavigate = useCustomNavigate();
 
   // const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -303,6 +306,7 @@ export const AboutUs: React.FC = () => {
           </Typography>
           <Button
             variant="outlined"
+            onClick={()=>handleNavigate('/story')}
             sx={{
               color: "yellow",
               borderColor: "yellow",
