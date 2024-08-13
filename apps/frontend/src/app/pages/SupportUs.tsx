@@ -1,10 +1,11 @@
 import { Box, Container, Button, Stack, Typography, useMediaQuery } from "@mui/material";
 import React, { useEffect } from "react";
 // import { motion } from "framer-motion";
+import Rocket from "/rocket-demo.jpeg";
 import { Navbar } from "../components/Navbar";
 import { theme } from "../theme";
 import { Footer } from "../components/Footer";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 
 export const SupportUs: React.FC = () => {
 
@@ -155,15 +156,15 @@ export const SupportUs: React.FC = () => {
 
                 <Stack
                     direction="row"
-                    spacing={isSmallScreen ? 2 : 4}
+                    spacing={isSmallScreen ? 2 : 20}
                     justifyContent="center"
                     alignItems="center"
                 >
                     <Box sx={{ textAlign: "center" }}>
                         <img
-                            src="/path/to/image1.jpg"
-                            alt="Rocket One"
-                            style={{ width: isSmallScreen ? "80%" : "300px", height: "auto" }}
+                            src={Rocket}
+                            alt="Ananta"
+                            style={{ width: isSmallScreen ? "80%" : "350px", height: "auto" }}
                         />
                         <Typography
                             sx={{
@@ -173,7 +174,7 @@ export const SupportUs: React.FC = () => {
                                 marginTop: "8px"
                             }}
                         >
-                            Rocket One
+                            Ananta
                             <br />
                             Height: 180m
                         </Typography>
@@ -181,9 +182,9 @@ export const SupportUs: React.FC = () => {
 
                     <Box sx={{ textAlign: "center" }}>
                         <img
-                            src="/path/to/image2.jpg"
-                            alt="Rocket Two"
-                            style={{ width: isSmallScreen ? "80%" : "300px", height: "auto" }}
+                            src={Rocket}
+                            alt="Aflatoon"
+                            style={{ width: isSmallScreen ? "80%" : "350px", height: "auto" }}
                         />
                         <Typography
                             sx={{
@@ -193,7 +194,7 @@ export const SupportUs: React.FC = () => {
                                 marginTop: "8px"
                             }}
                         >
-                            Rocket Two
+                            Aflatoon
                             <br />
                             Height: 240m
                         </Typography>
