@@ -24,9 +24,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^7.10.0",
     "pnpm": "^9.1.3",
-    "react-bootstrap": "^2.10.4",
     "react-grid-gallery": "^1.0.1",
-    "react-helmet": "^6.1.0",
     "react-image-lightbox": "^5.1.4"
   }
 }

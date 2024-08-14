@@ -133,20 +133,42 @@ const NavbarXl = () => {
                   anchorEl={anchorEl}
                   open={open}
                   onClose={handleClose}
-                  sx={{ mt: 1.5 }}
+                  sx={{
+                    mt: 1.5,
+                    "& .MuiPaper-root": {
+                      backgroundColor: "black",
+                      color: "white",
+                      borderRadius: 0,
+                    },
+                    "& .MuiMenuItem-root": {
+                      padding: "10px 20px",
+                      "&:hover": {
+                        backgroundColor: "white",
+                        color: "black",
+                      },
+                    },
+                  }}
                 >
                   <MenuItem
                     onClick={() => {
                       handleNavigate("/missions");
                       handleClose();
                     }}
+                    sx={{
+                      fontSize: "16px",
+                      fontWeight: 500,
+                    }}
                   >
                     Current Missions
                   </MenuItem>
                   <MenuItem
                     onClick={() => {
-                      handleNavigate("/");
+                      handleNavigate("/oldmission");
                       handleClose();
+                    }}
+                    sx={{
+                      fontSize: "16px",
+                      fontWeight: 500,
                     }}
                   >
                     Old Mission
@@ -333,31 +355,45 @@ const NavbarSm: React.FC = () => {
                         anchorEl={null}
                         open={drawerOpen}
                         onClose={() => setDrawerOpen(false)}
-                        sx={{ mt: 1.5 }}
+                        sx={{
+                          mt: 1.5,
+                          "& .MuiPaper-root": {
+                            backgroundColor: "black",
+                            color: "white",
+                            borderRadius: 0,
+                          },
+                          "& .MuiMenuItem-root": {
+                            padding: "10px 20px",
+                            "&:hover": {
+                              backgroundColor: "white",
+                              color: "black",
+                            },
+                          },
+                        }}
                       >
                         <MenuItem
                           onClick={() => {
-                            handleNavigate("/missions/mission1");
+                            handleNavigate("/missions");
                             setDrawerOpen(false);
                           }}
+                          sx={{
+                            fontSize: "16px",
+                            fontWeight: 500,
+                          }}
                         >
-                          Mission 1
+                          Current Missions
                         </MenuItem>
                         <MenuItem
                           onClick={() => {
-                            handleNavigate("/missions/mission2");
+                            handleNavigate("/oldmission");;
                             setDrawerOpen(false);
                           }}
-                        >
-                          Mission 2
-                        </MenuItem>
-                        <MenuItem
-                          onClick={() => {
-                            handleNavigate("/missions/mission3");
-                            setDrawerOpen(false);
+                          sx={{
+                            fontSize: "16px",
+                            fontWeight: 500,
                           }}
                         >
-                          Mission 3
+                          Old Mission
                         </MenuItem>
                       </Menu>
                     </>

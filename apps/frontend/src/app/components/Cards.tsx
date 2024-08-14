@@ -6,8 +6,10 @@ import {
   CardMedia,
   Typography,
   CardActions,
-  Button,
+  Button
 } from "@mui/material";
+import { theme } from "../theme"
+import { color } from "framer-motion";
 
 interface CardData {
   name: string;
@@ -18,9 +20,12 @@ interface CardData {
 
 interface CardGridProps {
   cards: CardData[];
+  isDarkMode: boolean;
 }
 
-const CardGrid: React.FC<CardGridProps> = ({ cards }) => {
+// const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
   return (
     <Grid
       container
@@ -29,7 +34,11 @@ const CardGrid: React.FC<CardGridProps> = ({ cards }) => {
     >
       {cards.map((card, index) => (
         <Grid item xs={12} sm={6} md={4} key={index}>
-          <Card sx={{ maxWidth: 345 }}>
+          <Card sx={{
+            backgroundColor: isDarkMode ? "white" : "black",
+            color: isDarkMode ? "black" : "white",
+            maxWidth: 345,
+          }}>
             <CardMedia
               component="img"
               alt={card.name}
@@ -40,20 +49,33 @@ const CardGrid: React.FC<CardGridProps> = ({ cards }) => {
               <Typography gutterBottom variant="h5" component="div">
                 {card.name}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" >
                 {card.content}
               </Typography>
             </CardContent>
             <CardActions>
               <Button
                 size="small"
+                variant="outlined"
                 href={card.link}
                 target="_blank"
                 sx={{
-                  color: "red",
-                }}
+                  borderColor: theme.palette.primary.main,
+                  color: theme.palette.primary.main,
+                  borderWidth: '2.4px',
+                  '&:hover': {
+                      variant: 'contained',
+                      backgroundColor: theme.palette.primary.light,
+                      color: 'white',
+                      },
+                      }}
               >
-                Read More
+                <Typography
+                        fontFamily='Open Sans'
+                        fontSize='20px'
+                        >
+                            Read
+                    </Typography>
               </Button>
             </CardActions>
           </Card>

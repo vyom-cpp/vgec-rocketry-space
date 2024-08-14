@@ -13,12 +13,12 @@ import { theme } from "../theme";
 import Aflatoon from "/Aflatoon.jpeg";
 import { useInView } from "react-intersection-observer";
 import { Footer } from "../components/Footer";
-import Mission from "../../../public/rocket.webp";
+import Mission from "../../../public/mission.png";
 import { Margin, Padding } from "@mui/icons-material";
 
-export const Missions: React.FC = () => {
+export const OldMission: React.FC = () => {
   useEffect(() => {
-    document.title = "MISSIONS | VRT";
+    document.title = "OLDMISSION | VRT";
   }, []);
 
   const cardsDataForLaunch = [
@@ -175,7 +175,7 @@ export const Missions: React.FC = () => {
               padding: "10px 20px",
             }}
           >
-            Upcoming Launches
+            Previous Launches
           </Typography>
           <CardGrid cards={cardsDataForLaunch} isDarkMode={false} />
         </Stack>
@@ -199,7 +199,7 @@ export const Missions: React.FC = () => {
               padding: "10px 20px",
             }}
           >
-            Spacecraft Programs
+            Previous Programs
           </Typography>
           <CardGrid cards={cardDataForPrograms} isDarkMode={true}/>
           <Footer isSmallScreen={isSmallScreen} />
