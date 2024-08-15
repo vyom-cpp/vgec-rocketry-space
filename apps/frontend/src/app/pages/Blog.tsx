@@ -14,6 +14,7 @@ import { useInView } from "react-intersection-observer";
 import DhairyaWorkingVideo from "/DhairyaWorking2.mp4";
 import Rocket from "/rocket-demo.jpeg";
 import { motion } from "framer-motion";
+import { useCustomNavigate } from "../utils/useCustomNavigate"
 import AnantaArrow from "/AnantaArrow.mp4"
 import AnantaArrow2 from "/AnataArrow2.mp4"
 import Aflatoon from '/Aflatoon.jpeg'
@@ -107,13 +108,15 @@ export const Blog: React.FC = () => {
 
     const { ref: touchRef, inView: touchInView } = useInView({
         triggerOnce: true,
-        threshold:  0.1
+        threshold: 0.1
     })
 
     const fadeInVariants = {
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
     };
+
+    const handleNavigate = useCustomNavigate();
 
     return (
 
@@ -163,7 +166,7 @@ export const Blog: React.FC = () => {
                 sx={{
                     paddingTop: 15,
                     paddingBottom: 8,
-                    width: isSmallScreen? "80%" : "70%"
+                    width: isSmallScreen ? "80%" : "70%"
                 }}>
                 <Typography
                     sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: 4 }}
@@ -216,6 +219,7 @@ export const Blog: React.FC = () => {
                             </Typography>
                             <Button
                                 variant="outlined"
+                                onClick={() => handleNavigate('/blogPage')}
                                 href={post.link}
                                 sx={{
                                     marginTop: 2,
@@ -252,7 +256,7 @@ export const Blog: React.FC = () => {
                 initial="hidden"
                 animate={newsInView ? "visible" : "hidden"}
                 variants={fadeInVariants}
-                sx={{ paddingTop: 20, paddingBottom: 8, width: isSmallScreen? "80%" : "70%" }}>
+                sx={{ paddingTop: 20, paddingBottom: 8, width: isSmallScreen ? "80%" : "70%" }}>
                 <Typography
                     sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: 4 }}
                 >Blogs
@@ -307,6 +311,7 @@ export const Blog: React.FC = () => {
                             </Typography>
                             <Button
                                 variant="outlined"
+                                onClick={() => handleNavigate('/blogPage')}
                                 href={post.link}
                                 sx={{
                                     marginTop: 2,
@@ -347,7 +352,7 @@ export const Blog: React.FC = () => {
                 <Grid container spacing={2} alignItems="center" alignContent="center" >
                     <Grid item xs={12} md={6} sm={4} >
                         <Typography
-                            sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: isSmallScreen ? 6 : 25,  }}
+                            sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: isSmallScreen ? 6 : 25, }}
                         >
                             STAY IN TOUCH
                         </Typography>
