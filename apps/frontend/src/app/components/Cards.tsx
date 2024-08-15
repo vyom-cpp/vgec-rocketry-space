@@ -35,8 +35,8 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
       {cards.map((card, index) => (
         <Grid item xs={12} sm={6} md={4} key={index}>
           <Card sx={{
-            backgroundColor: isDarkMode ? "white" : "black",
-            color: isDarkMode ? "black" : "white",
+            backgroundColor: isDarkMode ? "white" : "lightgray",
+            color: isDarkMode ? "black" : "darkslategray",
             maxWidth: 345,
           }}>
             <CardMedia

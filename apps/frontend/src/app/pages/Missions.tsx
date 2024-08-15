@@ -147,64 +147,57 @@ export const Missions: React.FC = () => {
         />
         <Navbar />
       </Container>
-      <Container
-        maxWidth={false}
+      <Stack
+        // spacing={3}
         sx={{
-          paddingLeft: 0,
-          paddingRight: 0,
+          alignItems: "center",
+          // backgroundColor: "white",
+          width: "100%",
         }}
       >
-        <Stack
-          // spacing={3}
+        <Typography
+          // variant="h2"
           sx={{
-            alignItems: "center",
-            // backgroundColor: "white",
-            width: "100%",
+            display: "flex",
+            color: "black",
+            fontFamily: theme.typography.fontFamily,
+            fontSize: isSmallScreen ? 45 : 80,
+            alignItem: "center",
+            textAlign: "center",
+            justifyContent: "center",
+            padding: "10px 20px",
           }}
         >
-          <Typography
-            // variant="h2"
-            sx={{
-              display: "flex",
-              color: "black",
-              fontFamily: theme.typography.fontFamily,
-              fontSize: isSmallScreen ? 45 : 80,
-              alignItem: "center",
-              textAlign: "center",
-              justifyContent: "center",
-              padding: "10px 20px",
-            }}
-          >
-            Upcoming Launches
-          </Typography>
-          <CardGrid cards={cardsDataForLaunch} isDarkMode={false} />
-        </Stack>
-        <Stack
+          Upcoming Launches
+        </Typography>
+        <CardGrid cards={cardsDataForLaunch} isDarkMode={false} />
+      </Stack>
+      <Stack
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "black",
+        }}
+      >
+        <Typography
+          // variant="h2"
           sx={{
-            alignItems: "center",
-            backgroundColor: "black",
-            width: "100%",
+            display: "flex",
+            color: "white",
+            fontFamily: theme.typography.fontFamily,
+            fontSize: isSmallScreen ? 45 : 80,
+            alignItem: "center",
+            textAlign: "center",
+            justifyContent: "center",
+            padding: "10px 20px",
           }}
         >
-          <Typography
-            // variant="h2"
-            sx={{
-              display: "flex",
-              color: "white",
-              fontFamily: theme.typography.fontFamily,
-              fontSize: isSmallScreen ? 45 : 80,
-              alignItem: "center",
-              textAlign: "center",
-              justifyContent: "center",
-              padding: "10px 20px",
-            }}
-          >
-            Spacecraft Programs
-          </Typography>
-          <CardGrid cards={cardDataForPrograms} isDarkMode={true}/>
-          <Footer isSmallScreen={isSmallScreen} />
-        </Stack>
-      </Container>
+          Spacecraft Programs
+        </Typography>
+        <CardGrid cards={cardDataForPrograms} isDarkMode={true} />
+        <Footer isSmallScreen={isSmallScreen} />
+      </Stack>
     </div>
   );
 };
