@@ -81,24 +81,32 @@ const storyLineImages = [
 export const OurStory: React.FC = () => {
     useEffect(() => {
         document.title = "OUR | STORY";
+        window.scrollTo(0, 0);
     });
 
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
     return (
         <div style={{ overflow: "hidden" }}>
-            <Navbar />
-
-            <Box
-                component="img"
-                src={SpaceX}
-                alt="Company Timeline"
-                sx={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover'
-                }}
-            />
+            <Box sx={{ position: 'relative', height: '100vh', width: '100%' }}>
+                <Navbar />
+                <Box
+                    component="img"
+                    src={SpaceX}
+                    alt="Company Timeline"
+                    sx={{
+                        height: '100%',
+                        width: '100%',
+                        backgroundSize: 'cover',
+                        objectFit: 'cover',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        zIndex: -1
+                    }}
+                />
+            </Box>
+            
 
             <Container maxWidth={false} sx={{ paddingTop: "250px" }}>
                 <VerticalTimeline

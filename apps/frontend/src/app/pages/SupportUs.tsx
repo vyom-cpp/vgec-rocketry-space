@@ -27,40 +27,29 @@ export const SupportUs: React.FC = () => {
 
     return (
         <div style={{ overflow: "hidden" }}>
-            <Stack
+
+            <Container maxWidth={false}
                 sx={{
                     backgroundColor: "black",
-                    margin: 0,
-                    padding: 0,
-                    border: "none"
+                    height: "500px",
+                    width: "100%",
+                    backgroundSize: "cover",
+                    objectFit: "cover"
                 }}
             >
                 <Navbar />
-            </Stack>
 
-            <Container
-                maxWidth={false}
-                sx={{
-                    backgroundColor: "black",
-                    width: "100%",
-                    height: "500px",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    marginBottom: "0px",
-                    padding: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                    border: "none"
-                }}
-            >
                 <Typography
                     sx={{
                         color: "white",
                         fontFamily: theme.typography.fontFamily,
-                        fontSize: isSmallScreen ? "70px" : "90px"
+                        fontSize: isSmallScreen ? "70px" : "90px",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        textAlign: "center",
+                        marginTop: "70px"
                     }}
                 >
                     Invest in the future.
@@ -70,7 +59,12 @@ export const SupportUs: React.FC = () => {
                     sx={{
                         color: "white",
                         fontFamily: theme.typography.fontFamily,
-                        fontSize: isSmallScreen ? "45px" : "60px"
+                        fontSize: isSmallScreen ? "45px" : "60px",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        textAlign: "center",
                     }}
                 >
                     Contribute today to empower the next generation.
@@ -227,7 +221,7 @@ export const SupportUs: React.FC = () => {
                     }}
                     href="mailto:vrt@gmail.com?subject=Sponsoring"
                 >
-                    Donate Us
+                    Support Us
                 </Button>
             </Container>
 
