@@ -6,9 +6,9 @@ import {
   CardMedia,
   Typography,
   CardActions,
-  Button
+  Button,
 } from "@mui/material";
-import { theme } from "../theme"
+import { theme } from "../theme";
 import { color } from "framer-motion";
 
 interface CardData {
@@ -34,11 +34,13 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
     >
       {cards.map((card, index) => (
         <Grid item xs={12} sm={6} md={4} key={index}>
-          <Card sx={{
-            backgroundColor: isDarkMode ? "white" : "lightgray",
-            color: isDarkMode ? "black" : "darkslategray",
-            maxWidth: 345,
-          }}>
+          <Card
+            sx={{
+              backgroundColor: isDarkMode ? "white" : "black",
+              color: isDarkMode ? "black" : "white",
+              maxWidth: 345,
+            }}
+          >
             <CardMedia
               component="img"
               alt={card.name}
@@ -49,9 +51,7 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
               <Typography gutterBottom variant="h5" component="div">
                 {card.name}
               </Typography>
-              <Typography variant="body2" >
-                {card.content}
-              </Typography>
+              <Typography variant="body2">{card.content}</Typography>
             </CardContent>
             <CardActions>
               <Button
@@ -62,20 +62,17 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
                 sx={{
                   borderColor: theme.palette.primary.main,
                   color: theme.palette.primary.main,
-                  borderWidth: '2.4px',
-                  '&:hover': {
-                      variant: 'contained',
-                      backgroundColor: theme.palette.primary.light,
-                      color: 'white',
-                      },
-                      }}
+                  borderWidth: "2.4px",
+                  "&:hover": {
+                    variant: "contained",
+                    backgroundColor: theme.palette.primary.light,
+                    color: "white",
+                  },
+                }}
               >
-                <Typography
-                        fontFamily='Open Sans'
-                        fontSize='20px'
-                        >
-                            Read
-                    </Typography>
+                <Typography fontFamily="Open Sans" fontSize="20px">
+                  Read
+                </Typography>
               </Button>
             </CardActions>
           </Card>
