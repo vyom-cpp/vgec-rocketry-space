@@ -6,10 +6,12 @@ import { AboutUs } from "./app/pages/AboutUs"
 import { Missions } from "./app/pages/Missions"
 import { SupportUs } from "./app/pages/SupportUs"
 import { Blog } from "./app/pages/Blog"
+import { BlogPage } from "./app/pages/BlogPage"
 import { Navbar } from "./app/components/Navbar"
 import { ListItem, ListItemSecondaryAction, Stack } from "@mui/material"
 import {Helmet } from 'react-helmet'
 import { LoginPage } from "./app/pages/LoginPage"
+import { OurStory } from "./app/pages/OurStory"
 export const Router: React.FC = () => {
     return (
         <>
@@ -25,6 +27,8 @@ export const Router: React.FC = () => {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/support" element={<SupportUs />} />
+            <Route path="/story" element={<OurStory />} />
+            <Route path="/blogPage" element={<BlogPage />} />
             <Route path="*" element={<NotFoundPage />} />
         </Routes>
         </>
