@@ -13,7 +13,7 @@ import { theme } from "../theme";
 import Aflatoon from "/Aflatoon.jpeg";
 import { useInView } from "react-intersection-observer";
 import { Footer } from "../components/Footer";
-import Mission from "../../../public/rocket.webp";
+import Mission from "../../../public/MissionsCover.jpeg";
 import { Margin, Padding } from "@mui/icons-material";
 
 export const Missions: React.FC = () => {
@@ -113,7 +113,7 @@ export const Missions: React.FC = () => {
         sx={{
           backgroundImage: {
             xs: `url('${Aflatoon}')`,
-            md: "none",
+            md: `url('${Mission}')`,         
           },
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -121,22 +121,40 @@ export const Missions: React.FC = () => {
           width: "100%",
           padding: 0,
           marging: 0,
+          backgroundColor: "rgba(0,0,0,0.5)",
+          backgroundPosition: {
+            md: "center -25rem"
+          }
         }}
       >
-        <img
-          src={Mission}
-          alt="Mission img"
+        <div
           style={{
             position: "absolute",
-            display: isSmallScreen ? "none" : "block",
             top: 0,
             left: 0,
             width: "100%",
             height: "100%",
-            objectFit: "cover",
-            zIndex: -1,
+            backgroundColor: "rgba(0, 0, 0, 0.5)", 
+            filter: "blur(2px)", 
+            zIndex: 0,
           }}
-        />
+        ></div>
+        <Typography
+          style={{
+            position: "absolute",
+            top: "50%",       
+            left: "50%",      
+            transform: "translate(-50%, -50%)", 
+            color: "white",   
+            fontSize: isSmallScreen ? "4rem" :"9rem", 
+            // fontWeight: "bold",
+            fontFamily: theme.typography.fontFamily,
+            textAlign: "center",
+            zIndex: 1,       
+          }}
+          >
+          Upcomming Missions    
+        </Typography>
         <Navbar />
       </Container>
       <Stack

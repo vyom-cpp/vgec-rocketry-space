@@ -67,10 +67,21 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
               image={card.image}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography 
+                gutterBottom 
+                variant="h4" 
+                component="div"
+                fontFamily={theme.typography.fontFamily}
+              >
                 {card.name}
               </Typography>
-              <Typography variant="body2">{card.content}</Typography>
+              <Typography 
+                // variant="h7"
+                fontSize={17}
+                fontFamily={theme.typography.fontFamily}
+              >
+                  {card.content}
+              </Typography>
             </CardContent>
             <CardActions>
               <Button

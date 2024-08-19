@@ -13,7 +13,7 @@ import { theme } from "../theme";
 import Aflatoon from "/Aflatoon.jpeg";
 import { useInView } from "react-intersection-observer";
 import { Footer } from "../components/Footer";
-import Mission from "../../../public/Mission.png";
+import Mission from "../../../public/MissionsCover.jpeg";
 import { Margin, Padding } from "@mui/icons-material";
 
 export const OldMission: React.FC = () => {
@@ -115,7 +115,7 @@ export const OldMission: React.FC = () => {
         sx={{
           backgroundImage: {
             xs: `url('${Aflatoon}')`,
-            md: "none",
+            md: `url('${Mission}')`,
           },
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -123,6 +123,9 @@ export const OldMission: React.FC = () => {
           width: "100%",
           padding: 0,
           marging: 0,
+          backgroundPosition: {
+            md: "center -25rem"
+          }
         }}
       >
         <img
@@ -139,6 +142,34 @@ export const OldMission: React.FC = () => {
             zIndex: -1,
           }}
         />
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)", 
+            filter: "blur(2px)", 
+            zIndex: 0,
+          }}
+        ></div>
+        <Typography
+          style={{
+            position: "absolute",
+            top: "50%",       
+            left: "50%",      
+            transform: "translate(-50%, -50%)", 
+            color: "white",   
+            fontSize: isSmallScreen ? "4rem" :"9rem", 
+            // fontWeight: "bold",
+            fontFamily: theme.typography.fontFamily,
+            textAlign: "center",
+            zIndex: 1,       
+          }}
+          >
+          Launched Missions    
+        </Typography>
         <Navbar />
       </Container>
       <Stack
@@ -159,7 +190,8 @@ export const OldMission: React.FC = () => {
             alignItem: "center",
             textAlign: "center",
             justifyContent: "center",
-            padding: "10px 20px",
+            padding: "25px 20px",
+            paddingBottom: "7px"
           }}
           component={motion.div}
           ref={titleRef}
@@ -168,7 +200,7 @@ export const OldMission: React.FC = () => {
           variants={fadeInVariants}
         >
           Missions Launched
-        </Typography>
+        </Typography>     
         <CardGrid cards={cardsDataForLaunch} isDarkMode={false} />
       </Stack>
       <Stack
@@ -188,7 +220,8 @@ export const OldMission: React.FC = () => {
             alignItem: "center",
             textAlign: "center",
             justifyContent: "center",
-            padding: "10px 20px",
+            padding: "25px 20px",
+            paddingBottom: "7px"
           }}
           component={motion.div}
           ref={title2Ref}
