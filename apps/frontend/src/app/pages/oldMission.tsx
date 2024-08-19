@@ -16,9 +16,9 @@ import { Footer } from "../components/Footer";
 import Mission from "../../../public/MissionsCover.jpeg";
 import { Margin, Padding } from "@mui/icons-material";
 
-export const Missions: React.FC = () => {
+export const OldMission: React.FC = () => {
   useEffect(() => {
-    document.title = "MISSIONS | VRT";
+    document.title = "OLDMISSION | VRT";
   }, []);
 
   const cardsDataForLaunch = [
@@ -90,6 +90,7 @@ export const Missions: React.FC = () => {
     },
   ];
 
+
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   
   const { ref: titleRef, inView: titleRefView } = useInView({
@@ -106,6 +107,7 @@ export const Missions: React.FC = () => {
       visible: { opacity: 1, y: 0, transition: { duration: 0.8} },
   };
 
+
   return (
     <div style={{ overflow: "hidden" }}>
       <Container
@@ -113,7 +115,7 @@ export const Missions: React.FC = () => {
         sx={{
           backgroundImage: {
             xs: `url('${Aflatoon}')`,
-            md: `url('${Mission}')`,         
+            md: `url('${Mission}')`,
           },
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -121,12 +123,25 @@ export const Missions: React.FC = () => {
           width: "100%",
           padding: 0,
           marging: 0,
-          backgroundColor: "rgba(0,0,0,0.5)",
           backgroundPosition: {
             md: "center -25rem"
           }
         }}
       >
+        <img
+          src={Mission}
+          alt="Mission img"
+          style={{
+            position: "absolute",
+            display: isSmallScreen ? "none" : "block",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: -1,
+          }}
+        />
         <div
           style={{
             position: "absolute",
@@ -153,7 +168,7 @@ export const Missions: React.FC = () => {
             zIndex: 1,       
           }}
           >
-          Upcomming Missions    
+          Launched Missions    
         </Typography>
         <Navbar />
       </Container>
@@ -184,16 +199,15 @@ export const Missions: React.FC = () => {
           animate={titleRefView ? "visible" : "hidden"}
           variants={fadeInVariants}
         >
-          Upcoming Launches
-        </Typography>
+          Missions Launched
+        </Typography>     
         <CardGrid cards={cardsDataForLaunch} isDarkMode={false} />
       </Stack>
       <Stack
         sx={{
-          display: "flex",
-          justifyContent: "center",
           alignItems: "center",
           backgroundColor: "black",
+          width: "100%",
         }}
       >
         <Typography
@@ -215,7 +229,7 @@ export const Missions: React.FC = () => {
           animate={title2RefView ? "visible" : "hidden"}
           variants={fadeInVariants}
         >
-          Current Programs
+          Previous Programs
         </Typography>
         <CardGrid cards={cardDataForPrograms} isDarkMode={true} />
         <Footer isSmallScreen={isSmallScreen} />
