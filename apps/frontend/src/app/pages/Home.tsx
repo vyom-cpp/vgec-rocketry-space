@@ -85,7 +85,6 @@ export const HomePage: React.FC = () => {
                         objectFit: 'cover',
                         zIndex: -1,
                     }}
-                        // src={isSmallScreen ? smallScreenBackgroundVideo : DhairyaWorkingVideo}
                         src={DhairyaWorkingVideo}
                 />
                 <Navbar/> 
@@ -147,31 +146,35 @@ export const HomePage: React.FC = () => {
                                     </Typography>
                                     <Typography
                                         color={theme.palette.primary.dark}
+                                        textAlign="justify"
                                         sx={{
                                             marginBottom: 4,
                                             fontFamily: theme.typography.fontFamily,
-                                            fontSize: isSmallScreen ? '16px' : '18px'
+                                            fontSize: isSmallScreen ? '16px' : '18px',
                                         }}
                                     >
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eros tellus, posuere quis felis vitae, consequat dictum nisi. Sed gravida rutrum lacus a molestie. Nunc finibus libero leo, vel tincidunt nulla imperdiet et. Praesent sed erat ipsum. Morbi elit purus, imperdiet vitae magna eget, semper egestas magna. Sed a vestibulum enim. Nullam imperdiet diam metus, ac blandit arcu rhoncus at.                            </Typography>
                                         <Box
                                             display="flex"
-                                            justifyContent="center"
+                                            justifyContent="right"
                                             marginLeft={isSmallScreen ? 23 : 0}
+                                            // marginRight={isSmallScreen ? 0 : 2}
                                             marginTop={3}
-                                        >
+                                            >
                                             <Button
                                                 variant="outlined"
                                                 onClick={()=>handleNavigate('/about')}
                                                 sx={{
                                                     borderColor: 'black',
                                                     color: theme.palette.primary.dark,
-                                                    fontSize: isSmallScreen ? '14px' : '18px', // Custom font size
+                                                    fontSize: isSmallScreen ? '14px' : '17px', // Custom font size
+                                                    height: isSmallScreen ? '': '35px',
                                                     '&:hover': {
                                                         variant: 'contained', 
                                                         backgroundColor: 'black',
                                                         color: 'white', 
                                                     },
+
                                                 }}
                                             >
                                                 Learn More
