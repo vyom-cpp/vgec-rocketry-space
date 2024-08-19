@@ -13,8 +13,8 @@ import { theme } from "../theme";
 import Aflatoon from "/Aflatoon.jpeg";
 import { useInView } from "react-intersection-observer";
 import { Footer } from "../components/Footer";
-import Mission from "../../../public/MissionsCover.jpeg";
-import { Margin, Padding } from "@mui/icons-material";
+import Mission from "/MissionsCover.jpeg";
+import '@fontsource/nova-square'
 
 export const Missions: React.FC = () => {
   useEffect(() => {
@@ -121,7 +121,6 @@ export const Missions: React.FC = () => {
           width: "100%",
           padding: 0,
           marging: 0,
-          backgroundColor: "rgba(0,0,0,0.5)",
           backgroundPosition: {
             md: "center -25rem"
           }
@@ -134,7 +133,7 @@ export const Missions: React.FC = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)", 
+            backgroundColor: "rgba(0, 0, 0, 0.65)", 
             filter: "blur(2px)", 
             zIndex: 0,
           }}
@@ -146,11 +145,11 @@ export const Missions: React.FC = () => {
             left: "50%",      
             transform: "translate(-50%, -50%)", 
             color: "white",   
-            fontSize: isSmallScreen ? "4rem" :"9rem", 
+            fontSize: isSmallScreen ? "3.5rem" : "8rem", 
             // fontWeight: "bold",
-            fontFamily: theme.typography.fontFamily,
+            fontFamily: 'Nova Square',
             textAlign: "center",
-            zIndex: 1,       
+            zIndex: 1,     
           }}
           >
           Upcomming Missions    
@@ -218,8 +217,8 @@ export const Missions: React.FC = () => {
           Current Programs
         </Typography>
         <CardGrid cards={cardDataForPrograms} isDarkMode={true} />
-        <Footer isSmallScreen={isSmallScreen} />
       </Stack>
+        <Footer isSmallScreen={isSmallScreen} />
     </div>
   );
 };

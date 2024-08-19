@@ -21,6 +21,8 @@ import DragHandleIcon from "@mui/icons-material/DragHandle";
 import CloseIcon from "@mui/icons-material/Close";
 import { useCustomNavigate } from "../utils/useCustomNavigate";
 import { SocialLinks } from "./SocialLinks";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const pages = [
   {
@@ -227,20 +229,28 @@ const NavbarXl = () => {
 
 const NavbarSm: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-      setDrawerOpen(open);
-    };
-
+  const [missionsOpen, setMissionsOpen] = useState(false);
   const handleNavigate = useCustomNavigate();
+
+  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (
+      event.type === "keydown" &&
+      ((event as React.KeyboardEvent).key === "Tab" ||
+        (event as React.KeyboardEvent).key === "Shift")
+    ) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  const handleMissionsClick = () => {
+    setMissionsOpen(true);
+  };
+
+  const handleBackToNav = () => {
+    setMissionsOpen(false);
+    setDrawerOpen(false);
+  };
 
   return (
     <>
@@ -292,7 +302,7 @@ const NavbarSm: React.FC = () => {
       </Grid>
       <Drawer
         anchor="top"
-        open={drawerOpen}
+        open={drawerOpen && !missionsOpen}
         onClose={toggleDrawer(false)}
         sx={{
           "& .MuiDrawer-paper": {
@@ -338,65 +348,21 @@ const NavbarSm: React.FC = () => {
               {pages.map((page, key) => (
                 <Grid item key={key}>
                   {page.name === "MISSIONS" ? (
-                    <>
-                      <Typography
-                        variant="h4"
-                        onClick={() => setDrawerOpen(!drawerOpen)}
-                        sx={{
-                          textDecoration: handleUnderline(page.name),
-                          textDecorationThickness: "2px",
-                          textDecorationStyle: "solid",
-                          textUnderlineOffset: "5px",
-                        }}
-                      >
-                        {page.name}
-                      </Typography>
-                      <Menu
-                        anchorEl={null}
-                        open={drawerOpen}
-                        onClose={() => setDrawerOpen(false)}
-                        sx={{
-                          mt: 1.5,
-                          "& .MuiPaper-root": {
-                            backgroundColor: "black",
-                            color: "white",
-                            borderRadius: 0,
-                          },
-                          "& .MuiMenuItem-root": {
-                            padding: "10px 20px",
-                            "&:hover": {
-                              backgroundColor: "white",
-                              color: "black",
-                            },
-                          },
-                        }}
-                      >
-                        <MenuItem
-                          onClick={() => {
-                            handleNavigate("/missions");
-                            setDrawerOpen(false);
-                          }}
-                          sx={{
-                            fontSize: "16px",
-                            fontWeight: 500,
-                          }}
-                        >
-                          Current Missions
-                        </MenuItem>
-                        <MenuItem
-                          onClick={() => {
-                            handleNavigate("/oldmission");;
-                            setDrawerOpen(false);
-                          }}
-                          sx={{
-                            fontSize: "16px",
-                            fontWeight: 500,
-                          }}
-                        >
-                          Old Mission
-                        </MenuItem>
-                      </Menu>
-                    </>
+                    <Typography
+                      variant="h4"
+                      onClick={handleMissionsClick}
+                      sx={{
+                        textDecoration: handleUnderline(page.name),
+                        textDecorationThickness: "2px",
+                        textDecorationStyle: "solid",
+                        textUnderlineOffset: "5px",
+                        paddingLeft: 4
+                      }}
+                    >
+
+                      {page.name}
+                     <ArrowForwardIosIcon sx={{fontSize: 26, verticalAlign: "-2.7px"}}/>
+                    </Typography>
                   ) : (
                     <a onClick={() => handleNavigate(page.route)}>
                       <Typography
@@ -425,6 +391,97 @@ const NavbarSm: React.FC = () => {
             >
               <SocialLinks color="Black" fontSize="none" />
             </Box>
+          </Stack>
+        </Container>
+      </Drawer>
+      <Drawer
+        anchor="right"
+        open={missionsOpen}
+        onClose={handleBackToNav}
+        sx={{
+          "& .MuiDrawer-paper": {
+            overflow: "hidden",
+            width: '100%',
+          },
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            width: "100%",
+            marginTop: 2.8,
+            marginLeft: -2.8,
+          }}
+        >
+          <IconButton onClick={handleBackToNav}>
+            <CloseIcon
+              sx={{ fontSize: "38px", color: theme.palette.primary.dark }}
+            />
+          </IconButton>
+        </Box>
+        <Container
+          sx={{
+            width: "100%",
+            height: "100vh",
+            marginBottom: "30px",
+            display: "flex",
+            direction: "column",
+            justifyContent: "center",
+            textAlign: "center",
+            alignItems: "center",
+            transition: 'transform 0.7s ease-in-out',
+            transform: missionsOpen ? 'translateX(0)' : 'translateX(-100%)',
+          }}
+        >
+          <Stack>
+            <Typography
+              variant="overline"
+              onClick={() => {
+                handleNavigate("/missions");
+                setMissionsOpen(false);
+              }}
+              sx={{
+                textDecoration: 'none',
+                fontSize: 27,
+                // marginBottom: 2,
+                color: "grey"
+              }}
+            >
+              <ArrowBackIosNewIcon sx={{fontSize: 20, verticalAlign: "-1px"}}/>
+              Back
+            </Typography>
+            <Typography
+              variant="h4"
+              onClick={() => {
+                handleNavigate("/missions");
+                setMissionsOpen(false);
+              }}
+              sx={{
+                textDecoration: handleUnderline('/missions'), 
+                textDecorationThickness: "2px",
+                textDecorationStyle: "solid",
+                textUnderlineOffset: "5px",
+                marginBottom: 2,
+              }}
+            >
+              CURRENT MISSIONS
+            </Typography>
+            <Typography
+              variant="h4"
+              onClick={() => {
+                handleNavigate("/oldmission");
+                setMissionsOpen(false);
+              }}
+              sx={{
+                textDecoration: handleUnderline('/oldmissions'), 
+                textDecorationThickness: "2px",
+                textDecorationStyle: "solid",
+                textUnderlineOffset: "5px",
+              }}
+            >
+              OLD MISSIONS
+            </Typography>
           </Stack>
         </Container>
       </Drawer>

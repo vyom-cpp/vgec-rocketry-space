@@ -149,7 +149,7 @@ export const OldMission: React.FC = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)", 
+            backgroundColor: "rgba(0, 0, 0, 0.65)", 
             filter: "blur(2px)", 
             zIndex: 0,
           }}
@@ -161,9 +161,9 @@ export const OldMission: React.FC = () => {
             left: "50%",      
             transform: "translate(-50%, -50%)", 
             color: "white",   
-            fontSize: isSmallScreen ? "4rem" :"9rem", 
+            fontSize: isSmallScreen ? "3.5rem" :"8rem", 
             // fontWeight: "bold",
-            fontFamily: theme.typography.fontFamily,
+            fontFamily: "Nova Square",
             textAlign: "center",
             zIndex: 1,       
           }}
@@ -232,8 +232,8 @@ export const OldMission: React.FC = () => {
           Previous Programs
         </Typography>
         <CardGrid cards={cardDataForPrograms} isDarkMode={true} />
-        <Footer isSmallScreen={isSmallScreen} />
       </Stack>
+        <Footer isSmallScreen={isSmallScreen} />
     </div>
   );
 };
