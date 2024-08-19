@@ -7,9 +7,11 @@ import {
   Typography,
   CardActions,
   Button,
+  useMediaQuery,
 } from "@mui/material";
 import { theme } from "../theme";
-import { color } from "framer-motion";
+import { color, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface CardData {
   name: string;
@@ -23,28 +25,45 @@ interface CardGridProps {
   isDarkMode: boolean;
 }
 
-// const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
 const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  
   return (
     <Grid
-      container
-      spacing={3} // Adjust the spacing between cards
-      sx={{ padding: { xs: 3, md: 5 } }} // Padding for the grid container
+    container
+    spacing={3} // Adjust the spacing between cards
+    sx={{ padding: { xs: 3, md: 5 } }} // Padding for the grid container
     >
-      {cards.map((card, index) => (
+      {cards.map((card, index) => {
+      const { ref: cardRef, inView: cardRefView } = useInView({
+          triggerOnce: true,
+          threshold: isSmallScreen ? 0.001 : 0.1,
+      });  
+      const fadeInVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8} },
+      };
+
+       return (
         <Grid item xs={12} sm={6} md={4} key={index}>
           <Card
             sx={{
-              backgroundColor: isDarkMode ? "white" : "black",
-              color: isDarkMode ? "black" : "white",
-              maxWidth: 345,
+              backgroundColor: !isDarkMode ? "white" : "black",
+              color: !isDarkMode ? "black" : "white",
+              maxWidth: 450,
+              boxShadow: 0,
             }}
+            component={motion.div}
+            ref={cardRef}
+            initial="hidden"
+            animate={cardRefView ?  "visible": "hidden"}
+            variants={fadeInVariants}
           >
             <CardMedia
               component="img"
               alt={card.name}
-              height="140"
+              height="200"
               image={card.image}
             />
             <CardContent>
@@ -62,22 +81,24 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
                 sx={{
                   borderColor: theme.palette.primary.main,
                   color: theme.palette.primary.main,
-                  borderWidth: "2.4px",
+                   border: "none",
+                   borderRadius: 0,
                   "&:hover": {
                     variant: "contained",
                     backgroundColor: theme.palette.primary.light,
                     color: "white",
+                    border: "none"
                   },
                 }}
               >
-                <Typography fontFamily="Open Sans" fontSize="20px">
-                  Read
+                <Typography fontFamily="Roboto" fontSize="18px">
+                  Read More
                 </Typography>
               </Button>
             </CardActions>
           </Card>
         </Grid>
-      ))}
+      )})}
     </Grid>
   );
 };

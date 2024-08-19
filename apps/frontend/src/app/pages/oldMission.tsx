@@ -13,7 +13,7 @@ import { theme } from "../theme";
 import Aflatoon from "/Aflatoon.jpeg";
 import { useInView } from "react-intersection-observer";
 import { Footer } from "../components/Footer";
-import Mission from "../../../public/mission.png";
+import Mission from "../../../public/Mission.png";
 import { Margin, Padding } from "@mui/icons-material";
 
 export const OldMission: React.FC = () => {
@@ -90,29 +90,23 @@ export const OldMission: React.FC = () => {
     },
   ];
 
-  const { ref: imageRef, inView: imageInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const { ref: teamRef, inView: teamInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
+  
+  const { ref: titleRef, inView: titleRefView } = useInView({
+      triggerOnce: true,
+      threshold: isSmallScreen ? 0.001 : 0.1,
+  });
+  const { ref: title2Ref, inView: title2RefView } = useInView({
+      triggerOnce: true,
+      threshold: isSmallScreen ? 0.001 : 0.1,
   });
 
   const fadeInVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+      hidden: { opacity: 0, y: 30 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.8} },
   };
 
-  const styling = {
-    container: {
-      padding: 0,
-      margin: 0,
-    },
-  };
 
   return (
     <div style={{ overflow: "hidden" }}>
@@ -167,8 +161,13 @@ export const OldMission: React.FC = () => {
             justifyContent: "center",
             padding: "10px 20px",
           }}
+          component={motion.div}
+          ref={titleRef}
+          initial="hidden"
+          animate={titleRefView ? "visible" : "hidden"}
+          variants={fadeInVariants}
         >
-          Previous Launches
+          Missions Launched
         </Typography>
         <CardGrid cards={cardsDataForLaunch} isDarkMode={false} />
       </Stack>
@@ -191,6 +190,11 @@ export const OldMission: React.FC = () => {
             justifyContent: "center",
             padding: "10px 20px",
           }}
+          component={motion.div}
+          ref={title2Ref}
+          initial="hidden"
+          animate={title2RefView ? "visible" : "hidden"}
+          variants={fadeInVariants}
         >
           Previous Programs
         </Typography>

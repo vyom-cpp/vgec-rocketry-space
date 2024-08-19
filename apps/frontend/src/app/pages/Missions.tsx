@@ -90,28 +90,20 @@ export const Missions: React.FC = () => {
     },
   ];
 
-  const { ref: imageRef, inView: imageInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const { ref: teamRef, inView: teamInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
+  
+  const { ref: titleRef, inView: titleRefView } = useInView({
+      triggerOnce: true,
+      threshold: isSmallScreen ? 0.001 : 0.1,
+  });
+  const { ref: title2Ref, inView: title2RefView } = useInView({
+      triggerOnce: true,
+      threshold: isSmallScreen ? 0.001 : 0.1,
   });
 
   const fadeInVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  };
-
-  const styling = {
-    container: {
-      padding: 0,
-      margin: 0,
-    },
+      hidden: { opacity: 0, y: 30 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.8} },
   };
 
   return (
@@ -165,8 +157,14 @@ export const Missions: React.FC = () => {
             alignItem: "center",
             textAlign: "center",
             justifyContent: "center",
-            padding: "10px 20px",
+            padding: "25px 20px",
+            paddingBottom: "7px"
           }}
+          component={motion.div}
+          ref={titleRef}
+          initial="hidden"
+          animate={titleRefView ? "visible" : "hidden"}
+          variants={fadeInVariants}
         >
           Upcoming Launches
         </Typography>
@@ -190,10 +188,16 @@ export const Missions: React.FC = () => {
             alignItem: "center",
             textAlign: "center",
             justifyContent: "center",
-            padding: "10px 20px",
+            padding: "25px 20px",
+            paddingBottom: "7px"
           }}
+          component={motion.div}
+          ref={title2Ref}
+          initial="hidden"
+          animate={title2RefView ? "visible" : "hidden"}
+          variants={fadeInVariants}
         >
-          Spacecraft Programs
+          Current Programs
         </Typography>
         <CardGrid cards={cardDataForPrograms} isDarkMode={true} />
         <Footer isSmallScreen={isSmallScreen} />
