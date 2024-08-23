@@ -60,7 +60,13 @@ export const BlogPage: React.FC = () => {
             </Box>
 
             {/* Title */}
-            <Container>
+            <Container
+                // maxWidth={false}
+                sx={{
+                    width: "80%",
+                    
+                }}
+            >
 
                 {/* Blog's title */}
                 <Typography
@@ -76,9 +82,8 @@ export const BlogPage: React.FC = () => {
                         color: "black",
                         marginTop: 15,
                         display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        alignContent: "center"
+                        position: "relative",
+                        top: "25px"
                     }}
                 >
                     Blog's Title
@@ -93,14 +98,14 @@ export const BlogPage: React.FC = () => {
                     animate={textInView ? "visible" : "hidden"}
                     variants={fadeInVariants}
                     sx={{
-                        fontFamily: theme.typography.fontFamily,
+                        fontFamily: "Georgia, serif",
+                        fontStyle: 'italic',
+                        fontWeight: 'bold',
                         fontSize: isSmallScreen ? 25 : 45,
                         color: "black",
                         marginTop: 15,
                         display: "flex",
-                        position: "relative",
-                        top: "25px",
-                        left: "10px"
+                        position: "relative"
                     }}
                 >
                     Aug 15, 2024
@@ -116,13 +121,13 @@ export const BlogPage: React.FC = () => {
                     variants={fadeInVariants}
                     sx={{
                         fontFamily: theme.typography.fontFamily,
-                        fontSize: isSmallScreen ? 25 : 45,
+                        fontSize: isSmallScreen ? 25 : 40,
                         color: "black",
                         marginTop: 5,
                         display: "flex",
-                        position: "relative",
-                        top: "25px",
-                        left: "10px"
+                        alignItems: "center",
+                        justifyContent: "center",
+                        alignContent: "center"
                     }}
                 >
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint porro fugit dolores nemo quasi delectus perferendis dolorum voluptates. Facilis, vitae delectus voluptatum ducimus ipsam odit totam sequi dolorem suscipit voluptas.
@@ -148,11 +153,8 @@ export const BlogPage: React.FC = () => {
                         src={IsroVisit}
                         alt="Team Image"
                         style={{
-                            maxWidth: "100%",
-                            width: "100%",
-                            height: "80%",
-                            padding: 16,
-                            margin: 15,
+                            width: isSmallScreen? "135%" : "107%",
+                            height: "100%",
                             border: "2px solid white"
                         }}
                     />
@@ -168,14 +170,14 @@ export const BlogPage: React.FC = () => {
                     variants={fadeInVariants}
                     sx={{
                         fontFamily: theme.typography.fontFamily,
-                        fontSize: isSmallScreen ? 25 : 45,
+                        fontSize: isSmallScreen ? 25 : 40,
                         color: "black",
                         marginTop: 5,
                         marginBottom: 15,
                         display: "flex",
-                        position: "relative",
-                        top: "25px",
-                        left: "10px"
+                        alignItems: "center",
+                        justifyContent: "center",
+                        alignContent: "center"
                     }}
                 >
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint porro fugit dolores nemo quasi delectus perferendis dolorum voluptates. Facilis, vitae delectus voluptatum ducimus ipsam odit totam sequi dolorem suscipit voluptas.
