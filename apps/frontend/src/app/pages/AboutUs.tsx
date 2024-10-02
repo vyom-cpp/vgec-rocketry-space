@@ -222,7 +222,8 @@ export const AboutUs: React.FC = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            margin: 2,
+            // margin: 1,
+            marginTop: 3
           }}
         >
           <img
@@ -230,10 +231,10 @@ export const AboutUs: React.FC = () => {
             alt="Team Image"
             style={{
               maxWidth: "100%",
-              width: "100%",
+              minWidth: "100%",
               height: "80%",
-              padding: 16,
-              margin: 15,
+              // padding: 16,
+              // margin: 15,
               border: "2px solid white",
             }}
           />
@@ -258,7 +259,7 @@ export const AboutUs: React.FC = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: 15,
+          marginTop: isSmallScreen ? 10 : 14,
           boxSizing: "border-box",
         }}
       >
@@ -329,11 +330,6 @@ export const AboutUs: React.FC = () => {
         <Grid
           rowSpacing={7}
           container
-          component={motion.div}
-          ref={leadershipRef}
-          initial="hidden"
-          animate={leadershipInView ? "visible" : "hidden"}
-          variants={fadeInVariants}
           sx={{
             justifyContent: "space-evenly"
           }}
@@ -369,11 +365,6 @@ export const AboutUs: React.FC = () => {
         <Grid
           container
           rowSpacing={7}
-          component={motion.div}
-          ref={teamRef}
-          initial="hidden"
-          animate={teamInView ? "visible" : "hidden"}
-          variants={fadeInVariants}
           justifyContent="space-evenly"
           sx={{ paddingInline: { xs: 0, md: 20 } }}
         >

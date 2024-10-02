@@ -3,6 +3,8 @@ import React from "react"
 import { theme } from "../theme"
 import { useCustomNavigate } from "../utils/useCustomNavigate"
 import { To } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 interface ProfileThumbnail  {
     image: string,
@@ -14,6 +16,17 @@ interface ProfileThumbnail  {
 export const ProfileThumbnail: React.FC<ProfileThumbnail> = ({image, name, role, linkToProfile}) => {
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
     const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+    const { ref: profileThumbnailRef, inView: profileThumbnailView } = useInView({
+        triggerOnce: true,
+        threshold: isSmallScreen ? 0.001 : 0.1,
+    });  
+
+    const fadeInVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8} },
+    };
+
     const handleNavigate = useCustomNavigate();
     return (
         <Grid 
@@ -21,36 +34,41 @@ export const ProfileThumbnail: React.FC<ProfileThumbnail> = ({image, name, role,
             md={4}
         >
             <Stack
+                component={motion.div}
                 sx={{
                     alignItems: "center",
                     backgroundColor: "white",
                     borderRadius: "5px",
                 }}
+                initial="hidden"
+                ref={profileThumbnailRef}
+                animate={profileThumbnailView ? "visible" : 'hidden'}
+                variants={fadeInVariants} 
             >
               <img
                 src={image}
                 alt={"Image not Available"}
                 style={{
                     maxWidth: isSmallScreen 
-                                ? "70vw" 
+                                ? "85vw" 
                                 : isMediumScreen 
                                     ? "30vw" 
                                     : "15vw",  
 
                     maxHeight: isSmallScreen 
-                                ? "70vw" 
+                                ? "85vw" 
                                 : isMediumScreen 
                                     ? "30vw" 
                                     : "15vw",  
 
                     minWidth: isSmallScreen 
-                                ? "60vw" 
+                                ? "75vw" 
                                 : isMediumScreen 
                                     ? "40vw" 
                                     : "20vw",  
 
                     minHeight: isSmallScreen 
-                                ? "60vw" 
+                                ? "75vw" 
                                 : isMediumScreen 
                                     ? "40vw" 
                                     : "20vw", 
