@@ -6,7 +6,7 @@ export const AboutUsPageContent = {
         { name: "YASH DARJI", role: "Avionics Lead", img: "/YashProfile.jpeg", linkToProfile: "/" },
     ],
     teamMembers: [
-        { name: "NEHA PATEL", role: "Mechanical Design\n Engineer", img: "/NehaProfile.jpg", linkToProfile: "/" },
+        { name: "NEHA PATEL", role: "Mechanical Design\n Engineer", img: "/NehaProfile.jpeg", linkToProfile: "/" },
         { name: "DEV PATEL", role: "Composites \nEngineer", img: "/DevProfile.jpeg", linkToProfile: "/" },
         { name: "DHAIRYA PATEL", role: "Propulsions \nEngineer", img: "/DhairyaProfile.jpeg", linkToProfile: "/" },
         { name: "VEDANG RATHOD", role: "Composites \nEngineer", img: "/VedangProfile.jpeg", linkToProfile: "/" },
@@ -19,6 +19,78 @@ export const AboutUsPageContent = {
         { name: "SHRUTI BANUSHALI", role: "Electronics Design \n& Manufacturing", img: "/ShrutiProfile.jpeg", linkToProfile: "/" },
         { name: "MAHIMA SHRIMALI", role: "Electronics Design \n& Manufacturing", img: "/MahimaProfile.jpeg", linkToProfile: "/" },
         { name: "DHYEY THAKKAR", role: "Publicity \nManager", img: "/DhyeyProfile.jpeg", linkToProfile: "/" },
-    ]
+    ],
     
+    gallery: [
+        {
+          img: '/BigMotorOnStand.jpeg',
+          rows: 3,
+          cols: 2,
+          sm_cols: 1,
+          sm_rows: 2,
+        },
+        {
+          img: '/AflatoonLaunch.jpeg',
+          cols: 3,
+          sm_cols: 2,
+        },
+        {
+          img: '/FuelFlame.jpeg',
+          sm_cols: 1,
+        },
+        {
+          img: '/DhairyaGrinder.jpeg',
+          rows: 2,
+          sm_cols: 1,
+          sm_rows: 1,
+        },
+        {
+          img: '/AflatoonInAir.jpeg',
+          rows: 2,
+          sm_cols: 1,
+          sm_rows: 2,
+        },
+        {
+          img: '/SmokeCharge1.jpeg',
+          rows: 1,
+          cols: 2,
+          sm_cols: 2,
+          sm_rows: 1,
+        },
+        {
+          img: '/VenessaAvionicsBay.jpeg',
+          sm_cols: 1,
+        },
+        {
+          img: '/FuelPrep.jpeg',
+          sm_cols: 1,
+        },
+        {
+          img: '/SmokeCharge2.jpeg',
+          rows: 2,
+          cols: 3,
+          sm_cols: 3,
+          sm_rows: 1,
+        },
+        {
+          img: '/Venessa.jpeg',
+          cols: 3,
+          sm_cols: 3,
+        },
+        {
+          img: '/ElectronicsMesh.jpeg',
+          cols: 2,
+          sm_cols: 2,
+        },
+        {
+          img: '/Oven.jpeg',
+          sm_cols: 1,
+        },
+        {
+          img: '/Fun.jpeg',
+          cols: 2,
+          sm_cols: 3,
+        },
+      ]
+      
 }

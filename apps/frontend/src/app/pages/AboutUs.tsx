@@ -6,6 +6,8 @@ import {
   useMediaQuery,
   Button,
   Box,
+  ImageList,
+  ImageListItem,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Navbar } from "../components/Navbar";
@@ -20,7 +22,7 @@ import Aflatoon from "/Aflatoon.jpeg";
 import { useInView } from "react-intersection-observer";
 import { Footer } from "../components/Footer";
 import { theme } from "../theme";
-import Galleries from "../pages/gallery";
+import  { Gallery } from "../components/Gallery";
 import { AboutUsPageContent } from "../utils/content";
 import OurStory  from "/OurStory.jpeg";
 import { ProfileThumbnail } from "../components/ProfileThumbnail";
@@ -383,21 +385,21 @@ export const AboutUs: React.FC = () => {
         </Stack>
       </Stack>
       {/* Gallery section */}
+
       <Grid
         component={motion.div}
         ref={galleryRef}
         initial="hidden"
         animate={galleryInView ? "visible" : "hidden"}
         variants={fadeInVariants}
-        // style={{
-        //   margin: "-4px"
-        // }}
+        sx={{
+          backgroundColor: "#141414",
+        }}
       >
         <Stack
           sx={{
             width: "100%",
             height: "300px",
-            backgroundColor: "black",
             alignItem: "center",
             justifyContent: "center",
           }}
@@ -407,18 +409,25 @@ export const AboutUs: React.FC = () => {
             sx={{
               display: "flex",
               color: "white",
-              fontFamily: theme.typography.fontFamily,
-              fontSize: isSmallScreen ? 45 : 80,
+              // fontFamily: theme.typography.fontFamily,
+              fontFamily: "Nova Square",
+              fontSize: isSmallScreen ? 58 : 90,
               alignItem: "center",
               textAlign: "center",
               justifyContent: "center",
-              padding: "10px 20px",
             }}
           >
-            We prioritize hardware over people
+            HALL OF FAME
           </Typography>
         </Stack>
-        <Galleries />
+        <Box
+          width="100%"
+          sx={{
+            overflow: "hidden"
+          }}
+        >
+          <Gallery/>
+        </Box> 
       </Grid>
 
       <Footer isSmallScreen={isSmallScreen} />
