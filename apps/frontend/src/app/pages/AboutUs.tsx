@@ -182,6 +182,9 @@ export const AboutUs: React.FC = () => {
               animate={visionInView ? "visible" : "hidden"}
               variants={fadeInVariants}
               fontFamily={theme.typography.fontFamily}
+              sx={{
+                fontSize: isSmallScreen ? 18 : 22
+              }}
             >
               {AboutUsPageContent.ourVisionStatement}
             </Typography>
@@ -200,13 +203,15 @@ export const AboutUs: React.FC = () => {
               Our Mission
             </Typography>
             <Typography
-              variant="h5"
               component={motion.div}
               whiteSpace='pre-wrap'
               initial="hidden"
               animate={missionInView ? "visible" : "hidden"}
               variants={fadeInVariants}
               fontFamily={theme.typography.fontFamily}
+              sx={{
+                fontSize: isSmallScreen ? 18 : 22
+              }}
             >
               {AboutUsPageContent.outMissionStatement}
             </Typography>
@@ -233,8 +238,6 @@ export const AboutUs: React.FC = () => {
               maxWidth: "100%",
               minWidth: "100%",
               height: "80%",
-              // padding: 16,
-              // margin: 15,
               border: "2px solid white",
             }}
           />

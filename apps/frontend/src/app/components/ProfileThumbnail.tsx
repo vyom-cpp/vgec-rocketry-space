@@ -113,7 +113,8 @@ export const ProfileThumbnail: React.FC<ProfileThumbnail> = ({image, name, role,
                 borderColor: "black",
                 color: theme.palette.primary.dark,
                 fontSize: isSmallScreen ? '15px' : '17px', 
-                height: isSmallScreen ? '35px': '35px',
+                // boxSizing: isSmallScreen ? '35px': '10px',
+                padding: isSmallScreen ? "4px 12px" :"1px 9px", 
                 "&:hover": {
                     variant: 'contained', 
                     backgroundColor: 'black',
@@ -125,7 +126,7 @@ export const ProfileThumbnail: React.FC<ProfileThumbnail> = ({image, name, role,
                 fontFamily: theme.typography.fontFamily,
               }}
             >
-              Read Bio
+              Connect
             </Button>
             </Stack>
           </Grid>

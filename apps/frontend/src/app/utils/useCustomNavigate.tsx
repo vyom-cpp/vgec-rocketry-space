@@ -6,9 +6,8 @@ export const useCustomNavigate = () => {
     
     const handleClick = (to: To) => {
         if(to.toString().includes('http')){
-            window.location.href = to.toString();
+            window.open(to.toString(),  "_blank")
         } else {
-
             navigate(to);   
         }
     }
