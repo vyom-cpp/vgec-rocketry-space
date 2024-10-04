@@ -182,6 +182,9 @@ export const AboutUs: React.FC = () => {
               animate={visionInView ? "visible" : "hidden"}
               variants={fadeInVariants}
               fontFamily={theme.typography.fontFamily}
+              sx={{
+                fontSize: isSmallScreen ? 18 : 22
+              }}
             >
               {AboutUsPageContent.ourVisionStatement}
             </Typography>
@@ -200,13 +203,15 @@ export const AboutUs: React.FC = () => {
               Our Mission
             </Typography>
             <Typography
-              variant="h5"
               component={motion.div}
               whiteSpace='pre-wrap'
               initial="hidden"
               animate={missionInView ? "visible" : "hidden"}
               variants={fadeInVariants}
               fontFamily={theme.typography.fontFamily}
+              sx={{
+                fontSize: isSmallScreen ? 18 : 22
+              }}
             >
               {AboutUsPageContent.outMissionStatement}
             </Typography>
@@ -233,8 +238,6 @@ export const AboutUs: React.FC = () => {
               maxWidth: "100%",
               minWidth: "100%",
               height: "80%",
-              // padding: 16,
-              // margin: 15,
               border: "2px solid white",
             }}
           />
@@ -355,7 +358,6 @@ export const AboutUs: React.FC = () => {
             textAlign: "center",
             fontSize: { xs: 37, md: 63 },
             fontFamily: 'Nova Square',
-            // marginBottom: { xs: 10, md: -20 },
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -369,6 +371,40 @@ export const AboutUs: React.FC = () => {
           sx={{ paddingInline: { xs: 0, md: 20 } }}
         >
           {AboutUsPageContent.teamMembers.map((member) => (
+            <ProfileThumbnail name={member.name} role={member.role} image={member.img} linkToProfile={member.linkToProfile} />
+          ))}
+
+        </Grid>
+        </Stack>
+        <Stack
+          spacing={3}
+        >
+        <Typography
+          variant="h2"
+          gutterBottom
+          component={motion.div}
+          ref={teamRef}
+          initial="hidden"
+          animate={teamInView ? "visible" : "hidden"}
+          variants={fadeInVariants}
+          sx={{
+            textAlign: "center",
+            fontSize: { xs: 37, md: 63 },
+            fontFamily: 'Nova Square',
+            // marginBottom: { xs: 10, md: -20 },
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          RECRUITS - 2024
+        </Typography>
+        <Grid
+          container
+          rowSpacing={7}
+          justifyContent="space-evenly"
+          sx={{ paddingInline: { xs: 0, md: 20 } }}
+        >
+          {AboutUsPageContent.recruits2024.map((member) => (
             <ProfileThumbnail name={member.name} role={member.role} image={member.img} linkToProfile={member.linkToProfile} />
           ))}
 

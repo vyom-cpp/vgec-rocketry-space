@@ -15,16 +15,6 @@ export const SupportUs: React.FC = () => {
 
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-    // const { ref: storyRef, inView: storyInView } = useInView({
-    //     triggerOnce: true,
-    //     threshold: 0.1
-    // });
-
-    // const fadeInVariants = {
-    //     hidden: { opacity: 0, y: 20 },
-    //     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
-    // };
-
     return (
         <div style={{ overflow: "hidden" }}>
 
