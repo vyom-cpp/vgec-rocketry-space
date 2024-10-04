@@ -83,6 +83,11 @@ export const AboutUs: React.FC = () => {
     threshold: 0.1,
   });
 
+  const { ref:  recruitsRef, inView: recruitsInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const { ref: galleryRef, inView: galleryInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -383,7 +388,7 @@ export const AboutUs: React.FC = () => {
           variant="h2"
           gutterBottom
           component={motion.div}
-          ref={teamRef}
+          ref={recruitsRef}
           initial="hidden"
           animate={teamInView ? "visible" : "hidden"}
           variants={fadeInVariants}
