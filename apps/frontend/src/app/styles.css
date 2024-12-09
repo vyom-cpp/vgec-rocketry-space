@@ -40,3 +40,25 @@
 }
 
 ::-webkit-scrollbar {display:none;}
+
+/* Carousel CSS for Blog Page */
+.css-ougw96-MuiPaper-root  {
+  height: 35px !important;
+  width: 35px !important;
+  color: rgb(0, 0, 0, 1) !important;
+  font-size: large !important;
+  top: 34% !important;
+  right: -45px !important;
+}
+
+.css-1yp9lnv-MuiPaper-root {
+  height: 35px !important;
+  width: 35px !important;
+  color: rgb(0, 0, 0, 1) !important;
+  top: 34% !important;
+  left: -45px !important;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+  font-size: 28px !important;
+}

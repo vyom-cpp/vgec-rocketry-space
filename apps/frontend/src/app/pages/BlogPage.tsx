@@ -38,6 +38,17 @@ export const BlogPage: React.FC = () => {
 
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+    const BlogContent = [
+        {
+            isImage: true,
+            url: 'abc'
+        },
+        {
+            isImage: false,
+            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam ad deleniti perspiciatis aut voluptatibus ut repellat nobis corrupti laudantium facere, voluptas aliquam consectetur odit odio cumque doloribus incidunt ipsam quas!'
+        }
+    ]
+
     return (
         <div style={{ overflow: "hidden" }}>
             <Box sx={{ position: 'relative', height: '100vh', width: '100%' }}>
@@ -64,7 +75,7 @@ export const BlogPage: React.FC = () => {
                 // maxWidth={false}
                 sx={{
                     width: "80%",
-                    
+
                 }}
             >
 
@@ -78,9 +89,9 @@ export const BlogPage: React.FC = () => {
                     variants={fadeInVariants}
                     sx={{
                         fontFamily: theme.typography.fontFamily,
-                        fontSize: isSmallScreen ? 70 : 95,
+                        fontSize: isSmallScreen ? 60 : 95,
                         color: "black",
-                        marginTop: 15,
+                        marginTop: 65,
                         display: "flex",
                         position: "relative",
                         top: "25px"
@@ -101,9 +112,9 @@ export const BlogPage: React.FC = () => {
                         fontFamily: "Georgia, serif",
                         fontStyle: 'italic',
                         fontWeight: 'bold',
-                        fontSize: isSmallScreen ? 25 : 45,
+                        fontSize: isSmallScreen ? 30 : 45,
                         color: "black",
-                        marginTop: 15,
+                        marginTop: 45,
                         display: "flex",
                         position: "relative"
                     }}
@@ -112,7 +123,7 @@ export const BlogPage: React.FC = () => {
                 </Typography>
 
                 {/* Blog's Content */}
-                <Typography
+                {/* <Typography
                     gutterBottom
                     component={motion.div}
                     ref={textRef}
@@ -121,9 +132,9 @@ export const BlogPage: React.FC = () => {
                     variants={fadeInVariants}
                     sx={{
                         fontFamily: theme.typography.fontFamily,
-                        fontSize: isSmallScreen ? 25 : 40,
+                        fontSize: isSmallScreen ? 20 : 40,
                         color: "black",
-                        marginTop: 5,
+                        marginTop: 15,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -133,10 +144,10 @@ export const BlogPage: React.FC = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint porro fugit dolores nemo quasi delectus perferendis dolorum voluptates. Facilis, vitae delectus voluptatum ducimus ipsam odit totam sequi dolorem suscipit voluptas.
 
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, sed ipsum magni, sit itaque, nulla et porro quia facilis officiis debitis cumque. Obcaecati quam illo quae quia, soluta amet ex.
-                </Typography>
+                </Typography> */}
 
                 {/* Blog's Image */}
-                <Box
+                {/* <Box
                     component={motion.div}
                     ref={imageRef}
                     initial="hidden"
@@ -158,10 +169,10 @@ export const BlogPage: React.FC = () => {
                             border: "2px solid white"
                         }}
                     />
-                </Box>
+                </Box> */}
 
                 {/* Blog's Content */}
-                <Typography
+                {/* <Typography
                     gutterBottom
                     component={motion.div}
                     ref={textRef}
@@ -183,7 +194,57 @@ export const BlogPage: React.FC = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint porro fugit dolores nemo quasi delectus perferendis dolorum voluptates. Facilis, vitae delectus voluptatum ducimus ipsam odit totam sequi dolorem suscipit voluptas.
 
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, sed ipsum magni, sit itaque, nulla et porro quia facilis officiis debitis cumque. Obcaecati quam illo quae quia, soluta amet ex.
-                </Typography>
+                </Typography> */}
+
+
+                {/* New Conditional Blog Content */}
+                {BlogContent.map((blogItem) => {
+                    return blogItem.isImage
+                        ? (<Box
+                            component={motion.div}
+                            ref={imageRef}
+                            initial="hidden"
+                            animate={imageInView ? "visible" : "hidden"}
+                            variants={fadeInVariants}
+                            sx={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                margin: 5
+                            }}
+                            >
+                            <img
+                                src={IsroVisit}
+                                alt="Team Image"
+                                style={{
+                                    width: isSmallScreen ? "135%" : "107%",
+                                    height: "100%",
+                                    border: "2px solid white"
+                                }}
+                            />
+                            </Box>)
+                        : (<Typography
+                            gutterBottom
+                            component={motion.div}
+                            ref={textRef}
+                            initial="hidden"
+                            animate={textInView ? "visible" : "hidden"}
+                            variants={fadeInVariants}
+                            sx={{
+                                fontFamily: theme.typography.fontFamily,
+                                fontSize: isSmallScreen ? 25 : 40,
+                                color: "black",
+                                marginTop: 5,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                alignContent: "center"
+                            }}
+                            >
+
+                            {blogItem.content}
+                            </Typography>)
+                })}
             </Container>
 
             {/* Footer */}
