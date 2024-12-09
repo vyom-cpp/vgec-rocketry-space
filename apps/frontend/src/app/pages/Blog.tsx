@@ -10,6 +10,7 @@ import {
 } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import Carousel from "react-carousel-mui";
+import "../styles.css";
 import { useInView } from "react-intersection-observer";
 import DhairyaWorkingVideo from "/DhairyaWorking2.mp4";
 import Rocket from "/rocket-demo.jpeg";
@@ -174,6 +175,7 @@ export const Blog: React.FC = () => {
                 </Typography>
                 <Carousel
                     items={blogPosts}
+                    className="carousel"
                     defaultItemWidthMobile={300}
                     itemsPerPage={{
                         xs: 1,
