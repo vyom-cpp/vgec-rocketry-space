@@ -232,9 +232,9 @@ export const BlogPage: React.FC = () => {
                             variants={fadeInVariants}
                             sx={{
                                 fontFamily: theme.typography.fontFamily,
-                                fontSize: isSmallScreen ? 25 : 40,
+                                fontSize: isSmallScreen ? 20 : 40,
                                 color: "black",
-                                marginTop: 5,
+                                marginTop: 15,
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
