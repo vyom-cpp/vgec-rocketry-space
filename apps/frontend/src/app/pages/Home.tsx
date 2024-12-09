@@ -10,8 +10,12 @@ import { useInView } from "react-intersection-observer"
 import AnantaArrow from "/AnantaArrow.mp4"
 import AnantaArrow2 from "/AnataArrow2.mp4"
 import IsroVisit from '/IsroMeet.jpeg'
-import SpaceAndApplicationsCenter from '/SpaceAndApplicationsCenter.jpeg'
+import IsroVisitPhone from '/IsroVisitPhone.jpeg'
+import Workshop from '/Workshop.jpeg'
+import WorkshopPhone from '/WorkshopPhone.jpeg'
 import Aflatoon from '/Aflatoon.jpeg'
+import AflatoonLaunch from '/AflatoonLaunch.jpeg'
+import AflatoonLaunchPhone from '/AflatoonLaunchPhone.jpeg'
 import { HomePageUpdates } from "../components/HomePageUpdates"
 import { ContactUs } from "../components/ContactUs"
 import { Footer } from "../components/Footer"
@@ -85,7 +89,6 @@ export const HomePage: React.FC = () => {
                         objectFit: 'cover',
                         zIndex: -1,
                     }}
-                        // src={isSmallScreen ? smallScreenBackgroundVideo : DhairyaWorkingVideo}
                         src={DhairyaWorkingVideo}
                 />
                 <Navbar/> 
@@ -119,24 +122,13 @@ export const HomePage: React.FC = () => {
                                 variants={fadeInVariants}
                             >
                                 <Box
-                                    marginTop={isSmallScreen ? 4 : 23}
+                                    marginTop={isSmallScreen ? 3 : 15}
                                     marginLeft={isSmallScreen ? 4.5 : 12}
                                     marginRight={isSmallScreen ? 5 : 12}
                                 >
-                                    <Typography 
-                                        color={theme.palette.primary.dark}
-                                        fontWeight={650}
-                                        sx={{
-                                            marginBottom: 3,
-                                            fontFamily: theme.typography.fontFamily,
-                                            fontSize: isSmallScreen ? '20px' : '20px',
-                                        }}
-                                    >
-                                        OUR VISION: 
-                                    </Typography>
                                     <Typography
                                         color={theme.palette.primary.dark}
-                                        marginBottom={4}
+                                        marginBottom={3.5}
                                         sx={{
                                             fontFamily: theme.typography.fontFamily,
                                             fontSize: isSmallScreen ? '45px' : '60px',
@@ -145,33 +137,92 @@ export const HomePage: React.FC = () => {
                                     >
                                         Learn. Build. Fly
                                     </Typography>
-                                    <Typography
-                                        color={theme.palette.primary.dark}
-                                        sx={{
-                                            marginBottom: 4,
-                                            fontFamily: theme.typography.fontFamily,
-                                            fontSize: isSmallScreen ? '16px' : '18px'
-                                        }}
-                                    >
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eros tellus, posuere quis felis vitae, consequat dictum nisi. Sed gravida rutrum lacus a molestie. Nunc finibus libero leo, vel tincidunt nulla imperdiet et. Praesent sed erat ipsum. Morbi elit purus, imperdiet vitae magna eget, semper egestas magna. Sed a vestibulum enim. Nullam imperdiet diam metus, ac blandit arcu rhoncus at.                            </Typography>
+                                            <Typography
+                                                color={theme.palette.primary.dark}
+                                                textAlign="justify"
+                                                sx={{
+                                                    // marginBottom: -0.7,
+                                                    fontFamily: theme.typography.fontFamily,
+                                                    fontSize: isSmallScreen ? '26px' : '35px',
+                                                }}
+                                            >
+                                                Why 
+                                            </Typography>
+                                            <Typography
+                                                color={theme.palette.primary.dark}
+                                                textAlign="justify"
+                                                sx={{
+                                                    marginBottom: 2,
+                                                    fontFamily: theme.typography.fontFamily,
+                                                    fontSize: isSmallScreen ? '16px' : '18px',
+                                                }}
+                                            >
+                                             We believe a thriving global aerospace industry starts with inspiring students to imagine bold possibilities and work tirelessly to turn them into reality.
+                                            </Typography>
+                                            <Typography
+                                                color={theme.palette.primary.dark}
+                                                textAlign="justify"
+                                                sx={{
+                                                    // marginBottom: 1,
+                                                    fontFamily: theme.typography.fontFamily,
+                                                    fontSize: isSmallScreen ? '26px' : '35px',
+                                                }}
+                                            >
+                                                How 
+                                            </Typography>
+                                            <Typography
+                                                color={theme.palette.primary.dark}
+                                                textAlign="justify"
+                                                sx={{
+                                                    marginBottom: 2,
+                                                    fontFamily: theme.typography.fontFamily,
+                                                    fontSize: isSmallScreen ? '16px' : '18px',
+                                                }}
+                                            >
+                                                We inspire the next generation of aerospace engineers by giving them hands-on experience in rocketry and empowering them to bring their ideas to life.                                            </Typography>
+                                            <Typography
+                                                color={theme.palette.primary.dark}
+                                                textAlign="justify"
+                                                sx={{
+                                                    // marginBottom: 1,
+                                                    fontFamily: theme.typography.fontFamily,
+                                                    fontSize: isSmallScreen ? '26px' : '35px',
+                                                }}
+                                            >
+                                                What 
+                                            </Typography>
+                                            <Typography
+                                                color={theme.palette.primary.dark}
+                                                textAlign="justify"
+                                                sx={{
+                                                    marginBottom: 2,
+                                                    fontFamily: theme.typography.fontFamily,
+                                                    fontSize: isSmallScreen ? '16px' : '18px',
+                                                }}
+                                            >
+                                                We build rockets! Learn more about us here.                                            
+                                            </Typography>
                                         <Box
                                             display="flex"
-                                            justifyContent="center"
+                                            justifyContent="right"
                                             marginLeft={isSmallScreen ? 23 : 0}
-                                            marginTop={3}
-                                        >
+                                            // marginRight={isSmallScreen ? 0 : 2}
+                                            marginTop={4}
+                                            >
                                             <Button
                                                 variant="outlined"
                                                 onClick={()=>handleNavigate('/about')}
                                                 sx={{
                                                     borderColor: 'black',
                                                     color: theme.palette.primary.dark,
-                                                    fontSize: isSmallScreen ? '14px' : '18px', // Custom font size
+                                                    fontSize: isSmallScreen ? '12px' : '17px', 
+                                                    height: isSmallScreen ? '30px': '35px',
                                                     '&:hover': {
                                                         variant: 'contained', 
                                                         backgroundColor: 'black',
                                                         color: 'white', 
                                                     },
+
                                                 }}
                                             >
                                                 Learn More
@@ -248,10 +299,9 @@ export const HomePage: React.FC = () => {
                                     spacing={0}
                                     marginTop={isSmallScreen ? 4 : 5}
                                 >    
-                                    <HomePageUpdates isSmallScreen={isSmallScreen} smallScreenBG={SpaceAndApplicationsCenter} largeScreenBG={IsroVisit} navigateTo={'/blog'} description={"Our Team's Visit to SAC, ISRO, Ahmedabad"}/>
-                                    <HomePageUpdates isSmallScreen={isSmallScreen} smallScreenBG={''} largeScreenBG={''} navigateTo={'/placeToVisit'} description={"This is a Placeholder Updates Soon"}/>
-                                    <HomePageUpdates isSmallScreen={isSmallScreen} smallScreenBG={''} largeScreenBG={''} navigateTo={'/placeToVisit'} description={"This is a Placeholder Updates Soon"}/>
-                                    <HomePageUpdates isSmallScreen={isSmallScreen} smallScreenBG={''} largeScreenBG={''} navigateTo={'/placeToVisit'} description={"This is a Placeholder Updates Soon"}/>
+                                    <HomePageUpdates isSmallScreen={isSmallScreen} smallScreenBG={IsroVisitPhone} largeScreenBG={IsroVisit} navigateTo={'/blog'} description={"Our Team's Visit to SAC, ISRO, Ahmedabad"}/>
+                                    <HomePageUpdates isSmallScreen={isSmallScreen} smallScreenBG={WorkshopPhone} largeScreenBG={Workshop} navigateTo={'/blog'} description={"Rocketry Workshop Conducted by VRT"}/>
+                                    <HomePageUpdates isSmallScreen={isSmallScreen} smallScreenBG={AflatoonLaunchPhone} largeScreenBG={AflatoonLaunch} navigateTo={'/blog'} description={"Aflatoon's latest Launch"}/>
                                 </Grid>
                             </Grid>
                             <Grid

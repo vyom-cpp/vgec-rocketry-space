@@ -41,7 +41,7 @@ export const HomePageUpdates: React.FC<HomePageUpdates> = ({isSmallScreen, small
             marginBottom={isSmallScreen ? 2 : 3}
 
             sx={{
-                backgroundImage: isSmallScreen ? `url('${smallScreenBG})` : `url('${largeScreenBG}')`,
+                backgroundImage: isSmallScreen ? `url('${smallScreenBG}')` : `url('${largeScreenBG}')`,
                 backgroundSize: 'cover',
             }}
 
