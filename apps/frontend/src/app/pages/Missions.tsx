@@ -13,7 +13,9 @@ import { theme } from "../theme";
 import Aflatoon from "/Aflatoon.jpeg";
 import { useInView } from "react-intersection-observer";
 import { Footer } from "../components/Footer";
-import Mission from "/MissionsCover.jpeg";
+import EventClass from "/EventClass.jpg";
+import Soldering from "/Soldering.mp4";
+import FuelFlame from "/FuelFlame.jpeg";
 import '@fontsource/nova-square'
 
 export const Missions: React.FC = () => {
@@ -81,9 +83,8 @@ export const Missions: React.FC = () => {
       link: "/",
     },
     {
-      name: "Program 3",
-      content:
-        "White Dwarfs are the remnants of low-mass stars that have shed their outer layers. They are very dense and slowly cool over time, eventually fading into black dwarfs.",
+      name: "First Launch",
+      content: "Ananta our first ever rocket was launched on 27th May, 2023",
       image:
         "https://img.jagranjosh.com/images/2022/November/1112022/what-are-stars-how-are-they-born-and-how-do-they-die-compressed-(1).webp",
       link: "/",
@@ -109,52 +110,72 @@ export const Missions: React.FC = () => {
   return (
     <div style={{ overflow: "hidden" }}>
       <Container
+        disableGutters
         maxWidth={false}
         sx={{
           backgroundImage: {
             xs: `url('${Aflatoon}')`,
-            md: `url('${Mission}')`,         
+            md: `none`,         
           },
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "100vh",
+          height: "101vh",
           width: "100%",
           padding: 0,
           marging: 0,
           backgroundPosition: {
-            md: "center -25rem"
-          }
+            md: "center -45rem"
+          },
+          zIndex: -2
         }}
       >
-        <div
+      {!isSmallScreen && <video
+          autoPlay={!isSmallScreen}
+          loop
+          muted
+          playsInline={isSmallScreen}
           style={{
             position: "absolute",
+            display: isSmallScreen ? "none" : "block",
             top: 0,
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.65)", 
-            filter: "blur(2px)", 
-            zIndex: 0,
+            objectFit: "cover",
+            zIndex: -1,
           }}
-        ></div>
-        <Typography
+          src={Soldering}
+        />
+      }
+        <Box
           style={{
-            position: "absolute",
-            top: "50%",       
-            left: "50%",      
-            transform: "translate(-50%, -50%)", 
-            color: "white",   
-            fontSize: isSmallScreen ? "3.5rem" : "8rem", 
-            // fontWeight: "bold",
-            fontFamily: 'Nova Square',
-            textAlign: "center",
-            zIndex: 1,     
+            // position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: isSmallScreen ? "rgba(0, 0, 0, 0.65)" : "rgba(0, 0, 0, 0.7)", 
+            zIndex: -1,
           }}
           >
-          Upcomming Missions    
-        </Typography>
-        <Navbar />
+          <Navbar />
+            <Typography
+              style={{
+                position: "absolute",
+                top: "50%",       
+                left: "50%",      
+                transform: "translate(-50%, -50%)", 
+                color: "white",   
+                fontSize: isSmallScreen ? "3.5rem" : "7rem", 
+                // fontWeight: "bold",
+                fontFamily: 'Nova Square',
+                textAlign: "center",
+                zIndex: 0
+              }}
+              >
+              Our Projects    
+            </Typography>
+        </Box>
       </Container>
       <Stack
         // spacing={3}
@@ -183,7 +204,7 @@ export const Missions: React.FC = () => {
           animate={titleRefView ? "visible" : "hidden"}
           variants={fadeInVariants}
         >
-          Upcoming Launches
+          Future Plans
         </Typography>
         <CardGrid cards={cardsDataForLaunch} isDarkMode={false} />
       </Stack>
@@ -214,7 +235,7 @@ export const Missions: React.FC = () => {
           animate={title2RefView ? "visible" : "hidden"}
           variants={fadeInVariants}
         >
-          Current Programs
+          Previous Programs
         </Typography>
         <CardGrid cards={cardDataForPrograms} isDarkMode={true} />
       </Stack>

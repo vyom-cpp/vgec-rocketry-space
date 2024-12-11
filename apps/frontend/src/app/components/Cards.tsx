@@ -89,22 +89,23 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
                 variant="outlined"
                 href={card.link}
                 target="_blank"
+                
                 sx={{
-                  borderColor: theme.palette.primary.main,
-                  color: theme.palette.primary.main,
+                  fontFamily: theme.typography.fontFamily,
+                  fontSize: 18,
+                  // borderColor: theme.palette.primary.main,
+                   color: "white",
                    border: "none",
                    borderRadius: 0,
                   "&:hover": {
                     variant: "contained",
-                    backgroundColor: theme.palette.primary.light,
-                    color: "white",
+                    backgroundColor: "white",
+                    color: "black",
                     border: "none"
                   },
                 }}
               >
-                <Typography fontFamily="Roboto" fontSize="18px">
                   Read More
-                </Typography>
               </Button>
             </CardActions>
           </Card>
