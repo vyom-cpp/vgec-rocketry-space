@@ -84,14 +84,6 @@ const NavbarXl = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   return (
     <>
       <Grid
@@ -112,72 +104,6 @@ const NavbarXl = () => {
       >
         {pages.map((page, key) => (
           <Grid item justifyContent="flex-start" borderColor="black" key={key}>
-            {page.name === "MISSIONS" ? (
-              <>
-                <Button onClick={handleClick}>
-                  <Link
-                    fontSize={23}
-                    fontFamily={theme.typography.fontFamily}
-                    fontWeight={500}
-                    underline="hover"
-                    sx={{
-                      color: "white",
-                      textDecoration: handleUnderline(page.name),
-                      textDecorationThickness: "2px",
-                      textDecorationStyle: "solid",
-                      textUnderlineOffset: "5px",
-                    }}
-                  >
-                    {page.name}
-                  </Link>
-                </Button>
-                <Menu
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  sx={{
-                    mt: 1.5,
-                    "& .MuiPaper-root": {
-                      backgroundColor: "black",
-                      color: "white",
-                      borderRadius: 0,
-                    },
-                    "& .MuiMenuItem-root": {
-                      padding: "10px 20px",
-                      "&:hover": {
-                        backgroundColor: "white",
-                        color: "black",
-                      },
-                    },
-                  }}
-                >
-                  <MenuItem
-                    onClick={() => {
-                      handleNavigate("/missions");
-                      handleClose();
-                    }}
-                    sx={{
-                      fontSize: "16px",
-                      fontWeight: 500,
-                    }}
-                  >
-                    Current Missions
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      handleNavigate("/oldmission");
-                      handleClose();
-                    }}
-                    sx={{
-                      fontSize: "16px",
-                      fontWeight: 500,
-                    }}
-                  >
-                    Old Mission
-                  </MenuItem>
-                </Menu>
-              </>
-            ) : (
               <Button onClick={() => handleNavigate(page.route)}>
                 <Link
                   fontSize={23}
@@ -195,9 +121,10 @@ const NavbarXl = () => {
                   {page.name}
                 </Link>
               </Button>
-            )}
           </Grid>
-        ))}
+        )
+        
+        )}
       </Grid>
       <Box
         height={120}
@@ -229,7 +156,6 @@ const NavbarXl = () => {
 
 const NavbarSm: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [missionsOpen, setMissionsOpen] = useState(false);
   const handleNavigate = useCustomNavigate();
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -243,14 +169,6 @@ const NavbarSm: React.FC = () => {
     setDrawerOpen(open);
   };
 
-  const handleMissionsClick = () => {
-    setMissionsOpen(true);
-  };
-
-  const handleBackToNav = () => {
-    setMissionsOpen(false);
-    setDrawerOpen(false);
-  };
 
   return (
     <>
@@ -302,7 +220,7 @@ const NavbarSm: React.FC = () => {
       </Grid>
       <Drawer
         anchor="top"
-        open={drawerOpen && !missionsOpen}
+        open={drawerOpen}
         onClose={toggleDrawer(false)}
         sx={{
           "& .MuiDrawer-paper": {
@@ -347,26 +265,10 @@ const NavbarSm: React.FC = () => {
             >
               {pages.map((page, key) => (
                 <Grid item key={key}>
-                  {page.name === "MISSIONS" ? (
-                    <Typography
-                      variant="h4"
-                      onClick={handleMissionsClick}
-                      sx={{
-                        textDecoration: handleUnderline(page.name),
-                        textDecorationThickness: "2px",
-                        textDecorationStyle: "solid",
-                        textUnderlineOffset: "5px",
-                        paddingLeft: 4
-                      }}
-                    >
-
-                      {page.name}
-                     <ArrowForwardIosIcon sx={{fontSize: 26, verticalAlign: "-2.7px"}}/>
-                    </Typography>
-                  ) : (
                     <a onClick={() => handleNavigate(page.route)}>
                       <Typography
                         variant="h4"
+                        fontFamily={theme.typography.fontFamily}
                         sx={{
                           textDecoration: handleUnderline(page.name),
                           textDecorationThickness: "2px",
@@ -377,7 +279,6 @@ const NavbarSm: React.FC = () => {
                         {page.name}
                       </Typography>
                     </a>
-                  )}
                 </Grid>
               ))}
             </Grid>
@@ -389,99 +290,8 @@ const NavbarSm: React.FC = () => {
               marginTop={20}
               style={{ position: "relative" }}
             >
-              <SocialLinks color="Black" fontSize="none" />
+              <SocialLinks color="white" fontSize="none" />
             </Box>
-          </Stack>
-        </Container>
-      </Drawer>
-      <Drawer
-        anchor="right"
-        open={missionsOpen}
-        onClose={handleBackToNav}
-        sx={{
-          "& .MuiDrawer-paper": {
-            overflow: "hidden",
-            width: '100%',
-          },
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            width: "100%",
-            marginTop: 2.8,
-            marginLeft: -2.8,
-          }}
-        >
-          <IconButton onClick={handleBackToNav}>
-            <CloseIcon
-              sx={{ fontSize: "38px", color: theme.palette.primary.dark }}
-            />
-          </IconButton>
-        </Box>
-        <Container
-          sx={{
-            width: "100%",
-            height: "100vh",
-            marginBottom: "30px",
-            display: "flex",
-            direction: "column",
-            justifyContent: "center",
-            textAlign: "center",
-            alignItems: "center",
-            transition: 'transform 0.7s ease-in-out',
-            transform: missionsOpen ? 'translateX(0)' : 'translateX(-100%)',
-          }}
-        >
-          <Stack>
-            <Typography
-              variant="overline"
-              onClick={() => {
-                handleNavigate("/missions");
-                setMissionsOpen(false);
-              }}
-              sx={{
-                textDecoration: 'none',
-                fontSize: 27,
-                // marginBottom: 2,
-                color: "grey"
-              }}
-            >
-              <ArrowBackIosNewIcon sx={{fontSize: 20, verticalAlign: "-1px"}}/>
-              Back
-            </Typography>
-            <Typography
-              variant="h4"
-              onClick={() => {
-                handleNavigate("/missions");
-                setMissionsOpen(false);
-              }}
-              sx={{
-                textDecoration: handleUnderline('/missions'), 
-                textDecorationThickness: "2px",
-                textDecorationStyle: "solid",
-                textUnderlineOffset: "5px",
-                marginBottom: 2,
-              }}
-            >
-              CURRENT MISSIONS
-            </Typography>
-            <Typography
-              variant="h4"
-              onClick={() => {
-                handleNavigate("/oldmission");
-                setMissionsOpen(false);
-              }}
-              sx={{
-                textDecoration: handleUnderline('/oldmissions'), 
-                textDecorationThickness: "2px",
-                textDecorationStyle: "solid",
-                textUnderlineOffset: "5px",
-              }}
-            >
-              OLD MISSIONS
-            </Typography>
           </Stack>
         </Container>
       </Drawer>

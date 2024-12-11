@@ -4,7 +4,8 @@ import { Box, Button, Container, Grid, ListItem, Stack, TextField, Typography, u
 import {AnimatePresence, color, motion} from "framer-motion"
 import { theme } from "../theme"
 import { useCustomNavigate } from "../utils/useCustomNavigate"
-import DhairyaWorkingVideo from '/DhairyaWorking2.mp4'
+// import bestFlight from '/DhairyaWorking2.mp4'
+import bestFlight from '/bestFlight.mp4'
 import BurningLeftFuel from '/FuelFlame.jpeg'
 import { useInView } from "react-intersection-observer"
 import AnantaArrow from "/AnantaArrow.mp4"
@@ -61,35 +62,39 @@ export const HomePage: React.FC = () => {
     return (
         <>
             <Container maxWidth={false}
+                disableGutters
+                
                     sx={{
                         backgroundImage:{ 
-                            xs: `url('${Aflatoon}')`,
+                            // xs: `url('${Aflatoon}')`,
+                            xs: `none`,
                             md: 'none'
                         },
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                         height: "100vh",
                         width: '100%',
+                        overflowY: 'hidden'
                     }}
                 >
                 <video
-                    autoPlay={!isSmallScreen} 
-                    // autoPlay
+                    // autoPlay={!isSmallScreen} 
+                    autoPlay
                     loop 
                     muted
                     playsInline={isSmallScreen}
                     style={{
                         position: 'absolute',
-                        display: isSmallScreen ? 'none' : 'block',
-                        // display: 'block',
+                        // display: isSmallScreen ? 'none' : 'block',
+                        display: 'block',
                         top: 0,
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        objectFit: 'cover',
+                        objectFit: 'fill',
                         zIndex: -1,
                     }}
-                        src={DhairyaWorkingVideo}
+                        src={isSmallScreen ? AnantaArrow : bestFlight}
                 />
                 <Navbar/> 
                 </Container>
