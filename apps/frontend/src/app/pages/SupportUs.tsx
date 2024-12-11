@@ -70,6 +70,36 @@ export const SupportUs: React.FC = () => {
 
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+    // Sponsors
+    const sponsors = [
+        {
+            name: "Sponsor 1",
+            pic: "/path-to-logo1.png",
+            reviews: "Very hardworking boyzzzzzzzzzzz",
+        },
+        {
+            name: "Sponsor 2",
+            pic: "/path-to-logo2.png",
+            reviews: "Very hardworking boyzzzzzzzzzzz",
+        },
+        {
+            name: "Sponsor 3",
+            pic: "/path-to-logo3.png",
+            reviews: "Very hardworking boyzzzzzzzzzzz",
+        },
+        {
+            name: "Sponsor 4",
+            pic: "/path-to-logo4.png",
+            reviews: "Very hardworking boyzzzzzzzzzzz",
+        },
+        {
+            name: "Sponsor 5",
+            pic: "/path-to-logo5.png",
+            reviews: "Very hardworking boyzzzzzzzzzzz",
+        }
+    ];
+
+
     return (
         <div style={{ overflow: "hidden" }}>
             <Container maxWidth={false}
@@ -219,7 +249,9 @@ export const SupportUs: React.FC = () => {
                         </DialogTitle>
                         <DialogContent>
                             <Box>
-                                <Typography variant="h6" gutterBottom 
+                                <Typography 
+                                    variant="h6" 
+                                    gutterBottom
                                     fontFamily={theme.typography.fontFamily}
                                 >
                                     Choose an Amount
@@ -472,7 +504,92 @@ export const SupportUs: React.FC = () => {
 
 
 
-            {/* Why you should contribute us */}
+            {/* Meet our Sponsoers */}
+            <Container
+                maxWidth={false}
+                sx={{
+                    padding: 0,
+                    textAlign: "center",
+                    width: "100%",
+                    height: "100%",
+                    marginBottom: isSmallScreen ? '35px' : '69px'
+                }}
+            >
+                <Typography
+                    sx={{
+                        fontFamily: theme.typography.fontFamily,
+                        fontSize: isSmallScreen ? 30 : 69,
+                    }}
+                >
+                    Meet our Sponsors
+                </Typography>
+                <Grid
+                    container
+                    direction={isSmallScreen ? "column" : "row"}
+                    spacing={isSmallScreen ? 3 : 5}
+                    justifyContent="center"
+                    alignItems="center"
+                    sx={{
+                        marginTop: 2,
+                    }}
+                >
+                    {sponsors.map((sponsor, index) => (
+                        <Grid
+                            item
+                            xs={12}
+                            sm={4}
+                            md={2}
+                            key={index}
+                            sx={{
+                                textAlign: "center",
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    padding: 2,
+                                    border: "1px solid #ddd",
+                                    borderRadius: "10px",
+                                    transition: "transform 0.3s ease-in-out",
+                                    "&:hover": {
+                                        transform: "scale(1.05)",
+                                    },
+                                }}
+                            >
+                                <Box
+                                    component="img"
+                                    src={sponsor.pic}
+                                    alt={sponsor.name}
+                                    sx={{
+                                        width: "100%",
+                                        height: "auto",
+                                        borderRadius: "10px",
+                                    }}
+                                />
+                                <Typography
+                                    variant="h6"
+                                    sx={{
+                                        fontFamily: theme.typography.fontFamily,
+                                        fontSize: isSmallScreen ? 14 : 18,
+                                        marginTop: 1,
+                                    }}
+                                >
+                                    {sponsor.name}
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        fontFamily: theme.typography.fontFamily,
+                                        fontSize: isSmallScreen ? 12 : 14,
+                                        color: "#555",
+                                    }}
+                                >
+                                    {sponsor.reviews}
+                                </Typography>
+                            </Box>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
 
 
             <Footer isSmallScreen={isSmallScreen} />
