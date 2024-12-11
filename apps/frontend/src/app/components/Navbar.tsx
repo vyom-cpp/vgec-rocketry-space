@@ -145,8 +145,8 @@ const NavbarXl = () => {
                     "& .MuiMenuItem-root": {
                       padding: "10px 20px",
                       "&:hover": {
-                        backgroundColor: "white",
-                        color: "black",
+                        backgroundColor: "black",
+                        color: "white",
                       },
                     },
                   }}
@@ -351,6 +351,7 @@ const NavbarSm: React.FC = () => {
                     <Typography
                       variant="h4"
                       onClick={handleMissionsClick}
+                      fontFamily={theme.typography.fontFamily}
                       sx={{
                         textDecoration: handleUnderline(page.name),
                         textDecorationThickness: "2px",
@@ -367,6 +368,7 @@ const NavbarSm: React.FC = () => {
                     <a onClick={() => handleNavigate(page.route)}>
                       <Typography
                         variant="h4"
+                        fontFamily={theme.typography.fontFamily}
                         sx={{
                           textDecoration: handleUnderline(page.name),
                           textDecorationThickness: "2px",
@@ -389,7 +391,7 @@ const NavbarSm: React.FC = () => {
               marginTop={20}
               style={{ position: "relative" }}
             >
-              <SocialLinks color="Black" fontSize="none" />
+              <SocialLinks color="white" fontSize="none" />
             </Box>
           </Stack>
         </Container>
@@ -437,6 +439,7 @@ const NavbarSm: React.FC = () => {
           <Stack>
             <Typography
               variant="overline"
+              fontFamily={theme.typography.fontFamily}
               onClick={() => {
                 handleNavigate("/missions");
                 setMissionsOpen(false);
@@ -453,6 +456,7 @@ const NavbarSm: React.FC = () => {
             </Typography>
             <Typography
               variant="h4"
+              fontFamily={theme.typography.fontFamily}
               onClick={() => {
                 handleNavigate("/missions");
                 setMissionsOpen(false);
@@ -469,6 +473,7 @@ const NavbarSm: React.FC = () => {
             </Typography>
             <Typography
               variant="h4"
+              fontFamily={theme.typography.fontFamily}
               onClick={() => {
                 handleNavigate("/oldmission");
                 setMissionsOpen(false);

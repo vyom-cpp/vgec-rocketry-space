@@ -13,11 +13,11 @@ import React, { useEffect, useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { motion } from "framer-motion";
 import { useCustomNavigate } from "../utils/useCustomNavigate"
-import DhairyaWorkingVideo from "/DhairyaWorking2.mp4";
+// import Field from "/DhairyaWorking2.mp4";
+import Field from "/Field.mp4";
 import IsroVisit from "/IsroMeet.jpeg";
 import AnantaArrow from "/AnantaArrow.mp4";
 import AnantaArrow2 from "/AnataArrow2.mp4";
-import Aflatoon from "/Aflatoon.jpeg";
 // import Map from "/map.jpg";
 import { useInView } from "react-intersection-observer";
 import { Footer } from "../components/Footer";
@@ -26,6 +26,7 @@ import  { Gallery } from "../components/Gallery";
 import { AboutUsPageContent } from "../utils/content";
 import OurStory  from "/OurStory.jpeg";
 import { ProfileThumbnail } from "../components/ProfileThumbnail";
+import DhairyaGrinder from '/DhairyaGrinder.jpeg'
 
 
 export const AboutUs: React.FC = () => {
@@ -107,7 +108,7 @@ export const AboutUs: React.FC = () => {
         maxWidth={false}
         sx={{
           backgroundImage: {
-            xs: `url('${Aflatoon}')`,
+            xs: `url('${DhairyaGrinder}')`,
             md: "none",
           },
           backgroundSize: "cover",
@@ -131,7 +132,7 @@ export const AboutUs: React.FC = () => {
             objectFit: "cover",
             zIndex: -1,
           }}
-          src={DhairyaWorkingVideo}
+          src={Field}
         />
         <Navbar />
       </Container>

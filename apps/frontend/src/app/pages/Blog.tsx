@@ -17,6 +17,7 @@ import { motion } from "framer-motion";
 import { useCustomNavigate } from "../utils/useCustomNavigate"
 import AnantaArrow from "/AnantaArrow.mp4"
 import AnantaArrow2 from "/AnataArrow2.mp4"
+import Rumination from "/Rumination.jpeg"
 import Aflatoon from '/Aflatoon.jpeg'
 import { Navbar } from "../components/Navbar"
 import { Footer } from "../components/Footer"
@@ -124,7 +125,8 @@ export const Blog: React.FC = () => {
             <Container maxWidth={false}
                 sx={{
                     backgroundImage: {
-                        xs: `url('${Aflatoon}')`,
+                        xs: `url('${Rumination}')`,
+                        // xs: `none`,
                         md: 'none'
                     },
                     backgroundSize: 'cover',
@@ -135,13 +137,14 @@ export const Blog: React.FC = () => {
                 }}
             >
                 <video
-                    autoPlay={!isSmallScreen}
+                    // autoPlay={!isSmallScreen}
+                    autoPlay={true}
                     loop
                     muted
                     playsInline={isSmallScreen}
                     style={{
                         position: 'absolute',
-                        display: isSmallScreen ? 'none' : 'block',
+                        display: 'block',
                         top: 0,
                         left: 0,
                         width: '100%',
@@ -149,7 +152,7 @@ export const Blog: React.FC = () => {
                         objectFit: 'cover',
                         zIndex: -1
                     }}
-                    src={DhairyaWorkingVideo}
+                    src={isSmallScreen ? AnantaArrow2 : DhairyaWorkingVideo}
                 />
                 <Navbar />
             </Container>
