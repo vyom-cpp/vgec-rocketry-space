@@ -15,12 +15,16 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import { theme } from "../theme";
 import { Footer } from "../components/Footer"
-import SpaceX from "/spacex.jpg";
 import Fun from "/Fun.jpeg";
 import MissionsCover from '/MissionsCover.jpeg'
 import FirstMotorTest from '/FirstMotorTest.jpeg'
 import FirstEjectionTest from '/FirstEjectionTest.png'
 import IronOxideGrains from '/IronOxideGrains.jpeg'
+import RocketMotorWebinar from '/RocketMotorWebinar.jpeg'
+import AflatoonLaunch from '/AflatoonLaunch.jpeg'
+import Workshop2 from '/Workshop2.jpeg'
+import SoundingRocket from '/SoundingRocket.jpeg'
+import AflatoonFlying from '/AflatoonFlying.jpeg'
 import MaxThrustF from '/MaxThrustF.png'
 import AflatoonLaunchPhone from '/AflatoonLaunchPhone2.png'
 import ThirdAnanta from '/3rdAnanta.png'
@@ -64,28 +68,40 @@ const storyLineImages = [
         image: MaxThrustF
     },
     {
-        date: "Date 7",
-        title: "3rd Ananta Launch",
+        date: "11ᵗʰ June, 2023",
+        title: "Webinar on Solid Rocket Fuel",
+        description: "A webinar was conducted by team on solid rocket fuel. The audience was also given an introduciton on the same for amature rocketry",
+        image: RocketMotorWebinar
+    },
+    {
+        date: "16ᵗʰ September, 2023",
+        title: "Workshop on Rocket and Subsytems",
+        description: "7 hour offline workshop conducted by team Subsystems of the Model Rocket. The attendees were given an introduction to Rocket Systems in general and how they are realised on a model scale was demonstrated.",
+        image: Workshop2
+    },
+    {
+        date: "1ˢᵗ February, 2024",
+        title: "First successful launch of Ananta",
         description: "This launch we achieved a maximum height of 183m for the first time",
         image: ThirdAnanta
     },
     {
-        date: "Date 8",
-        title: "Title 8",
-        description: "Description 8",
-        image: SpaceX
+        date: "8ᵗʰ March, 2024",
+        title: "First launch of Aflatoon",
+        description: "First launch of our 2nd rocket Aflatoon, when it came back in three pieces",
+        image: AflatoonLaunch
     },
     {
-        date: "Date 9",
-        title: "Title 9",
-        description: "Description 9",
-        image: SpaceX
+        date: "5ᵗʰ May, 2024",
+        title: "Manufactured Sounding Rocket",
+        description: "Team designed and manufactured Soundng rocket for an International Rocket Competition Tecknofest in Turkey",
+        image: SoundingRocket
     },
     {
-        date: "Date 10",
-        title: "Title 10",
-        description: "Description 10",
-        image: SpaceX
+        date: "13ᵗʰ October, 2024",
+        title: "Highest altitude recorded by Aflatoon",
+        description: "Aflatoon achieved the highest altitude of 702 meter, with 175 m/s",
+        image: AflatoonFlying
     },
 ];
 
@@ -99,7 +115,7 @@ export const OurStory: React.FC = () => {
 
     return (
         <div style={{ overflow: "hidden" }}>
-            <Box sx={{ position: 'relative', height: '100vh', width: '100%' }}>
+            <Box sx={{ position: 'relative', height: '101vh', width: '100%' }}>
                 <Box
                     component="img"
                     src={isSmallScreen ? AflatoonLaunchPhone: Fun}
@@ -186,7 +202,7 @@ export const OurStory: React.FC = () => {
                         >
                             <Typography 
                                 variant="overline" 
-                                fontSize={isSmallScreen ? 15 : 19}
+                                fontSize={isSmallScreen ? 15 : 16}
                                 fontFamily={theme.typography.fontFamily}
                                 component="h5"
                             >
@@ -197,8 +213,8 @@ export const OurStory: React.FC = () => {
                                 variant={isSmallScreen ? "h4" : "h2"} 
                                 component="h1" 
                                 // fontWeight="bold" 
-                                // fontFamily={theme.typography.fontFamily}
-                                fontFamily='Nova Square'
+                                fontFamily={theme.typography.fontFamily}
+                                // fontFamily='Nova Square'
 
                                 sx={{ 
                                     marginTop: "-5px",
@@ -244,8 +260,9 @@ export const OurStory: React.FC = () => {
                     alignItem: "center",
                     textAlign: "center",
                     justifyContent: "center",
-                    marginTop: "250px",
-                    marginBottom: "30px"
+                    marginTop: isSmallScreen ? "12vh" :"20vh",
+                    marginBottom: isSmallScreen ? "4vh" :"4vh",
+                    marginInline: isSmallScreen ? "3vw" : ""
                 }}
             >
                 AND WE'RE JUST GETTING STARTED
