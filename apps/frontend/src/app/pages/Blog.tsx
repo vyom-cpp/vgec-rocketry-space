@@ -40,7 +40,7 @@ const newsPosts = [
         link: "#"
     },
     {
-        title: "Vennesa Lunch",
+        title: "Venessa 1st Lunch",
         date: "17ᵗʰ August, 2024",
         image: Rocket,
         link: "#"
@@ -310,7 +310,7 @@ export const Blog: React.FC = () => {
                             </Typography>
                             <Button
                                 variant="outlined"
-                                onClick={() => handleNavigate('/blogPage')}
+                                onClick={() => handleNavigate('')}
                                 href={post.link}
                                 sx={{
                                     marginTop: 2,
@@ -411,7 +411,7 @@ export const Blog: React.FC = () => {
                             </Typography>
                             <Button
                                 variant="outlined"
-                                onClick={() => handleNavigate('/blogPage')}
+                                onClick={() => handleNavigate('')}
                                 href={post.link}
                                 sx={{
                                     marginTop: 2,

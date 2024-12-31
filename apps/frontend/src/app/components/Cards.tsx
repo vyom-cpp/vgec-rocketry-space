@@ -23,10 +23,11 @@ interface CardData {
 interface CardGridProps {
   cards: CardData[];
   isDarkMode: boolean;
+  isFuturePlans: boolean;
 }
 
 
-const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
+const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode, isFuturePlans }) => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   
   return (
@@ -63,7 +64,7 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
             <CardMedia
               component="img"
               alt={card.name}
-              height="200"
+              height="250"
               image={card.image}
             />
             <CardContent>
@@ -84,7 +85,7 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button
+              {!isFuturePlans && <Button
                 size="small"
                 variant="outlined"
                 href={card.link}
@@ -106,7 +107,7 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
                 }}
               >
                   Read More
-              </Button>
+              </Button>}
             </CardActions>
           </Card>
         </Grid>
