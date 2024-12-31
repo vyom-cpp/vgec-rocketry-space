@@ -504,8 +504,8 @@ export const SupportUs: React.FC = () => {
 
 
 
-            {/* Meet our Sponsoers */}
-            <Container
+        {/* ~Sponsoers */}
+            {/* <Container
                 maxWidth={false}
                 sx={{
                     padding: 0,
@@ -589,7 +589,7 @@ export const SupportUs: React.FC = () => {
                         </Grid>
                     ))}
                 </Grid>
-            </Container>
+            </Container> */}
 
 
             <Footer isSmallScreen={isSmallScreen} />

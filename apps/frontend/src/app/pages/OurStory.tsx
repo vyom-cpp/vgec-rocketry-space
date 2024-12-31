@@ -29,6 +29,7 @@ import MaxThrustF from '/MaxThrustF.png'
 import AflatoonLaunchPhone from '/AflatoonLaunchPhone2.png'
 import ThirdAnanta from '/3rdAnanta.png'
 import AnantaOnStand from '/AnantaOnStand.jpeg'
+import { useCustomNavigate } from "../utils/useCustomNavigate";
 
 const storyLineImages = [
     {
@@ -110,6 +111,8 @@ export const OurStory: React.FC = () => {
         document.title = "OUR | STORY";
         window.scrollTo(0, 0);
     });
+
+    const hanldleNavigate  = useCustomNavigate();
 
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -270,6 +273,7 @@ export const OurStory: React.FC = () => {
 
             <Button
                 variant="outlined"
+                onClick={()  =>  hanldleNavigate('/blog#')}
                 sx={{
                     marginTop: "112px",
                     backgroundColor: "white",
