@@ -8,8 +8,10 @@ import {
     Box,
     // imageListClasses
 } from "@mui/material"
+import axios from "axios";
 import React, { useEffect, useState } from "react"
 import Carousel from "react-carousel-mui";
+import DragHandleIcon from "@mui/icons-material/DragHandle";
 import "../styles.css";
 import { useInView } from "react-intersection-observer";
 import DhairyaWorkingVideo from "/DhairyaWorking2.mp4";
@@ -18,66 +20,89 @@ import { motion } from "framer-motion";
 import { useCustomNavigate } from "../utils/useCustomNavigate"
 import AnantaArrow from "/AnantaArrow.mp4"
 import AnantaArrow2 from "/AnataArrow2.mp4"
+import Aflatoon2 from "/Aflatoon2.jpeg"
 import Rumination from "/Rumination.jpeg"
-import Aflatoon from '/Aflatoon.jpeg'
+import RecruitsFirstLaunch from "/RecruitsFirstLaunch.jpeg"
+import AflatoonOnPad from "/AflatoonOnPad.jpeg"
+import CarbNosecone from "/CarbNosecone.jpeg"
+import TurkAvionics from "/TurkAvionics.jpeg"
+import BigRocket from "/BigRocket.jpeg"
 import { Navbar } from "../components/Navbar"
 import { Footer } from "../components/Footer"
 import { theme } from "../theme";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"
+
+const newsPosts = [
+    {
+        title: "Aflatoon's 5th Launch",
+        date: "13ᵗʰ October, 2024",
+        image: Aflatoon2,
+        link: "#"
+    },
+    {
+        title: "Vennesa Lunch",
+        date: "17ᵗʰ August, 2024",
+        image: Rocket,
+        link: "#"
+    },
+    {
+        title: "Aflatoon's 4th Launch",
+        date: "23ʳᵈ June, 2024",
+        image: AflatoonOnPad,
+        link: "#"
+    },
+    {
+        title: "Recruits' First Launch",
+        date: "25ᵗʰ June, 2024",
+        image: RecruitsFirstLaunch,
+        link: "#"
+    },
+    {
+        title: "Testing Tecknofet Rocket's Subsystems",
+        date: "18ᵗʰ May, 2024",
+        image: BigRocket,
+        link: "#"
+    },
+    // {
+    //     title: "",
+    //     date: "",
+    //     image: "",
+    //     link: "#"
+    // },
+];
 
 const blogPosts = [
     {
-        title: "Title 1",
-        date: "January 19, 2023",
+        title: "Carbon Fiber Nosecone",
+        description: "Desigining and manufacturing process of a carbon fiber nosecone with a steel tip",
+        image: CarbNosecone,
+        link: "#"
+    },
+    {
+        title: "Telescopic Ejection Mechanism",
+        description: "Design philosophy and manufacturing process of an Telescopic Ejection mechanism with carbon fiber composite",
         image: Rocket,
         link: "#"
     },
     {
-        title: "Title 2",
-        date: "October 12, 2023",
+        title: "Parachute Desiging",
+        description: "Desigining Drogue and Main prachutes for high powered rocketry",
         image: Rocket,
         link: "#"
     },
     {
-        title: "Title 3",
-        date: "February 27, 2023",
-        image: Rocket,
+        title: "Avionics subsystem system",
+        description: "How we designed, developed and tested our indegenious avionics system for an International Rocketry Competition ",
+        image: TurkAvionics,
         link: "#"
     },
     {
-        title: "Title 4",
-        date: "February 27, 2023",
-        image: Rocket,
-        link: "#"
-    }
-];
-
-const blogNews = [
-    {
-        title: "Title 1",
-        date: "February 29, 2024",
-        image: Rocket,
-        link: "#"
-    },
-    {
-        title: "Title 2",
-        date: "February 29, 2024",
-        image: Rocket,
-        link: "#"
-    },
-    {
-        title: "Title 3",
-        date: "February 29, 2024",
-        image: Rocket,
-        link: "#"
-    },
-    {
-        title: "Title 4",
-        date: "February 29, 2024",
+        title: "Airframe and Fins",
+        description: "Desiging, manufacturing and testing Airframe and Fins for a high powered rocket",
         image: Rocket,
         link: "#"
     },
 ];
-
 
 export const Blog: React.FC = () => {
 
@@ -119,6 +144,57 @@ export const Blog: React.FC = () => {
     };
 
     const handleNavigate = useCustomNavigate();
+    const [isSuccess, setIsSuccess] = useState(false);
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        event.persist();
+
+        const formElement = event.target as HTMLFormElement;
+        const formData = new FormData(event.target as HTMLFormElement);
+        const firstName = formData.get('firstname')?.toString() || '';
+        const lastName = formData.get('lastname')?.toString() || '';
+        const email = formData.get('email')?.toString() || '';
+
+        console.log(event.target, "sfjsl")
+        // Validate required fields
+        if (!firstName || !lastName || !email) {
+            alert('Please fill in all required fields');
+            return;
+        }
+
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
+
+        // Process form data
+        const userData = {
+            firstName,
+            lastName,
+            email
+        };
+
+        // Send data to server (replace with actual API endpoint)
+        // console.log('Form submitted:', userData);
+        axios.post('https://discord.com/api/webhooks/1092854760136245289/HlAT6CkbSIZFT1COaAbkJOWyq_IXrBpneCew68NaPnrxxDjurc8GqDVTpDNFzNM0L9TB', {
+            content: `**Wants to Stay in Touch**\nName: ${firstName}\nLast Name: ${lastName}\nEmail: ${email} \n`,
+        })
+            .then((res) => {
+                if (res.status === 204) {
+                    // alert('Form submitted successfully!');
+                    setIsSuccess(true)
+                    formElement.reset(); // Reset the form
+                }
+            })
+            .catch((error) => {
+                console.error('Error submitting form:', error);
+                alert('Failed to submit the form. Please try again.');
+            });
+        // console.log(donorCreds)
+    };
 
     return (
 
@@ -127,7 +203,6 @@ export const Blog: React.FC = () => {
                 sx={{
                     backgroundImage: {
                         xs: `url('${Rumination}')`,
-                        // xs: `none`,
                         md: 'none'
                     },
                     backgroundSize: 'cover',
@@ -161,6 +236,7 @@ export const Blog: React.FC = () => {
 
             {/* Updates Section */}
             <Container
+                disableGutters
                 maxWidth={false}
                 component={motion.div}
                 ref={updateRef}
@@ -168,22 +244,27 @@ export const Blog: React.FC = () => {
                 animate={updateInView ? "visible" : "hidden"}
                 variants={fadeInVariants}
                 sx={{
-                    paddingTop: 15,
-                    paddingBottom: 8,
-                    width: isSmallScreen ? "80%" : "70%"
-                }}>
+                    paddingTop: isSmallScreen ? 5 : 10,
+                    paddingBottom: isSmallScreen ? 3 : 7,
+                    width: isSmallScreen ? "80%" : "80%"
+                }}
+            >
                 <Typography
-                    sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: 4 }}
-                >Updates
+                    sx={{
+                        fontFamily: theme.typography.fontFamily,
+                        fontSize: isSmallScreen ? 70 : 95,
+                        marginBottom: 4
+                    }}
+                >
+                    Updates
                 </Typography>
                 <Carousel
-                    items={blogPosts}
-                    className="carousel"
-                    defaultItemWidthMobile={300}
+                    items={newsPosts}
+                    itemGap={isSmallScreen ? 25 : 40}
                     itemsPerPage={{
                         xs: 1,
-                        sm: 1,
-                        tablet: 2,
+                        sm: 2,
+                        tablet: 3,
                         md: 3,
                         lg: 3,
                         xl: 3
@@ -193,32 +274,37 @@ export const Blog: React.FC = () => {
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                // alignItems: 'center',
-                                // textAlign: 'center',
-                                minHeight: "100%",
-                                width: "100%",
-                                // padding: 2
+                                maxHeight: "50vh",
+                                minWidth: isSmallScreen ? "80vw" : "24vw",
                             }}
                         >
                             <Box
-                                sx={{ width: '100%', height: '300px', marginBottom: 1 }}
-                            >
-                                <img
-                                    src={post.image}
-                                    alt={post.title}
-                                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                                />
-                            </Box>
+                                sx={{
+                                    // width: '100%', 
+                                    // height: '100%',
+                                    minHeight: isSmallScreen ? "23vh" : "25vh",
+                                    minWidth: isSmallScreen ? "80vw" : "24vw",
+                                    overflow: 'hidden',
+                                    backgroundImage: `url(${post.image})`,
+                                    marginBottom: 1,
+                                    backgroundSize: "cover",
+                                }}
+                            />
                             <Typography
-                                variant="h5"
-                                sx={{ fontFamily: theme.typography.fontFamily, marginTop: 1 }}
+                                sx={{
+                                    fontFamily: theme.typography.fontFamily,
+                                    fontSize: isSmallScreen ? 25 : 27,
+                                    marginTop: 1
+                                }}
                             >
                                 {post.title}
                             </Typography>
                             <Typography
-                                variant="body2"
-                                color="textSecondary"
-                                sx={{ fontFamily: theme.typography.fontFamily }}
+                                // variant="subtitle1"
+                                sx={{
+                                    fontFamily: theme.typography.fontFamily,
+                                    fontSize: isSmallScreen ? 15 : 16,
+                                }}
                             >
                                 {post.date}
                             </Typography>
@@ -231,6 +317,7 @@ export const Blog: React.FC = () => {
                                     fontFamily: theme.typography.fontFamily,
                                     color: 'black',
                                     fontSize: '20px',
+                                    width: '100%',
                                     backgroundColor: 'white',
                                     borderColor: "black",
                                     // color: theme.palette.primary.dark,
@@ -257,22 +344,28 @@ export const Blog: React.FC = () => {
             <Container
                 maxWidth={false}
                 component={motion.div}
+                disableGutters
                 ref={newsRef}
                 initial="hidden"
                 animate={newsInView ? "visible" : "hidden"}
                 variants={fadeInVariants}
-                sx={{ paddingTop: 20, paddingBottom: 8, width: isSmallScreen ? "80%" : "70%" }}>
+                sx={{
+                    paddingTop: 10,
+                    width: isSmallScreen ? "80%" : "80%"
+                }}
+            >
                 <Typography
                     sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: 4 }}
-                >Blogs
+                >
+                    Blogs
                 </Typography>
                 <Carousel
-                    items={blogNews}
-                    defaultItemWidthMobile={300}
+                    items={blogPosts}
+                    itemGap={isSmallScreen ? 25 : 40}
                     itemsPerPage={{
                         xs: 1,
-                        sm: 1,
-                        tablet: 2,
+                        sm: 2,
+                        tablet: 3,
                         md: 3,
                         lg: 3,
                         xl: 3
@@ -282,37 +375,39 @@ export const Blog: React.FC = () => {
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                // alignItems: 'center',
-                                // alignContent: 'left',
-                                // textAlign: 'center',
-                                // height: '20vh',
-                                minHeight: "100%",
-                                // width: "100%",
-                                minWidth: "100%"
-                                // padding: 2
+                                maxHeight: "50vh",
+                                minWidth: isSmallScreen ? "80vw" : "24vw",
                             }}
                         >
                             <Box
-                                sx={{ width: '100%', height: '300px', overflow: 'hidden', marginBottom: 1 }}
-                            >
-                                <img
-                                    src={post.image}
-                                    alt={post.title}
-                                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                                />
-                            </Box>
+                                sx={{
+                                    // width: '100%', 
+                                    // height: '100%',
+                                    minHeight: isSmallScreen ? "23vh" : "25vh",
+                                    minWidth: isSmallScreen ? "80vw" : "24vw",
+                                    overflow: 'hidden',
+                                    backgroundImage: `url(${post.image})`,
+                                    marginBottom: 1,
+                                    backgroundSize: "cover",
+                                }}
+                            />
                             <Typography
-                                variant="h5"
-                                sx={{ fontFamily: theme.typography.fontFamily, marginTop: 1, textAlign: 'left' }}
+                                sx={{
+                                    fontFamily: theme.typography.fontFamily,
+                                    fontSize: isSmallScreen ? 25 : 27,
+                                    marginTop: 1
+                                }}
                             >
                                 {post.title}
                             </Typography>
                             <Typography
-                                variant="body2"
-                                color="textSecondary"
-                                sx={{ fontFamily: theme.typography.fontFamily, textAlign: 'left' }}
+                                // variant="subtitle1"
+                                sx={{
+                                    fontFamily: theme.typography.fontFamily,
+                                    fontSize: isSmallScreen ? 15 : 16,
+                                }}
                             >
-                                {post.date}
+                                {post.description}
                             </Typography>
                             <Button
                                 variant="outlined"
@@ -322,8 +417,9 @@ export const Blog: React.FC = () => {
                                     marginTop: 2,
                                     fontFamily: theme.typography.fontFamily,
                                     color: 'black',
-                                    backgroundColor: 'white',
                                     fontSize: '20px',
+                                    width: '100%',
+                                    backgroundColor: 'white',
                                     borderColor: "black",
                                     // color: theme.palette.primary.dark,
                                     // fontSize: isSmallScreen ? '14px' : '18px', // Custom font size
@@ -354,19 +450,38 @@ export const Blog: React.FC = () => {
                 variants={fadeInVariants}
                 sx={{ paddingTop: 20, paddingBottom: 8, width: '70%' }}
             >
-                <Grid container spacing={2} alignItems="center" alignContent="center" >
-                    <Grid item xs={12} md={6} sm={4} >
+                <Grid
+                    container
+                    spacing={isSmallScreen ? 8 : -3}
+                    direction={isSmallScreen ? "column" : "row"}
+                    // alignItems="flex-start" 
+                    // alignContent="flex-start" 
+                    sx={{
+                        marginBottom: isSmallScreen ? 6 : 25,
+                    }}
+                >
+                    <Grid
+                        item
+                        xs={12}
+                        md={6}
+                        sm={4}
+                    >
                         <Typography
-                            sx={{ fontFamily: theme.typography.fontFamily, fontSize: isSmallScreen ? 70 : 95, marginBottom: isSmallScreen ? 6 : 25, }}
+                            sx={{
+                                fontFamily: theme.typography.fontFamily,
+                                fontSize: isSmallScreen ? 80 : 95,
+                                // marginBottom: isSmallScreen ? 6 : 25, 
+                            }}
                         >
                             STAY IN TOUCH
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={6}>
                         <Box
                             component="form"
                             noValidate
                             autoComplete="off"
+                            onSubmit={handleSubmit}
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -377,21 +492,31 @@ export const Blog: React.FC = () => {
                         >
                             <TextField
                                 label="First Name"
+                                name="firstname"
+                                id="firstname"
                                 variant="outlined"
                                 fullWidth
+                                required
                             />
                             <TextField
                                 label="Last Name"
+                                name="lastname"
+                                id="lastname"
                                 variant="outlined"
                                 fullWidth
+                                required
                             />
                             <TextField
                                 label="Email Address"
+                                name="email"
+                                id="email"
                                 variant="outlined"
                                 fullWidth
+                                required
                             />
-                            <Button
+                            {/* <Button
                                 variant="outlined"
+                                type="submit"
                                 sx={{
                                     marginTop: 2,
                                     fontFamily: theme.typography.fontFamily,
@@ -410,6 +535,27 @@ export const Blog: React.FC = () => {
                                 }}
                             >
                                 Sign Up
+                            </Button> */}
+                            <Button
+                                type="submit"
+                                variant="outlined"
+                                sx={{
+                                    fontFamily: theme.typography.fontFamily,
+                                    marginTop: isSmallScreen ? 2 : 4.5,
+                                    borderColor: isSuccess ? '' : 'black',
+                                    color: theme.palette.primary.dark,
+                                    fontSize: isSmallScreen ? '14px' : '18px', // Custom font size
+                                    backgroundColor: isSuccess ? '#22BB33' : '',
+                                    '&:hover': {
+                                        variant: 'contained',
+                                        backgroundColor: isSuccess ? 'green' : 'black',
+                                        color: 'white',
+                                    },
+                                    width: '100%'
+                                }}
+                            >
+                                {isSuccess ? <CheckCircleIcon sx={{ marginRight: 1 }} /> : null}
+                                {isSuccess ? 'Send' : 'Sign Up'}
                             </Button>
                         </Box>
                     </Grid>
