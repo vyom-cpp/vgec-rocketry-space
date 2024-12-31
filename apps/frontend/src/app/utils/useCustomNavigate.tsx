@@ -10,6 +10,7 @@ export const useCustomNavigate = () => {
         } else {
             navigate(to);   
         }
+        window.scrollTo(0,0);
     }
     return handleClick;
 } 

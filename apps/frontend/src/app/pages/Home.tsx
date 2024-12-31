@@ -91,7 +91,7 @@ export const HomePage: React.FC = () => {
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        objectFit: 'fill',
+                        objectFit: 'cover',
                         zIndex: -1,
                     }}
                         src={isSmallScreen ? AnantaArrow : bestFlight}
@@ -99,6 +99,7 @@ export const HomePage: React.FC = () => {
                 <Navbar/> 
                 </Container>
                     <Container
+                    
                         disableGutters
                         maxWidth={false}
                         sx={{
