@@ -23,10 +23,11 @@ interface CardData {
 interface CardGridProps {
   cards: CardData[];
   isDarkMode: boolean;
+  isFuturePlans: boolean;
 }
 
 
-const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
+const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode, isFuturePlans }) => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   
   return (
@@ -63,7 +64,7 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
             <CardMedia
               component="img"
               alt={card.name}
-              height="200"
+              height="250"
               image={card.image}
             />
             <CardContent>
@@ -84,28 +85,29 @@ const CardGrid: React.FC<CardGridProps> = ({ cards, isDarkMode }) => {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button
+              {!isFuturePlans && <Button
                 size="small"
                 variant="outlined"
                 href={card.link}
                 target="_blank"
+                
                 sx={{
-                  borderColor: theme.palette.primary.main,
-                  color: theme.palette.primary.main,
+                  fontFamily: theme.typography.fontFamily,
+                  fontSize: 18,
+                  // borderColor: theme.palette.primary.main,
+                   color: "white",
                    border: "none",
                    borderRadius: 0,
                   "&:hover": {
                     variant: "contained",
-                    backgroundColor: theme.palette.primary.light,
-                    color: "white",
+                    backgroundColor: "white",
+                    color: "black",
                     border: "none"
                   },
                 }}
               >
-                <Typography fontFamily="Roboto" fontSize="18px">
                   Read More
-                </Typography>
-              </Button>
+              </Button>}
             </CardActions>
           </Card>
         </Grid>

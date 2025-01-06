@@ -10,11 +10,19 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import TextField from '@mui/material/TextField';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import { Form } from "react-router-dom";
 // import { useInView } from "react-intersection-observer";
+import LaunchSnap from '/LaunchSnap.jpeg'
+import GroupPhoto from '/EventClass.jpg'
+import AnantaOnStand1 from '/AnantaOnStand1.jpeg'
+import Aflatoon from '/Aflatoon.jpeg'
+import UPIQr from '/UPIQr.jpeg'
+import axios from 'axios';
+interface donorCreds  {
+    name: string
+    email: string
+    amount: string
+    customAmount? : string
+}
 
 export const SupportUs: React.FC = () => {
 
@@ -28,10 +36,28 @@ export const SupportUs: React.FC = () => {
     const [email, setEmail] = useState('');
     const [customAmount, setCustomAmount] = React.useState('');
     const [qrDialogOpen, setQrDialogOpen] = React.useState(false);
+    const [donorCreds, setDonorCreds] = React.useState<Partial<donorCreds>>({});
 
     const handleClickOpen = () => {
         setOpen(true);
     };
+
+    useEffect(() => {
+        console.log("donorCreds updated:", donorCreds);
+    }, [donorCreds]);
+
+    const sendInfo = async () => {
+        console.log("Andar info na ")
+        console.log(donorCreds)
+        const { name, email, amount, customAmount } = donorCreds
+        setDonorCreds({})
+        setQrDialogOpen(false)
+        // axios.post('https://discord.com/api/webhooks/1290707583195156561/niGX7p0C6VbGgYydzHapxVk9VCVXvHj77MQWbPtEDxb37coIJZ70tY710JSuJ6GYtEkY', {
+        axios.post('https://discord.com/api/webhooks/1092854760136245289/HlAT6CkbSIZFT1COaAbkJOWyq_IXrBpneCew68NaPnrxxDjurc8GqDVTpDNFzNM0L9TB', {
+            content: `Contribution\nName: ${name}\nEmail: ${email}\nAmount: ${customAmount ? customAmount : amount} \n`,
+        })
+        console.log(donorCreds)
+    }
 
     const handleClose = () => {
         setOpen(false);
@@ -76,83 +102,74 @@ export const SupportUs: React.FC = () => {
 
     return (
         <div style={{ overflow: "hidden" }}>
-
             <Container maxWidth={false}
+                disableGutters
                 sx={{
-                    backgroundColor: "black",
-                    height: "500px",
-                    width: "100%",
+                    backgroundImage: {
+                        xs: `url('${LaunchSnap}')`,
+                        md: `url('${GroupPhoto}')`,
+                      },
                     backgroundSize: "cover",
-                    objectFit: "cover"
+                    backgroundRepeat: "no-repeat",
+                    backgroundColor: "black",
+                    paddingLeft: 0 ,
+                    paddingRight: 0 ,
+                    height: '101vh',
+                    minWidth: "100%",
+                    zIndex: -2
+                }}
+            >
+            <Box
+                sx={{
+                    top: 0,
+                    left: 0,
+                    minWidth: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.57)', // Adjust transparency
+                    zIndex: -1, // Above the image but below everything else
                 }}
             >
                 <Navbar />
-
-                <Typography
-                    sx={{
-                        color: "white",
-                        fontFamily: theme.typography.fontFamily,
-                        fontSize: isSmallScreen ? "70px" : "90px",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textAlign: "center",
-                        marginTop: "70px"
-                    }}
+                <Box 
+                    alignContent='center'
+                    height='70%'
                 >
-                    Invest in the future.
-                </Typography>
 
-                <Typography
-                    sx={{
-                        color: "white",
-                        fontFamily: theme.typography.fontFamily,
-                        fontSize: isSmallScreen ? "45px" : "60px",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textAlign: "center",
-                    }}
-                >
-                    Contribute today to empower the next generation.
-                </Typography>
+                    <Typography
+                        sx={{
+                            color: "white",
+                            // fontFamily: theme.typography.fontFamily,
+                            fontFamily: 'Nova Square',
+                            fontSize: isSmallScreen ? "50px" : "75px",
+                            display: "flex",
+                            paddingLeft: isSmallScreen ? '0.3em' : 0,
+                            paddingRight: isSmallScreen ? '0.3em': 0,
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            textAlign: "center",
+                        }}
+                        >
+                        Help us reach the Sky
+                    </Typography>
+                    <Typography
+                        sx={{
+                            color: "white",
+                            fontFamily: theme.typography.fontFamily,
+                            paddingTop: isSmallScreen ? '20px' : '0', 
+                            fontSize: isSmallScreen ? "20px" : "35px",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            textAlign: "center",
+                        }}
+                    >
+                        Contribute today to empower the next generation.
+                    </Typography>
+                </Box>
+            </Box>
             </Container>
-
-            {/* Quote */}
-            {/* <Container
-                maxWidth={false}
-                sx={{
-                    backgroundColor: "white",
-                    width: "100%",
-                    height: "200px",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    marginBottom: "0px",
-                    padding: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                    border: "none"
-                }}
-            >
-                <Typography
-                    sx={{
-                        color: "black",
-                        fontFamily: theme.typography.fontFamily,
-                        fontSize: isSmallScreen ? "30px" : "50px"
-                    }}
-                >
-                    “Rockets are cool. There's no getting around them”
-                    <br />
-                    ~Elon Musk
-                </Typography>
-            </Container> */}
-
-            {/* Sponsor */}
             <Container
                 sx={{
                     display: 'flex',
@@ -214,7 +231,8 @@ export const SupportUs: React.FC = () => {
                                     return;
                                 }
 
-                                console.log("Form Submitted", formJson);
+                                // console.log("Form Submitted", formJson);
+                                setDonorCreds(formJson);
                                 setQrDialogOpen(true);
                                 handleClose();
                             },
@@ -268,15 +286,14 @@ export const SupportUs: React.FC = () => {
                                     <TextField
                                         fullWidth
                                         required
-                                        name="customAmount"
+                                        name='customAmount'
                                         variant="outlined"
+                                        id="outlined-number"
                                         margin="normal"
                                         label="Enter Amount"
                                         type="number"
-                                        InputProps={{
-                                            inputProps: { min: 1 }
-                                        }}
                                     />
+                          
                                 )}
                                 <Typography variant="h6" gutterBottom sx={{ mt: 2 }} fontFamily={theme.typography.fontFamily}>
                                     Personal Information
@@ -352,13 +369,28 @@ export const SupportUs: React.FC = () => {
                                 align="left"
                                 color="error"
                             >
-                                Payment gateway will be added soon, use this QR Code for now
+                                *Payment gateway will be added soon, use this QR Code for now
                             </Typography>
+                            <Box sx={{ textAlign: "center", objectFit: "contain"}}>
+                                <img
+                                    src={UPIQr}
+                                    alt="UPI"
+                                    style={{ 
+                                        width: isSmallScreen ? "30vh" : "40vh",
+                                        maxHeight: "40vh",
+                                        objectFit: "cover" 
+                                    }}
+                                />
+                            </Box>
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={() => setQrDialogOpen(false)} color="primary">
                                 Close
                             </Button>
+                            <Button onClick={() => sendInfo()} variant="contained" color="primary">
+                                Done
+                            </Button>
+                            
                         </DialogActions>
                     </Dialog>
                 </React.Fragment>
@@ -415,16 +447,21 @@ export const SupportUs: React.FC = () => {
 
                 <Stack
                     direction={isSmallScreen ? 'column' : 'row'}
-                    spacing={isSmallScreen ? 2 : 20}
+                    spacing={isSmallScreen ? 10 : 20}
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Box sx={{ textAlign: "center" }}>
+                    <Box sx={{ textAlign: "center", objectFit: "cover"}}>
                         <img
-                            src={Rocket}
+                            src={AnantaOnStand1}
                             alt="Ananta"
-                            style={{ width: isSmallScreen ? "95%" : "350px", height: "auto" }}
-                        />
+                            style={{ 
+                                width: isSmallScreen ? "35vh" : "350px",
+                                maxHeight: "70vh",
+                                objectFit: "cover" 
+
+                            }}                        
+                    />
                         <Typography
                             sx={{
                                 color: "black",
@@ -439,11 +476,15 @@ export const SupportUs: React.FC = () => {
                         </Typography>
                     </Box>
 
-                    <Box sx={{ textAlign: "center" }}>
+                    <Box sx={{ textAlign: "center", objectFit: "contain"}}>
                         <img
-                            src={Rocket}
+                            src={Aflatoon}
                             alt="Aflatoon"
-                            style={{ width: isSmallScreen ? "95%" : "350px", height: "auto" }}
+                            style={{ 
+                                width: isSmallScreen ? "35vh" : "350px",
+                                maxHeight: "70vh",
+                                objectFit: "cover" 
+                            }}
                         />
                         <Typography
                             sx={{
@@ -463,8 +504,8 @@ export const SupportUs: React.FC = () => {
 
 
 
-            {/* Meet our Sponsoers */}
-            <Container
+        {/* ~Sponsoers */}
+            {/* <Container
                 maxWidth={false}
                 sx={{
                     padding: 0,
@@ -548,7 +589,7 @@ export const SupportUs: React.FC = () => {
                         </Grid>
                     ))}
                 </Grid>
-            </Container>
+            </Container> */}
 
 
             <Footer isSmallScreen={isSmallScreen} />
